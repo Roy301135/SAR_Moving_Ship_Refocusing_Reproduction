@@ -1,0 +1,33 @@
+﻿parameter,value,unit,source/status,role
+carrier_frequency,3,GHz,Wang 2023 paper-grounded,physics
+PRF,188,Hz,Wang 2023 paper-grounded,sampling
+bandwidth,150,MHz,Wang 2023 paper-grounded,provenance
+platform_height,3000,m,Wang 2023 paper-grounded,geometry
+antenna_length,2,m,Wang 2023 paper-grounded,beam
+platform_velocity,150,m/s,Wang 2023 paper-grounded,physics
+pulse_width,1.5,us,Wang 2023 paper-grounded,provenance
+weak_velocity,15,m/s,PA5F inherited,weak reference
+R0_over_H,sqrt(2),,PA5F inherited,geometry
+delta_velocity,2.5;5;7.5;10;15;20,m/s,PA5F inherited,separation
+Aw_over_As,0.1;0.2;0.3;0.5;0.8,,PA5F inherited,contrast
+relative_phase,16 uniform values,rad,PA5F inherited,coherent mixture
+fractional_bin_offset,0;0.125;0.25;0.375;0.5,DFT bins,PA5F inherited,fence effect
+window_bins,1;3;5;9;17,bins,PA5F inherited,removal support
+peak_semantics,PlateauAwareTol,,PA5E-R1 selected,fixed removal semantics
+peak_gate,0.7,fraction max magnitude,Wang 2023 Algorithm-2 paper-reported,peak threshold
+old_estimator,3-point log-power parabola,,PA5F inherited,audit baseline only
+continuous_estimator,single-tone concentrated ML/LS,,PA5G model-derived,new estimator
+continuous_search_halfwidth,0.75,bins,PA5G numerical solver design,keep half-bin optimum interior
+continuous_bracket_points,33,,PA5G numerical solver design,"bracket only, not final quantization"
+continuous_TolX,1e-11,bins,PA5G numerical solver setting,optimization precision
+BIC_H0_parameters,2,,complex amplitude,integer-frequency model
+BIC_H1_parameters,3,,complex amplitude + frequency,continuous-frequency model
+primary_gate,DeltaBIC>0 AND |eta_hat_frac|>split disagreement,,PA5G parameter-free evidence rule,recenter decision
+G0,no recenter,,PA5G controlled baseline,baseline
+G1,true eta recenter,,PA5G oracle,mechanism upper bound
+G2,continuous ML from strong-only,,PA5G estimator isolation,strong-only upper bound
+G3,"continuous ML from mixture, always recenter",,PA5G,blind practical comparator
+G4,continuous ML from mixture + evidence gate,,PA5G,practical deterministic candidate
+beta_s_error,0,,PA5G isolation,true strong chirp rate
+noise,none,,PA5G design,deterministic gating audit
+clutter,none,,PA5G design,deterministic gating audit

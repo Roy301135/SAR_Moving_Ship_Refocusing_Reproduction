@@ -1,0 +1,37 @@
+EXP009-C1.1 Policy Loss Decomposition
+====================================
+
+Matched-cost operating point
+----------------------------
+Prominence threshold: 0.62993234
+Practical trigger rate: 0.233333
+Oracle minimal trigger rate: 0.232667
+
+Recall under different selectors
+--------------------------------
+Cheap: 0.717556
+Oracle union: 0.950222
+Practical trigger + always fallback: 0.821556
+Practical trigger + prominence selector: 0.819556
+Practical trigger + oracle selector: 0.832889
+Oracle trigger + always fallback: 0.950222
+Oracle trigger + prominence selector: 0.921556
+
+Gap decomposition
+-----------------
+Total Oracle-Practical gap: 0.130667
+Allocation loss: 0.117333
+Selector loss: 0.013333
+Allocation loss fraction: 0.897959
+Selector loss fraction: 0.102041
+
+Targeting diagnostics
+---------------------
+Beneficial allocation capture: 0.495702
+Benefit precision among practical triggers: 0.494286
+Wasted trigger fraction: 0.505714
+Harmful fraction among triggers: 0.048571
+Selector rescue capture on targeted beneficial: 0.978805
+Selector missed rescues: 11
+Selector harm events: 49
+Always-fallback minus prominence-selector recall: +0.002000

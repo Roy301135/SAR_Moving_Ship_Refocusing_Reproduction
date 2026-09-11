@@ -1,0 +1,57 @@
+EXP009 PA5I-R1
+Gamma consistency + dense eta + rare-tail audit
+================================================
+
+R1-A / PA4 Gamma consistency
+----------------------------
+Paper1s W_beta,3dB = 0.00017 rad
+BeamDerived W_beta,3dB = 8.6e-05 rad
+
+Paper1s dv=5 expected=0.32798 measured=0.327983 relerr=1.06153e-05 pass=1
+Paper1s dv=20 expected=1.36499 measured=1.36499 relerr=1.62992e-06 pass=1
+BeamDerived dv=5 expected=0.64834 measured=0.648339 relerr=8.6313e-07 pass=1
+BeamDerived dv=20 expected=2.69824 measured=2.69824 relerr=1.6471e-07 pass=1
+
+R1-B / dense eta risk audit
+---------------------------
+Unique upstream G0 risk states = 30
+Dense eta step = 0.01 bins
+
+G0_OriginalTop1 recovery=0.647712 catastrophic=0.352288 meanEval=42.9595
+G1_Neighbor3 recovery=1 catastrophic=0 meanEval=149.743
+G2_Top2Coarse recovery=0.938562 catastrophic=0.0614379 meanEval=84.9216
+G3_Top3Coarse recovery=0.990196 catastrophic=0.00980392 meanEval=131.165
+G4_GlobalReference recovery=1 catastrophic=0 meanEval=310.38
+
+R1-C / rare tail
+----------------
+Original-grid summary:
+G0_OriginalTop1 p95=1.52523e-08 p99=2.18208e-08 p99.5=0.232438 p99.9=0.439811 max=0.497758 Pcat=0.00572917
+G1_Neighbor3 p95=1.43772e-08 p99=1.83048e-08 p99.5=2.00897e-08 p99.9=2.35959e-08 max=2.8044e-08 Pcat=0
+G2_Top2Coarse p95=1.49243e-08 p99=1.97766e-08 p99.5=2.20713e-08 p99.9=0.231186 max=0.49267 Pcat=0.00114583
+G3_Top3Coarse p95=1.47771e-08 p99=1.91913e-08 p99.5=2.1421e-08 p99.9=2.59712e-08 max=0.49267 Pcat=0.000208333
+G4_GlobalReference p95=0 p99=0 p99.5=0 p99.9=0 max=0 Pcat=0
+
+Dense-risk summary:
+G0_OriginalTop1 p95=0.451671 p99=0.49267 p99.5=0.49267 p99.9=0.497758 max=0.497758 Pcat=0.352288
+G1_Neighbor3 p95=1.36501e-08 p99=1.64301e-08 p99.5=1.73258e-08 p99.9=2.09149e-08 max=2.12731e-08 Pcat=0
+G2_Top2Coarse p95=0.231186 p99=0.467802 p99.5=0.49267 p99.9=0.49267 max=0.49267 Pcat=0.0614379
+G3_Top3Coarse p95=1.4164e-08 p99=2.10695e-08 p99.5=0.467802 p99.9=0.49267 max=0.49267 Pcat=0.00980392
+G4_GlobalReference p95=0 p99=0 p99.5=0 p99.9=0 max=0 Pcat=0
+
+Decision
+--------
+PA4 Gamma consistency pass = 1
+G1 dense recovery = 1
+G1 dense catastrophic rate = 0
+G1 dense max branch error = 2.12731e-08 bins
+G1/G0 cost ratio = 3.48568
+G1/G4 cost ratio = 0.48245
+Decision branch = PA5I_CONFIRMED_PROCEED_TO_PA5J_ADAPTIVE_CONFIDENCE_GATE
+
+Interpretation discipline
+-------------------------
+1) The corrected Gamma is the PA4 beta-coordinate Gamma, not the PA5I frequency-bin surrogate.
+2) Dense eta is run only on the empirically observed G0 risk manifold from PA5I.
+3) Zero dense-risk failure supports branch safety on this tested risk manifold; it is not a proof for arbitrary parameters.
+4) p95 alone is not accepted as a rare-tail reliability metric in this experiment.

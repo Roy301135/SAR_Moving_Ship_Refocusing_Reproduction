@@ -1,0 +1,23 @@
+﻿parameter,value,unit,source,status,role
+carrier_frequency,3,GHz,Wang 2023 Table 1,paper-reported,physics input
+PRF,188,Hz,Wang 2023 Table 1,paper-reported,sampling / physics input
+bandwidth,150,MHz,Wang 2023 Table 1,paper-reported,provenance
+platform_height,3000,m,Wang 2023 Table 1,paper-reported,geometry scale
+antenna_length,2,m,Wang 2023 Table 1,paper-reported,beam aperture estimate
+platform_velocity,150,m/s,Wang 2023 Table 1,paper-reported,physics input
+pulse_width,1.5,us,Wang 2023 Table 1,paper-reported,provenance
+weak_velocity,15,m/s,Wang 2023 Table 2,paper-grounded choice,weak reference component
+residual_FM_mapping,"Xu Eq.7,8,11",,Xu 2025,literature-derived bridge,velocity to beta
+R0_over_H,sqrt(2),,not reported by Wang five-point experiment,controlled representative,fixed geometry
+aperture_modes,Paper1s;BeamDerived,,Wang text + first-order beam estimate,literature/derived,resolution comparison
+delta_velocity,2.5;5;7.5;10;15;20,m/s,PA4 inherited,controlled physical sweep,component separation
+weak_to_strong_ratio,0.1;0.2;0.3;0.5;0.8,,PA4 inherited,controlled sweep,contrast axis
+relative_phase,16 uniform values,rad,PA4 inherited,controlled sweep,coherent interaction
+center_frequency_b,0,cycles/sample,P1C-informed control,controlled,isolate chirp-rate interaction
+noise,none,,PA5 design,controlled,deterministic strong-removal map
+G0,WeakOnly,,PA5 design,control group,intrinsic baseline
+G1,FullMixture,,PA5 design,control group,pre-removal observability
+G2,true strong parameter + LS refit/subtract,,PA5 design,oracle-operator group,operator upper bound
+G3,FrAc-estimated strong parameter + LS refit/subtract,,PA5 design,practical group,practical sequential CLEAN
+Gx,exact strong waveform subtraction,,PA5 design,sanity only,numerical upper baseline
+Gamma,abs(beta_s-beta_w)/weak_3dB_width,,PA4 inherited,derived,resolution coordinate

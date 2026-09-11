@@ -1,0 +1,40 @@
+EXP009-B3 Observable Reliability Surrogate
+==========================================
+
+Selected B2 cells: 9
+MC trials/cell: 500
+Max B2 reproduction diff: 1.110223e-16
+
+Trial labels conditioned on baseline success
+-------------------------------------------
+Baseline-success trials: 4151
+Residual-induced failures: 1050
+Perturbative failures: 893
+Catastrophic failures: 157
+
+Top observable features by induced-failure AUC
+----------------------------------------------
+prominence: AUC_any=0.773344 dir=-, AUC_pert=0.702666, AUC_cat=0.979043
+peak_to_floor: AUC_any=0.773344 dir=-, AUC_pert=0.702666, AUC_cat=0.979043
+curve_entropy: AUC_any=0.767417 dir=+, AUC_pert=0.697176, AUC_cat=0.973738
+width50_q: AUC_any=0.718389 dir=+, AUC_pert=0.685798, AUC_cat=0.771947
+peak_zscore: AUC_any=0.696437 dir=-, AUC_pert=0.618740, AUC_cat=0.969092
+margin_to_mad: AUC_any=0.672096 dir=-, AUC_pert=0.625057, AUC_cat=0.813390
+second_to_first: AUC_any=0.630921 dir=+, AUC_pert=0.677850, AUC_cat=0.645363
+peak_margin_norm: AUC_any=0.630921 dir=-, AUC_pert=0.677850, AUC_cat=0.645363
+residual_energy_ratio_obs: AUC_any=0.620343 dir=-, AUC_pert=0.533961, AUC_cat=0.967324
+local_curvature_1: AUC_any=0.612242 dir=-, AUC_pert=0.687900, AUC_cat=0.788984
+local_curvature_2: AUC_any=0.612138 dir=-, AUC_pert=0.687930, AUC_cat=0.789661
+width80_q: AUC_any=0.608019 dir=+, AUC_pert=0.684664, AUC_cat=0.795895
+competitor_count: AUC_any=0.577673 dir=+, AUC_pert=0.513368, AUC_cat=0.841297
+grid_instability_bins: AUC_any=0.564275 dir=-, AUC_pert=0.565762, AUC_cat=0.528634
+local_asymmetry: AUC_any=0.516529 dir=-, AUC_pert=0.518043, AUC_cat=0.502113
+abs_local_asymmetry: AUC_any=0.511290 dir=-, AUC_pert=0.529134, AUC_cat=0.576548
+second_peak_separation_q: AUC_any=0.500794 dir=-, AUC_pert=0.503253, AUC_cat=0.519215
+
+Transparent LOCO logistic diagnostic
+------------------------------------
+Features: second_to_first, prominence, peak_zscore, margin_to_mad, local_curvature_1, width50_q, abs_local_asymmetry, curve_entropy, competitor_count, grid_instability_bins, residual_energy_ratio_obs
+LOCO AUC: 0.644955
+LOCO score-outcome Spearman: 0.218282
+LOCO cell-risk vs refined-penalty Spearman: 0.650000

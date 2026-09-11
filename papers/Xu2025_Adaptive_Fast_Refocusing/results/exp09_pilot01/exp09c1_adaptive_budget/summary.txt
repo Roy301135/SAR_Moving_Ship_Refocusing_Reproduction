@@ -1,0 +1,37 @@
+EXP009-C1 Oracle-to-Practical Adaptive Budget Test
+==================================================
+
+Selected B2 cells: 9
+MC trials/cell: 500
+q candidates/search: 181
+Refit FFT factor: 8
+Max B2 reproduction diff: 0
+
+Branch potential
+----------------
+Baseline recall: 0.922444
+Cheap recall: 0.717556
+Fallback-only recall: 0.922889
+Always-extra select recall: 0.902000
+Oracle union recall: 0.950222
+Beneficial fallback rate: 0.232667
+Harmful fallback rate: 0.027333
+Oracle minimal useful trigger rate: 0.232667
+
+Matched-cost practical policies
+-------------------------------
+Prominence threshold: 0.62993234
+Prominence fallback rate: 0.233333
+Prominence recall: 0.819556
+Prominence oracle-gain capture: 0.438395
+
+Entropy threshold: 0.97876268
+Entropy fallback rate: 0.233333
+Entropy recall: 0.821778
+Entropy oracle-gain capture: 0.447947
+
+LOCO budget policies
+--------------------
+Target=0.100 Actual=0.116667 Recall=0.785556 CondFail=0.178511 Rescue=0.246263 Harm=0.002168 Qevals=202.12
+Target=0.250 Actual=0.266889 Recall=0.831556 CondFail=0.117321 Rescue=0.448466 Harm=0.017653 Qevals=229.31
+Target=0.500 Actual=0.502444 Recall=0.872667 CondFail=0.067695 Rescue=0.612903 Harm=0.025085 Qevals=271.94

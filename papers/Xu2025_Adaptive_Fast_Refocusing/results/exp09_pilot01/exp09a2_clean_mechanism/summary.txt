@@ -1,0 +1,42 @@
+EXP009-A2 CLEAN Mechanism Dissection
+====================================
+
+MC trials: 100
+SNR: 3.000 dB
+q strong / weak: 1.420000 / 1.470000
+A weak / A strong: 0.400000
+Default notch halfwidth: 1 bins
+
+C0_ExactSubtraction
+  Recovery: 0.980000
+  q RMSE:   0.00150000
+  q MAE:    0.00113000
+  q bias:   -0.00025000
+
+C1_PracticalCLEAN_TrueQ
+  Recovery: 0.810000
+  q RMSE:   0.00255734
+  q MAE:    0.00196000
+  q bias:   -0.00152000
+
+C2_PracticalCLEAN_EstimatedQ
+  Recovery: 0.810000
+  q RMSE:   0.00255734
+  q MAE:    0.00196000
+  q bias:   -0.00152000
+
+C0 -> C1: SS=81 SF=17 FS=0 FF=2
+C1 -> C2: SS=81 SF=0 FS=0 FF=19
+
+Width sweep
+-----------
+TrueQ, h=0: Recall=0.140000, Bias=-0.04158000, eta_s=0.06656279, eta_w=0.94267399
+TrueQ, h=1: Recall=0.810000, Bias=-0.00152000, eta_s=0.00711683, eta_w=0.95637384
+TrueQ, h=2: Recall=0.810000, Bias=-0.00164000, eta_s=0.00249272, eta_w=0.96085560
+TrueQ, h=3: Recall=0.810000, Bias=-0.00168000, eta_s=0.00124767, eta_w=0.96345276
+TrueQ, h=5: Recall=0.810000, Bias=-0.00176000, eta_s=0.00051888, eta_w=0.96758774
+EstimatedQ, h=0: Recall=0.140000, Bias=-0.04169000, eta_s=0.06659245, eta_w=0.94271771
+EstimatedQ, h=1: Recall=0.810000, Bias=-0.00152000, eta_s=0.00712822, eta_w=0.95638098
+EstimatedQ, h=2: Recall=0.810000, Bias=-0.00162000, eta_s=0.00249032, eta_w=0.96084191
+EstimatedQ, h=3: Recall=0.810000, Bias=-0.00168000, eta_s=0.00124659, eta_w=0.96344497
+EstimatedQ, h=5: Recall=0.810000, Bias=-0.00176000, eta_s=0.00051889, eta_w=0.96759341

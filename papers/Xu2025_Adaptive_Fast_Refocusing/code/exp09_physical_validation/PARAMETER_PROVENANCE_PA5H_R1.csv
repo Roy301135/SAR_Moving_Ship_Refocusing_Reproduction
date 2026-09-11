@@ -1,0 +1,21 @@
+﻿parameter,value,unit,source/status,role
+carrier_frequency,3,GHz,PA5H inherited / Wang-grounded,physics
+PRF,188,Hz,PA5H inherited / Wang-grounded,sampling
+platform_height,3000,m,PA5H inherited,geometry
+antenna_length,2,m,PA5H inherited,beam
+platform_velocity,150,m/s,PA5H inherited,physics
+R0_over_H,sqrt(2),,PA5H inherited,geometry
+weak_velocity,15,m/s,PA5H inherited,weak reference
+delta_velocity,2.5;5;7.5;10;15;20,m/s,PA5H inherited,separation
+audit_Aw_over_As,0.5;0.8,,PA5H-R1 targeted,only anomalous contrasts
+relative_phase,16 uniform values,rad,PA5H inherited,coherent mixture
+fractional_bin_offset,0;0.125;0.25;0.375;0.5,bins,PA5H inherited,collapse audit
+local_estimator,PA5G/PA5H continuous ML,,fixed,no new estimator
+collapse_outlier_threshold,1e-3,bins,PA5H-R1 diagnostic,separate numerical collapse from ~0.4-bin jump
+translation_signal_error_gate,1e-12,,PA5H-R1 numerical,exact model check
+global_search_halfwidth,1.5,bins,PA5H-R1 oracle diagnostic,global objective audit
+global_grid_step,1e-3,bins,PA5H-R1 numerical,global peak discovery
+branch_match_tolerance,0.02,bins,PA5H-R1 diagnostic,peak-branch association
+near_degenerate_peak_ratio,0.98,,PA5H-R1 diagnostic only,report near-degeneracy
+regret_tie_logic,median -> p90 -> mean -> agreement -> smaller L,,PA5H-R1,summary correction
+regret_tie_tolerance,1e-12,,PA5H-R1 numerical,tie handling

@@ -1,0 +1,17 @@
+﻿parameter,value,unit,source/status,role
+fc,3,GHz,Wang 2023 Table 1 / paper-reported,physics
+PRF,188,Hz,Wang 2023 Table 1 / paper-reported,sampling
+H,3000,m,Wang 2023 Table 1 / paper-reported,geometry
+La,2,m,Wang 2023 Table 1 / paper-reported,aperture
+V,150,m/s,Wang 2023 Table 1 / paper-reported,physics
+weak_velocity,15,m/s,Wang 2023 Table 2 / paper-grounded choice,reference weak
+R0_over_H,sqrt(2),,inherited controlled representative,geometry
+delta_velocity,2.5;5;7.5;10;15;20,m/s,PA5 inherited controlled sweep,separation
+Aw_over_As,0.1;0.2;0.3;0.5;0.8,,PA5 inherited controlled sweep,contrast
+relative_phase,16 uniform values,rad,PA5 inherited controlled sweep,coherence
+correct_LS,(x*h')/(h*h'),,complex least squares / corrected,projection
+legacy_PA5_LS,(h*x')/(h*h'),,PA5 implementation / audit target,conjugation audit
+projection_identity,E^2=(1-rho_sh^2)/r_A^2+rho_wh^2,,exact derived identity,error ownership
+delta_beta_over_width,-0.30 to 0.30,,PA5B controlled sweep,tolerance
+error_thresholds,0.5;1.0,relative norm,PA5B diagnostic,subtraction safety
+noise,none,,PA5B design,deterministic audit

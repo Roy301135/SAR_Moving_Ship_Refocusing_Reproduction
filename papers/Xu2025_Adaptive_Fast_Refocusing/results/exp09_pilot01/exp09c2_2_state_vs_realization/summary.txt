@@ -1,0 +1,40 @@
+EXP009-C2.2 State-vs-Realization Predictability Decomposition
+============================================================
+
+Trial composition
+-----------------
+Trials: 4500
+Cells: 9
+Cheap recall: 0.717556
+Fallback recall: 0.922889
+Trial-oracle recall: 0.950222
+Beneficial rate: 0.232667
+Harmful rate: 0.027333
+Neutral rate: 0.740000
+
+Label-level between-cell variance
+---------------------------------
+Beneficial eta^2: 0.228564
+Harmful eta^2: 0.030425
+Net utility eta^2: 0.181994
+
+Feature predictability decomposition
+------------------------------------
+cheap_prominence pooledAUC=0.749037 dir=- centeredAUC=0.514729 withinMean=0.522755 withinWeighted=0.522755 eta2=0.810301 validCells=7 rhoCellB=-0.803354 rhoCellU=-0.783333
+cheap_entropy pooledAUC=0.742844 dir=+ centeredAUC=0.515263 withinMean=0.520105 withinWeighted=0.520105 eta2=0.792409 validCells=7 rhoCellB=0.769881 rhoCellU=0.750000
+estimated_strong_weak_peak_ratio_db pooledAUC=0.727507 dir=+ centeredAUC=0.511087 withinMean=0.515543 withinWeighted=0.515543 eta2=0.922819 validCells=7 rhoCellB=0.845196 rhoCellU=0.850000
+estimated_q_separation_abs pooledAUC=0.660493 dir=+ centeredAUC=0.636632 withinMean=0.566049 withinWeighted=0.566049 eta2=0.808433 validCells=7 rhoCellB=0.677830 rhoCellU=0.683333
+strong_global_removed_fraction pooledAUC=0.620628 dir=+ centeredAUC=0.510461 withinMean=0.507858 withinWeighted=0.507858 eta2=0.976174 validCells=7 rhoCellB=0.410045 rhoCellU=0.433333
+cheap_second_to_first pooledAUC=0.614802 dir=+ centeredAUC=0.441706 withinMean=0.443801 withinWeighted=0.443801 eta2=0.477950 validCells=7 rhoCellB=0.778249 rhoCellU=0.766667
+strong_local_asymmetry pooledAUC=0.599156 dir=- centeredAUC=0.498723 withinMean=0.500840 withinWeighted=0.500840 eta2=0.184707 validCells=7 rhoCellB=-0.744776 rhoCellU=-0.733333
+strong_local_spectral_width pooledAUC=0.577979 dir=- centeredAUC=0.496524 withinMean=0.486041 withinWeighted=0.486041 eta2=0.420137 validCells=7 rhoCellB=-0.359836 rhoCellU=-0.383333
+strong_notch_capture_fraction pooledAUC=0.567864 dir=+ centeredAUC=0.488316 withinMean=0.481611 withinWeighted=0.481611 eta2=0.285313 validCells=7 rhoCellB=0.435150 rhoCellU=0.450000
+strong_frac_bin_offset_abs pooledAUC=0.561950 dir=- centeredAUC=0.492737 withinMean=0.497646 withinWeighted=0.497646 eta2=0.068947 validCells=7 rhoCellB=-0.803354 rhoCellU=-0.816667
+strong_peak_concentration pooledAUC=0.560330 dir=+ centeredAUC=0.489838 withinMean=0.485418 withinWeighted=0.485418 eta2=0.168983 validCells=7 rhoCellB=0.527201 rhoCellU=0.533333
+strong_side_leakage_to_notch pooledAUC=0.549076 dir=- centeredAUC=0.492447 withinMean=0.490381 withinWeighted=0.490381 eta2=0.144309 validCells=7 rhoCellB=-0.543938 rhoCellU=-0.550000
+
+State-oracle gain decomposition
+-------------------------------
+target=0.100 stateActual=0.100000 trialActual=0.100000 random=0.738089 stateOracle=0.778556 trialOracle=0.817556 stateShareSelection=0.509228 stateShareTotal=0.610000
+target=0.250 stateActual=0.250000 trialActual=0.232667 random=0.768889 stateOracle=0.838444 trialOracle=0.950222 stateShareSelection=0.383578 stateShareTotal=0.519580
+target=0.500 stateActual=0.500000 trialActual=0.232667 random=0.820222 stateOracle=0.900444 trialOracle=0.950222 stateShareSelection=0.617094 stateShareTotal=0.786055

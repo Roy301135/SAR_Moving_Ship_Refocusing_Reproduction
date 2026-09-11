@@ -1,0 +1,74 @@
+EXP009-C2.1 Mechanism-Aware Pre-Fallback Observable Audit
+========================================================
+
+Reproduction
+------------
+Cheap success mismatches: 0
+Fallback success mismatches: 0
+Max Cheap q difference: 2.22044604925e-16
+Max Fallback q difference: 2.22044604925e-16
+
+Trial composition
+-----------------
+Cheap recall: 0.717556
+Fallback recall: 0.922889
+Oracle recall: 0.950222
+Beneficial rate: 0.232667
+Harmful rate: 0.027333
+Neutral rate: 0.740000
+
+Top single features by Beneficial AUC
+-------------------------------------
+cheap_prominence AUC_B=0.749037 dir=- AUC_H=0.645871 dirH=-
+cheap_entropy AUC_B=0.742844 dir=+ AUC_H=0.660205 dirH=+
+estimated_strong_weak_peak_ratio_db AUC_B=0.727507 dir=+ AUC_H=0.595337 dirH=+
+estimated_q_separation_abs AUC_B=0.660493 dir=+ AUC_H=0.547717 dirH=+
+strong_global_removed_fraction AUC_B=0.620628 dir=+ AUC_H=0.605961 dirH=-
+cheap_second_to_first AUC_B=0.614802 dir=+ AUC_H=0.625686 dirH=+
+strong_local_asymmetry AUC_B=0.599156 dir=- AUC_H=0.547366 dirH=-
+strong_local_spectral_width AUC_B=0.577979 dir=- AUC_H=0.588856 dirH=+
+strong_notch_capture_fraction AUC_B=0.567864 dir=+ AUC_H=0.593087 dirH=-
+strong_frac_bin_offset_abs AUC_B=0.561950 dir=- AUC_H=0.521676 dirH=+
+strong_peak_concentration AUC_B=0.560330 dir=+ AUC_H=0.600450 dirH=-
+strong_side_leakage_to_notch AUC_B=0.549076 dir=- AUC_H=0.571816 dirH=+
+
+LOCO feature groups
+-------------------
+WeakOnly AUC_B=0.693930 AUC_H=0.530720 rhoV=0.213938
+StrongCleanOnly AUC_B=0.456061 AUC_H=0.439013 rhoV=-0.034072
+GeometryOnly AUC_B=0.556636 AUC_H=0.296344 rhoV=-0.081719
+MechanismCombined AUC_B=0.584490 AUC_H=0.414053 rhoV=-0.093640
+AllCombined AUC_B=0.508970 AUC_H=0.513657 rhoV=-0.163019
+
+Highlighted budget points
+-------------------------
+Prominence target=0.100 actual=0.116667 recall=0.785556 capture=0.298949 precision=0.596190 harm=0.013333 budget=1.116667
+Prominence target=0.250 actual=0.266889 recall=0.833556 capture=0.554919 precision=0.483764 harm=0.049126 budget=1.266889
+Prominence target=0.500 actual=0.502444 recall=0.882222 capture=0.793696 precision=0.367536 harm=0.039805 budget=1.502444
+Entropy target=0.100 actual=0.118444 recall=0.787778 capture=0.305635 precision=0.600375 harm=0.007505 budget=1.118444
+Entropy target=0.250 actual=0.270889 recall=0.836444 capture=0.567335 precision=0.487285 harm=0.048400 budget=1.270889
+Entropy target=0.500 actual=0.502444 recall=0.880000 capture=0.784145 precision=0.363114 harm=0.039805 budget=1.502444
+SideLeakage target=0.100 actual=0.110667 recall=0.732889 capture=0.085960 precision=0.180723 harm=0.042169 budget=1.110667
+SideLeakage target=0.250 actual=0.253333 recall=0.756000 capture=0.203438 precision=0.186842 harm=0.035088 budget=1.253333
+SideLeakage target=0.500 actual=0.496667 recall=0.800222 capture=0.425979 precision=0.199553 harm=0.033110 budget=1.496667
+WeakOnly target=0.100 actual=0.109778 recall=0.782000 capture=0.284623 precision=0.603239 harm=0.016194 budget=1.109778
+WeakOnly target=0.250 actual=0.267333 recall=0.830000 capture=0.540592 precision=0.470490 harm=0.049875 budget=1.267333
+WeakOnly target=0.500 actual=0.506889 recall=0.876444 capture=0.773639 precision=0.355107 harm=0.041648 budget=1.506889
+StrongCleanOnly target=0.100 actual=0.065333 recall=0.738000 capture=0.096466 precision=0.343537 harm=0.030612 budget=1.065333
+StrongCleanOnly target=0.250 actual=0.249778 recall=0.787333 capture=0.318052 precision=0.296263 harm=0.016904 budget=1.249778
+StrongCleanOnly target=0.500 actual=0.518444 recall=0.846889 capture=0.598854 precision=0.268753 harm=0.019288 budget=1.518444
+GeometryOnly target=0.100 actual=0.002000 recall=0.717333 capture=0.002865 precision=0.333333 harm=0.444444 budget=1.002000
+GeometryOnly target=0.250 actual=0.122667 recall=0.765333 capture=0.251194 precision=0.476449 harm=0.086957 budget=1.122667
+GeometryOnly target=0.500 actual=0.355778 recall=0.810444 capture=0.466094 precision=0.304809 harm=0.043723 budget=1.355778
+MechanismCombined target=0.100 actual=0.024889 recall=0.726222 capture=0.055396 precision=0.517857 harm=0.169643 budget=1.024889
+MechanismCombined target=0.250 actual=0.148667 recall=0.773111 capture=0.288443 precision=0.451420 harm=0.077728 budget=1.148667
+MechanismCombined target=0.500 actual=0.426000 recall=0.814222 capture=0.499522 precision=0.272822 harm=0.045905 budget=1.426000
+AllCombined target=0.100 actual=0.001778 recall=0.716889 capture=0.001910 precision=0.250000 harm=0.625000 budget=1.001778
+AllCombined target=0.250 actual=0.128444 recall=0.753333 capture=0.194842 precision=0.352941 harm=0.074394 budget=1.128444
+AllCombined target=0.500 actual=0.388444 recall=0.793778 capture=0.393505 precision=0.235698 harm=0.039474 budget=1.388444
+Oracle target=0.100 actual=0.100000 recall=0.817556 capture=0.429799 precision=1.000000 harm=0.000000 budget=1.100000
+Oracle target=0.250 actual=0.232667 recall=0.950222 capture=1.000000 precision=1.000000 harm=0.000000 budget=1.232667
+Oracle target=0.500 actual=0.232667 recall=0.950222 capture=1.000000 precision=1.000000 harm=0.000000 budget=1.232667
+RandomExpected target=0.100 actual=0.100000 recall=0.738089 capture=0.100000 precision=0.232667 harm=0.027333 budget=1.100000
+RandomExpected target=0.250 actual=0.250000 recall=0.768889 capture=0.250000 precision=0.232667 harm=0.027333 budget=1.250000
+RandomExpected target=0.500 actual=0.500000 recall=0.820222 capture=0.500000 precision=0.232667 harm=0.027333 budget=1.500000

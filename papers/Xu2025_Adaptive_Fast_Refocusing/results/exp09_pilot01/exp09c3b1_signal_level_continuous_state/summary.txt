@@ -1,0 +1,85 @@
+EXP009-C3-B1 Signal-Level Continuous Azimuth-State Validation
+============================================================
+
+Experimental boundary
+---------------------
+q_strong is oracle/known at every line. Weak q is fixed. Weak ratio and q separation vary physically across azimuth lines.
+Cheap branch uses the same controlled strong-residual chain as C1/C2.1; fallback uses the C1 off-grid parametric refit.
+
+State reproducibility
+---------------------
+Smooth train/test utility rho: 0.928530
+Smooth train/test utility RMSE: 0.044884
+Abrupt train/test utility rho: 0.898402
+Abrupt train/test utility RMSE: 0.044856
+
+Tuning
+------
+Best EMA alpha: 0.800000
+Best reset quantile: 0.850000
+Best reset threshold: 0.234989
+Jump line: 54
+Train utility jump magnitude: 0.310000
+
+State observability
+-------------------
+Smooth InstantPE trialRho=0.643564 lineMeanRho=0.781672 aucB=0.671718
+Smooth EMA trialRho=0.675003 lineMeanRho=0.780422 aucB=0.676987
+Smooth EMAReset trialRho=0.650487 lineMeanRho=0.782661 aucB=0.672078
+Smooth PhysicalStatePrior trialRho=1.000000 lineMeanRho=0.999834 aucB=0.712099
+Abrupt InstantPE trialRho=0.785945 lineMeanRho=0.819307 aucB=0.718747
+Abrupt EMA trialRho=0.792758 lineMeanRho=0.815983 aucB=0.720493
+Abrupt EMAReset trialRho=0.788321 lineMeanRho=0.817586 aucB=0.720365
+Abrupt PhysicalStatePrior trialRho=1.000000 lineMeanRho=0.999741 aucB=0.739039
+
+Highlighted budget points
+-------------------------
+Smooth InstantPE target=0.100 actual=0.107645 recall=0.692355 capture=0.205752 precision=0.535509 harm=0.086372 budget=1.107645
+Smooth InstantPE target=0.250 actual=0.253099 recall=0.742149 capture=0.423304 precision=0.468571 harm=0.080816 budget=1.253099
+Smooth InstantPE target=0.500 actual=0.509298 recall=0.808058 capture=0.685103 precision=0.376876 harm=0.054767 budget=1.509298
+Smooth EMA target=0.100 actual=0.110537 recall=0.693802 capture=0.212389 precision=0.538318 harm=0.087850 budget=1.110537
+Smooth EMA target=0.250 actual=0.245868 recall=0.740909 capture=0.418879 precision=0.477311 harm=0.083193 budget=1.245868
+Smooth EMA target=0.500 actual=0.510744 recall=0.811570 capture=0.697640 precision=0.382686 harm=0.054612 budget=1.510744
+Smooth EMAReset target=0.100 actual=0.112603 recall=0.693802 capture=0.214602 precision=0.533945 harm=0.091743 budget=1.112603
+Smooth EMAReset target=0.250 actual=0.250413 recall=0.740083 capture=0.417404 precision=0.466997 harm=0.083333 budget=1.250413
+Smooth EMAReset target=0.500 actual=0.511983 recall=0.808884 capture=0.688791 precision=0.376917 harm=0.054883 budget=1.511983
+Smooth PhysicalStatePrior target=0.100 actual=0.099380 recall=0.689050 capture=0.191740 precision=0.540541 harm=0.087318 budget=1.099380
+Smooth PhysicalStatePrior target=0.250 actual=0.250620 recall=0.751653 capture=0.441740 precision=0.493817 harm=0.064303 budget=1.250620
+Smooth PhysicalStatePrior target=0.500 actual=0.502066 recall=0.825000 capture=0.732301 precision=0.408642 harm=0.048148 budget=1.502066
+Smooth TrialOracle target=0.100 actual=0.100000 recall=0.744008 capture=0.356932 precision=1.000000 harm=0.000000 budget=1.100000
+Smooth TrialOracle target=0.250 actual=0.250000 recall=0.894008 capture=0.892330 precision=1.000000 harm=0.000000 budget=1.250000
+Smooth TrialOracle target=0.500 actual=0.280165 recall=0.924174 capture=1.000000 precision=1.000000 harm=0.000000 budget=1.280165
+Smooth RandomExpected target=0.100 actual=0.100000 recall=0.668326 capture=0.100000 precision=0.280165 harm=0.036983 budget=1.100000
+Smooth RandomExpected target=0.250 actual=0.250000 recall=0.704804 capture=0.250000 precision=0.280165 harm=0.036983 budget=1.250000
+Smooth RandomExpected target=0.500 actual=0.500000 recall=0.765599 capture=0.500000 precision=0.280165 harm=0.036983 budget=1.500000
+Abrupt InstantPE target=0.100 actual=0.103099 recall=0.507851 capture=0.156250 precision=0.551102 harm=0.062124 budget=1.103099
+Abrupt InstantPE target=0.250 actual=0.250000 recall=0.582025 capture=0.382386 precision=0.556198 harm=0.057851 budget=1.250000
+Abrupt InstantPE target=0.500 actual=0.507438 recall=0.702479 capture=0.752841 precision=0.539495 harm=0.056596 budget=1.507438
+Abrupt EMA target=0.100 actual=0.099587 recall=0.509091 capture=0.156818 precision=0.572614 harm=0.053942 budget=1.099587
+Abrupt EMA target=0.250 actual=0.247314 recall=0.580992 capture=0.377273 precision=0.554720 harm=0.055138 budget=1.247314
+Abrupt EMA target=0.500 actual=0.510744 recall=0.704132 capture=0.756818 precision=0.538835 harm=0.055825 budget=1.510744
+Abrupt EMAReset target=0.100 actual=0.097727 recall=0.507851 capture=0.153409 precision=0.570825 harm=0.054968 budget=1.097727
+Abrupt EMAReset target=0.250 actual=0.249380 recall=0.582231 capture=0.381250 precision=0.555924 harm=0.055510 budget=1.249380
+Abrupt EMAReset target=0.500 actual=0.508058 recall=0.701653 capture=0.751136 precision=0.537617 harm=0.056934 budget=1.508058
+Abrupt PhysicalStatePrior target=0.100 actual=0.100413 recall=0.511983 capture=0.164205 precision=0.594650 harm=0.051440 budget=1.100413
+Abrupt PhysicalStatePrior target=0.250 actual=0.247314 recall=0.586570 capture=0.396591 precision=0.583124 harm=0.060986 budget=1.247314
+Abrupt PhysicalStatePrior target=0.500 actual=0.498554 recall=0.711157 capture=0.767045 precision=0.559470 harm=0.050559 budget=1.498554
+Abrupt TrialOracle target=0.100 actual=0.100000 recall=0.557438 capture=0.275000 precision=1.000000 harm=0.000000 budget=1.100000
+Abrupt TrialOracle target=0.250 actual=0.250000 recall=0.707438 capture=0.687500 precision=1.000000 harm=0.000000 budget=1.250000
+Abrupt TrialOracle target=0.500 actual=0.363636 recall=0.821074 capture=1.000000 precision=1.000000 harm=0.000000 budget=1.363636
+Abrupt RandomExpected target=0.100 actual=0.100000 recall=0.490103 capture=0.100000 precision=0.363636 harm=0.036983 budget=1.100000
+Abrupt RandomExpected target=0.250 actual=0.250000 recall=0.539101 capture=0.250000 precision=0.363636 harm=0.036983 budget=1.250000
+Abrupt RandomExpected target=0.500 actual=0.500000 recall=0.620764 capture=0.500000 precision=0.363636 harm=0.036983 budget=1.500000
+
+Jump tracking
+-------------
+InstantPE postJumpMAE=0.181309 globalMAE=0.144865
+EMA postJumpMAE=0.154322 globalMAE=0.134944
+EMAReset postJumpMAE=0.177773 globalMAE=0.141736
+
+Runtime
+-------
+TrainSmooth 5.352 s
+TrainAbrupt 5.008 s
+TestSmooth 9.843 s
+TestAbrupt 9.429 s

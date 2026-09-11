@@ -1,0 +1,109 @@
+EXP009-C3-B2 Safe-Subset Beneficial Opportunity Audit
+=====================================================
+
+Research question
+-----------------
+C3-B1.3 showed that Harmful fate is observable, but perfect harm avoidance explains only a minority of the TrialOracle gap.
+C3-B2 therefore asks: among safe / non-harmful trials, which ones are actually worth rescuing?
+
+Exact decomposition
+-------------------
+Beneficial = CheapFailure AND FallbackSuccess
+
+This motivates separate CheapFailure and Rescueability models, plus a factorized Beneficial score:
+  pB_factor = p(CheapFailure|X) * p(FallbackSuccess|CheapFailure,X)
+
+C3-B1.3 fixed harm-veto threshold = 0.07189384
+Extended lambda sanity optimum = 19.2500
+
+Feature-group task audit
+------------------------
+StateOnly             Smooth  | Bwithin=0.5000 Cwithin=0.5000 Rwithin=0.5000
+StateOnly             Abrupt  | Bwithin=0.5000 Cwithin=0.5000 Rwithin=0.5000
+MorphologyOnly        Smooth  | Bwithin=0.5429 Cwithin=0.5686 Rwithin=0.5275
+MorphologyOnly        Abrupt  | Bwithin=0.5360 Cwithin=0.5865 Rwithin=0.5473
+StrongCompetitionOnly Smooth  | Bwithin=0.5222 Cwithin=0.5162 Rwithin=0.4921
+StrongCompetitionOnly Abrupt  | Bwithin=0.5026 Cwithin=0.5360 Rwithin=0.5011
+SubapertureOnly       Smooth  | Bwithin=0.5007 Cwithin=0.5076 Rwithin=0.5161
+SubapertureOnly       Abrupt  | Bwithin=0.5048 Cwithin=0.5121 Rwithin=0.4994
+AllObservable         Smooth  | Bwithin=0.5463 Cwithin=0.5761 Rwithin=0.5088
+AllObservable         Abrupt  | Bwithin=0.5189 Cwithin=0.6022 Rwithin=0.5321
+StateAll              Smooth  | Bwithin=0.5590 Cwithin=0.6104 Rwithin=0.5190
+StateAll              Abrupt  | Bwithin=0.5412 Cwithin=0.6545 Rwithin=0.5346
+
+Direct vs factorized Beneficial audit
+------------------------------------
+Smooth All           Direct             pooled=0.7160 within=0.5590 prev=0.2802 n=4840
+Smooth All           Factorized         pooled=0.7204 within=0.5702 prev=0.2802 n=4840
+Smooth All           CheapFailureOnly   pooled=0.7200 within=0.5731 prev=0.2802 n=4840
+Smooth All           RescueGivenFailOnly pooled=0.3650 within=0.4790 prev=0.2802 n=4840
+Smooth OracleSafe    Direct             pooled=0.7249 within=0.5435 prev=0.2909 n=4661
+Smooth OracleSafe    Factorized         pooled=0.7294 within=0.5546 prev=0.2909 n=4661
+Smooth OracleSafe    CheapFailureOnly   pooled=0.7296 within=0.5573 prev=0.2909 n=4661
+Smooth OracleSafe    RescueGivenFailOnly pooled=0.3549 within=0.4859 prev=0.2909 n=4661
+Smooth PracticalSafe Direct             pooled=0.7188 within=0.5458 prev=0.2723 n=4426
+Smooth PracticalSafe Factorized         pooled=0.7234 within=0.5569 prev=0.2723 n=4426
+Smooth PracticalSafe CheapFailureOnly   pooled=0.7240 within=0.5643 prev=0.2723 n=4426
+Smooth PracticalSafe RescueGivenFailOnly pooled=0.3626 within=0.4738 prev=0.2723 n=4426
+Abrupt All           Direct             pooled=0.7442 within=0.5412 prev=0.3636 n=4840
+Abrupt All           Factorized         pooled=0.7370 within=0.5327 prev=0.3636 n=4840
+Abrupt All           CheapFailureOnly   pooled=0.7405 within=0.5575 prev=0.3636 n=4840
+Abrupt All           RescueGivenFailOnly pooled=0.2833 within=0.4543 prev=0.3636 n=4840
+Abrupt OracleSafe    Direct             pooled=0.7513 within=0.5211 prev=0.3776 n=4661
+Abrupt OracleSafe    Factorized         pooled=0.7493 within=0.5286 prev=0.3776 n=4661
+Abrupt OracleSafe    CheapFailureOnly   pooled=0.7447 within=0.5361 prev=0.3776 n=4661
+Abrupt OracleSafe    RescueGivenFailOnly pooled=0.2793 within=0.4745 prev=0.3776 n=4661
+Abrupt PracticalSafe Direct             pooled=0.7519 within=0.5168 prev=0.3591 n=4328
+Abrupt PracticalSafe Factorized         pooled=0.7464 within=0.5166 prev=0.3591 n=4328
+Abrupt PracticalSafe CheapFailureOnly   pooled=0.7474 within=0.5360 prev=0.3591 n=4328
+Abrupt PracticalSafe RescueGivenFailOnly pooled=0.2761 within=0.4757 prev=0.3591 n=4328
+
+Safe-subset composition
+-----------------------
+Smooth All           n=4840 B=0.2802 H=0.0370 N=0.6829 CheapFail=0.3560
+Smooth OracleSafe    n=4661 B=0.2909 H=0.0000 N=0.7091 CheapFail=0.3697
+Smooth PracticalSafe n=4426 B=0.2723 H=0.0280 N=0.6997 CheapFail=0.3450
+Abrupt All           n=4840 B=0.3636 H=0.0370 N=0.5994 CheapFail=0.5426
+Abrupt OracleSafe    n=4661 B=0.3776 H=0.0000 N=0.6224 CheapFail=0.5634
+Abrupt PracticalSafe n=4328 B=0.3591 H=0.0250 N=0.6160 CheapFail=0.5402
+
+25% matched-budget policy comparison
+------------------------------------
+Smooth StateOnly                       recall=0.751446 capture=0.441003 precision=0.494215 harm=0.064463
+Smooth DirectBeneficial                recall=0.760744 capture=0.467552 precision=0.523967 harm=0.057025
+Smooth FactorizedBeneficial            recall=0.760124 capture=0.466077 precision=0.522314 harm=0.057851
+Smooth DirectBeneficialHarmVeto        recall=0.761777 capture=0.452065 precision=0.506612 harm=0.035537
+Smooth FactorizedBeneficialHarmVeto    recall=0.764050 capture=0.459440 precision=0.514876 harm=0.034711
+Smooth OracleSafeFactorized            recall=0.780785 capture=0.488201 precision=0.547107 harm=0.000000
+Smooth TrialOracle                     recall=0.894008 capture=0.892330 precision=1.000000 harm=0.000000
+Smooth RandomExpected                  recall=0.704804 capture=0.250000 precision=0.280165 harm=0.036983
+Abrupt StateOnly                       recall=0.588223 capture=0.401136 precision=0.583471 harm=0.060331
+Abrupt DirectBeneficial                recall=0.598347 capture=0.405682 precision=0.590083 harm=0.026446
+Abrupt FactorizedBeneficial            recall=0.586364 capture=0.392045 precision=0.570248 harm=0.054545
+Abrupt DirectBeneficialHarmVeto        recall=0.598347 capture=0.401705 precision=0.584298 harm=0.020661
+Abrupt FactorizedBeneficialHarmVeto    recall=0.592355 capture=0.396591 precision=0.576860 harm=0.037190
+Abrupt OracleSafeFactorized            recall=0.608884 capture=0.416477 precision=0.605785 harm=0.000000
+Abrupt TrialOracle                     recall=0.707438 capture=0.687500 precision=1.000000 harm=0.000000
+Abrupt RandomExpected                  recall=0.539101 capture=0.250000 precision=0.363636 harm=0.036983
+
+Bottleneck decomposition
+------------------------
+Smooth CheapFail within=0.6104 | Rescue within=0.5190 | DirectSafeB=0.5435 | FactorSafeB=0.5546
+  State=0.7514 FactorVeto=0.7640 TrialOracle=0.8940 | FactorVeto captures 0.088 of remaining TrialOracle gap.
+Abrupt CheapFail within=0.6545 | Rescue within=0.5346 | DirectSafeB=0.5211 | FactorSafeB=0.5286
+  State=0.5882 FactorVeto=0.5924 TrialOracle=0.7074 | FactorVeto captures 0.035 of remaining TrialOracle gap.
+
+Decision summary
+----------------
+Smooth bestB=StateAll 0.5590 | bestCheap=StateAll 0.6104 | bestRescue=MorphologyOnly 0.5275
+  State 0.7514 -> Factorized+Veto 0.7640 (delta +0.0126), Direct+Veto 0.7618, TrialOracle 0.8940
+Abrupt bestB=StateAll 0.5412 | bestCheap=StateAll 0.6545 | bestRescue=MorphologyOnly 0.5473
+  State 0.5882 -> Factorized+Veto 0.5924 (delta +0.0041), Direct+Veto 0.5983, TrialOracle 0.7074
+
+Interpretation logic
+--------------------
+1. If CheapFailure AUC is much higher than direct Beneficial AUC, the first missing piece is cheap-branch reliability estimation.
+2. If Rescueability AUC is weak even after conditioning on CheapFailure, fallback success itself is the harder latent variable.
+3. If factorized Beneficial outperforms direct Beneficial inside the OracleSafe subset, the decomposition is algorithmically useful.
+4. If factorized+HarmVeto improves matched-budget recovery, the full three-stage policy (state opportunity -> harm veto -> rescue ranking) gets its first positive pilot.
+5. If all safe-subset Beneficial scores remain near 0.5, the next move should not be a bigger classifier; we need new observables or a more direct model of cheap failure / fallback rescue physics.

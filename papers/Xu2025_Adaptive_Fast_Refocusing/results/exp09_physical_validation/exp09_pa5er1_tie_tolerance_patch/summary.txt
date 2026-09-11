@@ -1,0 +1,49 @@
+EXP009 PA5E-R1 / Numerical Tie-Tolerance Patch
+=============================================
+
+Purpose
+-------
+Determine whether PA5E PlateauAware failed to separate from LocalMax because exact floating-point equality was too strict.
+
+Numerical tie rule
+------------------
+tie_tol = 100 * N * eps(max(abs(Y)))
+
+Physical setup
+--------------
+lambda=0.1 m, R0=4242.64 m, PRF=188 Hz
+eta=[0 0.5]
+windows=[1 3 5 9 17] bins
+
+Tie diagnostics
+---------------
+Paper1s eta=0 twinRelDiff(med/max)=1/1 absTieTol=3.33955e-11 N=188
+Paper1s eta=0.5 twinRelDiff(med/max)=5.39277e-15/8.75053e-15 absTieTol=3.33955e-11 N=188
+BeamDerived eta=0 twinRelDiff(med/max)=1/1 absTieTol=9.45022e-11 N=266
+BeamDerived eta=0.5 twinRelDiff(med/max)=7.86982e-15/1.8648e-14 absTieTol=4.72511e-11 N=266
+
+Half-bin semantic comparison
+----------------------------
+Paper1s L=1 Local=0.789463 Conn=0.48353 Exact=0.789463 Tol=0.48353 Exact-vs-Local=0 Tol-vs-Conn=0
+Paper1s L=3 Local=0.43559 Conn=0.592201 Exact=0.43559 Tol=0.592201 Exact-vs-Local=0 Tol-vs-Conn=0
+Paper1s L=5 Local=0.55068 Conn=0.755474 Exact=0.55068 Tol=0.755474 Exact-vs-Local=0 Tol-vs-Conn=0
+Paper1s L=9 Local=0.87417 Conn=0.938111 Exact=0.87417 Tol=0.938111 Exact-vs-Local=0 Tol-vs-Conn=0
+Paper1s L=17 Local=1.06333 Conn=1.11036 Exact=1.06333 Tol=1.11036 Exact-vs-Local=0 Tol-vs-Conn=0
+BeamDerived L=1 Local=0.784021 Conn=0.459787 Exact=0.784021 Tol=0.459787 Exact-vs-Local=0 Tol-vs-Conn=0
+BeamDerived L=3 Local=0.406596 Conn=0.371549 Exact=0.406596 Tol=0.371549 Exact-vs-Local=0 Tol-vs-Conn=0
+BeamDerived L=5 Local=0.34753 Conn=0.351748 Exact=0.34753 Tol=0.351748 Exact-vs-Local=0 Tol-vs-Conn=0
+BeamDerived L=9 Local=0.370746 Conn=0.436654 Exact=0.370746 Tol=0.436654 Exact-vs-Local=0 Tol-vs-Conn=0
+BeamDerived L=17 Local=0.867912 Conn=0.923526 Exact=0.867912 Tol=0.923526 Exact-vs-Local=0 Tol-vs-Conn=0
+
+Decision
+--------
+Paper1s -> NUMERICAL_TIE_CONFIRMED_AND_OPERATOR_FLOOR_PERSISTS
+BeamDerived -> NUMERICAL_TIE_CONFIRMED_AND_OPERATOR_FLOOR_PERSISTS
+
+Interpretation discipline
+-------------------------
+1) The tie tolerance is machine-precision-scaled, not a fitted physical threshold.
+2) PlateauAwareTol is an implementation audit, not a claim about Wang authors' private code.
+3) This patch uses true strong parameters only; it isolates zero-mismatch floor behavior.
+4) If PlateauAwareTol approaches ConnectedSupport while a nonzero minimum rmin remains, the archive-level conclusion is: numerical tie handling mattered, but did not create the finite-window floor.
+5) After this archival patch, the next research stage is PA5F: sub-bin recentered / fence-aware strong removal.

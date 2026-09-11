@@ -1,0 +1,70 @@
+EXP009-C3-B1.1 State + Instantaneous Realization Complementarity
+================================================================
+
+Research question
+-----------------
+Does instantaneous residual evidence contain useful within-state realization information beyond the signal-generated physical state prior?
+
+State-prior construction
+------------------------
+TRAIN state priors are leave-one-sequence-out cross-fitted. TEST state priors use only TRAIN outcomes. No TEST label enters state construction.
+
+State reproducibility
+---------------------
+Smooth rho(train state, test utility): 0.929974
+Abrupt rho(train state, test utility): 0.899944
+
+Model architecture
+------------------
+All feature sets use the same two-headed ridge logistic model: pB=P(Beneficial|X), pH=P(Harmful|X), value=pB-pH.
+Fixed ridge lambda: 0.100000
+
+Information audit
+-----------------
+Smooth StateOnly aucB=0.712459 aucH=0.590637 utilityRho=0.287793 withinLineAucB=0.500000 withinLineAucH=0.500000
+Smooth InstantOnly aucB=0.672069 aucH=0.687148 utilityRho=0.211843 withinLineAucB=0.537073 withinLineAucH=0.527612
+Smooth Additive aucB=0.713794 aucH=0.682895 utilityRho=0.286351 withinLineAucB=0.536981 withinLineAucH=0.523635
+Smooth Interaction aucB=0.710671 aucH=0.683740 utilityRho=0.283337 withinLineAucB=0.532032 withinLineAucH=0.559890
+Abrupt StateOnly aucB=0.739374 aucH=0.633930 utilityRho=0.351774 withinLineAucB=0.500000 withinLineAucH=0.500000
+Abrupt InstantOnly aucB=0.718304 aucH=0.651812 utilityRho=0.315666 withinLineAucB=0.522813 withinLineAucH=0.583116
+Abrupt Additive aucB=0.739465 aucH=0.646973 utilityRho=0.351829 withinLineAucB=0.522503 withinLineAucH=0.579739
+Abrupt Interaction aucB=0.741431 aucH=0.643313 utilityRho=0.356061 withinLineAucB=0.511477 withinLineAucH=0.502993
+
+25% budget
+----------
+Smooth StateOnly actual=0.247934 recall=0.750826 capture=0.438791 precision=0.495833 harm=0.065000
+Smooth InstantOnly actual=0.249587 recall=0.741322 capture=0.418879 precision=0.470199 harm=0.080298
+Smooth Additive actual=0.252893 recall=0.752479 capture=0.448378 precision=0.496732 harm=0.067810
+Smooth Interaction actual=0.253926 recall=0.754752 capture=0.454277 precision=0.501221 harm=0.065094
+Smooth StatePriorDirect actual=0.247934 recall=0.750826 capture=0.438791 precision=0.495833 harm=0.065000
+Smooth LegacyInstantPE actual=0.254339 recall=0.741736 capture=0.421829 precision=0.464663 harm=0.080422
+Smooth TrialOracle actual=0.250000 recall=0.894008 capture=0.892330 precision=1.000000 harm=0.000000
+Smooth RandomExpected actual=0.250000 recall=0.704804 capture=0.250000 precision=0.280165 harm=0.036983
+Abrupt StateOnly actual=0.239669 recall=0.581612 capture=0.381818 precision=0.579310 harm=0.061207
+Abrupt InstantOnly actual=0.247521 recall=0.581198 capture=0.380114 precision=0.558431 harm=0.058431
+Abrupt Additive actual=0.246901 recall=0.584917 capture=0.390341 precision=0.574895 harm=0.058577
+Abrupt Interaction actual=0.251446 recall=0.587603 capture=0.396591 precision=0.573541 harm=0.055875
+Abrupt StatePriorDirect actual=0.239669 recall=0.581612 capture=0.381818 precision=0.579310 harm=0.061207
+Abrupt LegacyInstantPE actual=0.246901 recall=0.580785 capture=0.378977 precision=0.558159 harm=0.058577
+Abrupt TrialOracle actual=0.250000 recall=0.707438 capture=0.687500 precision=1.000000 harm=0.000000
+Abrupt RandomExpected actual=0.250000 recall=0.539101 capture=0.250000 precision=0.363636 harm=0.036983
+
+Complementarity summary
+-----------------------
+Smooth: aucAddGain=0.001336 aucInteractGain=-0.003123 withinLineInstant=0.537073 withinLineAdd=0.536981 withinLineInteract=0.532032 recallAddGain=0.001653 recallInteractGain=0.002273 oracleFracState=0.243243 oracleFracInstant=0.193011 oracleFracAdd=0.251979 oracleFracInteract=0.263991
+Abrupt: aucAddGain=0.000091 aucInteractGain=0.001965 withinLineInstant=0.522813 withinLineAdd=0.522503 withinLineInteract=0.511477 recallAddGain=0.003306 recallInteractGain=0.002686 oracleFracState=0.252531 oracleFracInstant=0.250077 oracleFracAdd=0.272169 oracleFracInteract=0.288125
+
+Interpretation notices
+----------------------
+Smooth: instantaneous observables show weak within-line Beneficial ranking (AUC 0.537 < 0.550).
+Smooth: additive state+instant AUC gain is small (0.001).
+Smooth: additive state+instant 25%-budget recovery gain is small (0.0017).
+Smooth: interaction terms add little pooled AUC beyond the additive model (-0.003).
+Abrupt: instantaneous observables show weak within-line Beneficial ranking (AUC 0.523 < 0.550).
+Abrupt: additive state+instant AUC gain is small (0.000).
+Abrupt: additive state+instant 25%-budget recovery gain is small (0.0033).
+Abrupt: interaction terms add little pooled AUC beyond the additive model (0.002).
+
+Primary scientific boundary
+---------------------------
+StateOnly uses a TRAIN-derived diagnostic physical-state prior. It is not yet a practical state estimator. This experiment tests information complementarity, not the final deployable policy.

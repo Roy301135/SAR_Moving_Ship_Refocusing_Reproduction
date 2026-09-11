@@ -1,0 +1,54 @@
+EXP009 PA5J-A
+Internal Unreliability Indicator Discovery
+===========================================
+
+Research question
+-----------------
+Can G0 recognize impending catastrophic branch switching from its own internal observables, before Neighbor-3 is run?
+
+Dataset roles
+-------------
+Original grid: representative PA5I base-rate evaluation. n=9600, failures=55, prevalence=0.00572917
+Dense risk: PA5I-R1 stress manifold. n=1530, failures=539, prevalence=0.352288
+
+Reconstruction audit
+--------------------
+All upstream G0 reconstructions passed = 1
+Maximum reconstruction mismatch = 2.82660241879e-08 bins
+
+Important discipline
+--------------------
+Gamma, contrast, true eta, and global-reference branch error are context/labels only. They are NOT candidate gate features.
+PA5J-A does not tune a final threshold and does not claim an adaptive algorithm yet.
+
+Top indicator summary
+---------------------
+refined_lr_asymmetry cost=2 dir=high AUCbase=0.964825 AUCdense=0.862055 APenrichBase=50.9731 APenrichDense=2.39048 screen=1
+fivebin_peak_fraction cost=0 dir=low AUCbase=0.936904 AUCdense=0.791644 APenrichBase=16.2852 APenrichDense=1.57821 screen=1
+local_entropy5 cost=0 dir=high AUCbase=0.918676 AUCdense=0.787999 APenrichBase=8.77114 APenrichDense=1.6116 screen=1
+threebin_central_fraction cost=0 dir=low AUCbase=0.845412 AUCdense=0.735173 APenrichBase=3.55195 APenrichDense=1.36081 screen=0
+refine_abs_displacement cost=1 dir=low AUCbase=0.729391 AUCdense=0.812307 APenrichBase=1.81293 APenrichDense=1.81375 screen=0
+refine_boundary_fraction cost=1 dir=low AUCbase=0.729391 AUCdense=0.812307 APenrichBase=1.81293 APenrichDense=1.81375 screen=0
+remote_competitor_ratio cost=0 dir=high AUCbase=0.941235 AUCdense=0.716826 APenrichBase=60.5038 APenrichDense=1.44681 screen=0
+refinement_gain_rel cost=1 dir=low AUCbase=0.708944 AUCdense=0.803823 APenrichBase=1.66103 APenrichDense=1.76294 screen=0
+refined_curvature_norm cost=2 dir=high AUCbase=0.771892 AUCdense=0.686964 APenrichBase=94.6167 APenrichDense=2.04562 screen=0
+coarse_second_ratio cost=0 dir=high AUCbase=0.902336 AUCdense=0.686402 APenrichBase=5.62107 APenrichDense=1.34568 screen=0
+
+Shortlist
+---------
+refined_lr_asymmetry cost=2 robustAUC=0.862055 status=PASSED_PRE_REGISTERED_SCREEN
+fivebin_peak_fraction cost=0 robustAUC=0.791644 status=PASSED_PRE_REGISTERED_SCREEN
+local_entropy5 cost=0 robustAUC=0.787999 status=PASSED_PRE_REGISTERED_SCREEN
+
+Decision
+--------
+Screen AUC threshold = 0.75
+Number of screened indicators = 3
+Best indicator = refined_lr_asymmetry
+Best robust AUC = 0.862055
+Best cost class = 2
+Decision branch = INDICATORS_FOUND_PROCEED_TO_PA5J_B_GATE_DESIGN
+
+Next-step rule
+--------------
+Only if at least one internal-only indicator transfers consistently to the dense-risk set should PA5J-B tune an adaptive trigger threshold / composite gate.

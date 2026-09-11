@@ -1,0 +1,106 @@
+EXP009-C3-B3A Rescueability Failure-Mode Decomposition
+======================================================
+
+Research question
+-----------------
+C3-B2 showed that CheapFailure is moderately observable, while Rescueability is weakly observable.
+C3-B3A therefore asks WHY fallback rescues some CheapFailure trials but not others.
+
+Controlled boundary
+-------------------
+q_strong remains known/oracle.
+SNR = 3.00 dB.
+q_weak = 1.470000.
+Fallback success tolerance tau_q = 0.003000.
+Fallback success is defined only by weak-q recovery in this controlled C3 chain; there is no later downstream success stage.
+
+Failure-mode definitions among CheapFailure trials
+--------------------------------------------------
+Success          : fallback q winner lies inside tau_q.
+NearShift        : failed winner is near q_weak but outside tau_q.
+PeakCompetition  : a true-basin local peak survives, but a different global peak wins.
+BasinCollapse    : no local maximum survives inside the true weak-q basin.
+BoundaryFalsePeak: failed winner lies near q-search boundary.
+
+Failure-mode composition
+------------------------
+Smooth  Success            count=1279 frac=0.766787
+Smooth  NearShift          count=378 frac=0.226619
+Smooth  PeakCompetition    count=3 frac=0.001799
+Smooth  BasinCollapse      count=8 frac=0.004796
+Smooth  BoundaryFalsePeak  count=0 frac=0.000000
+Abrupt  Success            count=1771 frac=0.676212
+Abrupt  NearShift          count=784 frac=0.299351
+Abrupt  PeakCompetition    count=10 frac=0.003818
+Abrupt  BasinCollapse      count=54 frac=0.020619
+Abrupt  BoundaryFalsePeak  count=0 frac=0.000000
+
+Mechanism audit: oriented AUC for fallback success
+--------------------------------------------------
+
+Smooth
+true_to_global_ratio           AUC=1.000000 dir=+1 medSuccess=1 medFailure=0.996657
+global_minus_true_fraction     AUC=1.000000 dir=-1 medSuccess=0 medFailure=0.00334339
+cheap_abs_q_error              AUC=0.749676 dir=-1 medSuccess=0.005 medFailure=0.008
+curve_entropy                  AUC=0.593987 dir=-1 medSuccess=0.970123 medFailure=0.973743
+residual_noise_to_weak         AUC=0.588303 dir=-1 medSuccess=5.5149 medFailure=7.60026
+weak_ratio                     AUC=0.585632 dir=+1 medSuccess=0.300941 medFailure=0.255767
+total_residual_to_weak         AUC=0.584997 dir=-1 medSuccess=6.4573 medFailure=8.51658
+global_prominence              AUC=0.582380 dir=+1 medSuccess=0.693546 medFailure=0.673687
+weak_retention                 AUC=0.561294 dir=-1 medSuccess=0.999997 medFailure=0.999998
+abs_signed_sep                 AUC=0.559107 dir=+1 medSuccess=0.0165054 medFailure=0.014685
+cross_wn_norm                  AUC=0.549747 dir=+1 medSuccess=-0.00990731 medFailure=-0.0402017
+residual_strong_to_weak        AUC=0.533056 dir=-1 medSuccess=0.0029372 medFailure=0.00357079
+true_curvature_norm            AUC=0.532504 dir=+1 medSuccess=0.00309985 medFailure=0.00304442
+cross_sw_norm                  AUC=0.524293 dir=+1 medSuccess=-0.000351926 medFailure=-0.000534527
+signed_sep                     AUC=0.516804 dir=-1 medSuccess=-0.0144163 medFailure=-0.0142357
+strong_residual_retention      AUC=0.507928 dir=-1 medSuccess=0.000269538 medFailure=0.000261274
+noise_retention                AUC=0.506453 dir=+1 medSuccess=0.998616 medFailure=0.998541
+num_local_peaks                AUC=0.503958 dir=+1 medSuccess=7 medFailure=6
+
+Abrupt
+true_to_global_ratio           AUC=1.000000 dir=+1 medSuccess=1 medFailure=0.993853
+global_minus_true_fraction     AUC=1.000000 dir=-1 medSuccess=0 medFailure=0.00614678
+cheap_abs_q_error              AUC=0.646169 dir=-1 medSuccess=0.007 medFailure=0.014
+global_prominence              AUC=0.591858 dir=+1 medSuccess=0.633582 medFailure=0.603811
+weak_ratio                     AUC=0.590903 dir=+1 medSuccess=0.18 medFailure=0.18
+curve_entropy                  AUC=0.590823 dir=-1 medSuccess=0.979799 medFailure=0.982686
+residual_noise_to_weak         AUC=0.590614 dir=-1 medSuccess=14.4733 medFailure=15.1111
+total_residual_to_weak         AUC=0.584364 dir=-1 medSuccess=15.3871 medFailure=16.0325
+true_curvature_norm            AUC=0.578691 dir=+1 medSuccess=0.00316912 medFailure=0.00300802
+cross_wn_norm                  AUC=0.536555 dir=+1 medSuccess=-0.0145877 medFailure=-0.0367533
+residual_strong_to_weak        AUC=0.525951 dir=-1 medSuccess=0.00521877 medFailure=0.0064056
+noise_retention                AUC=0.509574 dir=-1 medSuccess=0.998569 medFailure=0.998659
+num_local_peaks                AUC=0.507917 dir=-1 medSuccess=7 medFailure=7
+signed_sep                     AUC=0.507552 dir=+1 medSuccess=-0.0515921 medFailure=-0.0505444
+strong_residual_retention      AUC=0.505144 dir=+1 medSuccess=0.000273919 medFailure=0.000277729
+cross_sw_norm                  AUC=0.504305 dir=-1 medSuccess=-0.000860048 medFailure=-0.000833318
+abs_signed_sep                 AUC=0.503371 dir=-1 medSuccess=0.0515921 medFailure=0.0505444
+weak_retention                 AUC=0.503229 dir=+1 medSuccess=0.999976 medFailure=0.999976
+
+True-basin local-peak rank among fallback failures
+-------------------------------------------------
+Smooth nFail=389 rank1=0.0000 rank2=0.0077 rank3=0.0000 rank4+=0.0000 noTruePeak=0.9923
+Abrupt nFail=848 rank1=0.0000 rank2=0.0106 rank3=0.0012 rank4+=0.0000 noTruePeak=0.9882
+
+Decision summary
+----------------
+Smooth CheapFailure n=1668 rescue=0.7668 dominant=NearShift 0.2266 | failWithTruePeak=0.0077 failNoTruePeak=0.9923
+  AUC weakRatio=0.5856 | absSep=0.5591 | residStrong/Weak=0.5331 | weakRetention=0.5613 | crossSW=0.5243 | crossWN=0.5497
+  median residual S/W success=0.0029372 failure=0.00357079 | weak retention success=0.999997 failure=0.999998
+Abrupt CheapFailure n=2619 rescue=0.6762 dominant=NearShift 0.2994 | failWithTruePeak=0.0118 failNoTruePeak=0.9882
+  AUC weakRatio=0.5909 | absSep=0.5034 | residStrong/Weak=0.5260 | weakRetention=0.5032 | crossSW=0.5043 | crossWN=0.5366
+  median residual S/W success=0.00521877 failure=0.0064056 | weak retention success=0.999976 failure=0.999976
+
+Interpretation logic
+--------------------
+1. Large PeakCompetition fraction -> true weak structure survives but winner selection is the bottleneck; next test should examine multi-hypothesis / local verification rather than stronger CLEAN.
+2. Large BasinCollapse fraction -> the weak basin itself is destroyed after refit; next test should focus on residual strong/weak/noise geometry and refit operator design.
+3. Large NearShift fraction -> the fallback landscape is mostly right but the top peak is biased; local q refinement or uncertainty-aware acceptance may be enough.
+4. Strong residual-geometry AUC with weak pre-fallback state AUC -> rescueability is created by the refit residual itself and requires a low-cost proxy/probe of that residual geometry.
+5. If both residual geometry and curve anatomy fail to separate fate, the current controlled definition may be dominated by noise-realization randomness; do not escalate directly to a larger classifier.
+
+Runtime
+-------
+Smooth 15.725 s
+Abrupt 17.026 s

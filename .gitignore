@@ -1,0 +1,43 @@
+﻿
+# ============================================================
+# Experiment result outputs
+# ============================================================
+
+# MATLAB binary outputs
+*.mat
+*.fig
+*.h5
+*.hdf5
+
+# Bulk generated experiment results
+papers/**/results/**/*.png
+papers/**/results/**/*.csv
+
+# Temporary / log outputs
+*.log
+*.bak
+*.tmp
+*.asv
+*.autosave
+*.m~
+*.swp
+*.swo
+~$*
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE metadata
+.idea/
+
+# Generic cache / temporary directories
+.cache/
+temp/
+tmp/

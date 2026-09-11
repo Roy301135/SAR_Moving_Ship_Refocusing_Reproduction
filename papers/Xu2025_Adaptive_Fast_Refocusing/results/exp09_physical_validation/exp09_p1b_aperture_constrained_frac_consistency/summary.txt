@@ -1,0 +1,68 @@
+EXP009 P1B / Aperture-Constrained FrAc Consistency
+=================================================
+
+Paper-grounded Wang 2023 inputs
+-------------------------------
+fc = 3e+09 Hz
+PRF = 188 Hz
+B = 150000000 Hz
+H = 3000 m
+L_a = 2 m
+V_SAR = 150 m/s
+pulse width = 1.5e-06 s
+v_a = [5 10 15 20 25] m/s
+
+Literature / engineering anchors
+--------------------------------
+lambda = 0.1 m
+Wang time-scale anchor = 1.000000 s
+first-order beamwidth lambda/L_a = 0.05 rad
+beam-derived T_ap = R0*(lambda/L_a)/V (derived estimate, not a Wang table value).
+
+FrAc mechanism
+--------------
+Wang Eq.(20) auto-term condition: tan(beta)=a_i.
+a_i = K_res/PRF^2 from the physical residual-FM mapping.
+Discrete statistic uses lag-wise ambiguity FFTs and E(beta)=sum_k |R_beta[k]|^2.
+No noise. No CLEAN. Equal amplitudes. b_i=0. Unknown phases are Monte-Carlo swept.
+
+Small-angle audit
+-----------------
+max |beta| = 0.00144963105 rad
+max |1-cos(beta)| = 1.05071491e-06
+
+Representative component parameters
+-----------------------------------
+P1: v=+5.000 m/s Kres=+51.2357958 Hz/s a=+0.00144963207 beta=+0.00144963105 rad alpha=+1.57224596 rad
+P2: v=+10.000 m/s Kres=+49.3799035 Hz/s a=+0.00139712267 beta=+0.00139712176 rad alpha=+1.57219345 rad
+P3: v=+15.000 m/s Kres=+47.4660077 Hz/s a=+0.00134297215 beta=+0.00134297134 rad alpha=+1.5721393 rad
+P4: v=+20.000 m/s Kres=+45.4953221 Hz/s a=+0.00128721486 beta=+0.00128721415 rad alpha=+1.57208354 rad
+P5: v=+25.000 m/s Kres=+43.4696792 Hz/s a=+0.00122990265 beta=+0.00122990203 rad alpha=+1.57202623 rad
+
+Representative aperture prescriptions
+------------------------------------
+Paper1s: R0/H=1.4142 N=188 Tactual=0.994681 s phaseAll5=0.0000 gate=0
+BeamDerived: R0/H=1.4142 N=266 Tactual=1.409574 s phaseAll5=0.0000 gate=0
+
+Gate summary
+------------
+status = UNRESOLVED_WITH_REPORTED_PARAMETERS
+Paper1s pass fraction = 0.000000
+BeamDerived pass fraction = 0.000000
+
+Scenario table
+--------------
+Paper1s R0/H=1.0000 N=188 T=0.9947 minBetaSep=7.42592e-05 width=0.000168568 sep/width=0.440529 avgAll5=0 phaseAll5=0.0000 gate=0
+BeamDerived R0/H=1.0000 N=188 T=0.9947 minBetaSep=7.42592e-05 width=0.000168568 sep/width=0.440529 avgAll5=0 phaseAll5=0.0000 gate=0
+Paper1s R0/H=1.4142 N=188 T=0.9947 minBetaSep=5.25093e-05 width=0.000168555 sep/width=0.311526 avgAll5=0 phaseAll5=0.0000 gate=0
+BeamDerived R0/H=1.4142 N=266 T=1.4096 minBetaSep=5.25093e-05 width=8.454e-05 sep/width=0.621118 avgAll5=0 phaseAll5=0.0000 gate=0
+Paper1s R0/H=2.0000 N=188 T=0.9947 minBetaSep=3.71297e-05 width=0.000168569 sep/width=0.220264 avgAll5=0 phaseAll5=0.0000 gate=0
+BeamDerived R0/H=2.0000 N=376 T=1.9947 minBetaSep=3.71297e-05 width=4.26992e-05 sep/width=0.869565 avgAll5=1 phaseAll5=0.0000 gate=0
+
+Interpretation discipline
+-------------------------
+1) 1 s is a literature time-scale anchor, not proof that Wang five-point Fig.8 used exactly N=188.
+2) Beam-derived aperture time is an engineering estimate, not a Wang-reported parameter.
+3) If FrAc resolves the components at plausible aperture scales, P1 matched-K was overly conservative and PA4 can use FrAc beta.
+4) If FrAc does not resolve them, report that Wang public parameters are insufficient for unique Fig.8 reproduction; do not increase N merely to force five peaks.
+5) P1B is still a consistency audit. Do not introduce noise, CLEAN, learned models, or adaptive search here.

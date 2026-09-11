@@ -1,0 +1,156 @@
+EXP009 PA5G / Continuous Sub-Bin Estimation + Gating
+===================================================
+
+Purpose
+-------
+1) remove PA5F deterministic interpolation bias with a continuous ML/LS estimator;
+2) test a data-driven gate against mixture-induced false correction.
+
+Physical setup
+--------------
+lambda=0.1 m, R0=4242.64 m, PRF=188 Hz
+eta=[0 0.125 0.25 0.375 0.5] bins
+windows=[1 3 5 9 17] bins
+
+Continuous estimator
+--------------------
+nu_hat = argmax_nu |sum z[n] exp(-j2pi nu n/N)|^2
+search halfwidth=0.75 bins, bracket points=33, TolX=1e-11 bins
+
+Evidence gate
+-------------
+Trigger iff DeltaBIC>0 AND |fractional nu_hat| > split-aperture disagreement.
+No physical threshold is tuned.
+
+Strong-only estimator summary
+-----------------------------
+Paper1s eta=0 oldRMSE=0 continuousRMSE=9.77552e-09 gateRate=0
+Paper1s eta=0.125 oldRMSE=0.0946731 continuousRMSE=1.31028e-08 gateRate=1
+Paper1s eta=0.25 oldRMSE=0.155689 continuousRMSE=1.15807e-08 gateRate=1
+Paper1s eta=0.375 oldRMSE=0.157215 continuousRMSE=1.11825e-08 gateRate=1
+Paper1s eta=0.5 oldRMSE=4.70013e-15 continuousRMSE=7.45644e-09 gateRate=1
+BeamDerived eta=0 oldRMSE=0 continuousRMSE=1.25523e-08 gateRate=0
+BeamDerived eta=0.125 oldRMSE=0.094672 continuousRMSE=1.28536e-08 gateRate=1
+BeamDerived eta=0.25 oldRMSE=0.155687 continuousRMSE=1.40696e-08 gateRate=1
+BeamDerived eta=0.375 oldRMSE=0.157211 continuousRMSE=1.11825e-08 gateRate=1
+BeamDerived eta=0.5 oldRMSE=9.09637e-15 continuousRMSE=1.49945e-08 gateRate=1
+
+Best deterministic floor
+------------------------
+Paper1s eta=0 G0_Baseline L=1 rmin=5.90211e-15 L0=5.66603e-15 D0=0.256059
+Paper1s eta=0 G1_OracleRecenter L=1 rmin=5.90211e-15 L0=5.66603e-15 D0=0.256059
+Paper1s eta=0 G2_ContinuousStrongOnly L=3 rmin=1.45945e-08 L0=1.09423e-08 D0=0.619659
+Paper1s eta=0.125 G0_Baseline L=3 rmin=0.170059 L0=0.138745 D0=0.577346
+Paper1s eta=0.125 G1_OracleRecenter L=1 rmin=7.47862e-15 L0=6.40926e-15 D0=0.256059
+Paper1s eta=0.125 G2_ContinuousStrongOnly L=3 rmin=2.03188e-08 L0=1.58235e-08 D0=0.619659
+Paper1s eta=0.25 G0_Baseline L=3 rmin=0.315866 L0=0.258709 D0=0.570767
+Paper1s eta=0.25 G1_OracleRecenter L=1 rmin=7.35456e-15 L0=7.1012e-15 D0=0.256059
+Paper1s eta=0.25 G2_ContinuousStrongOnly L=3 rmin=1.58732e-08 L0=1.33739e-08 D0=0.619659
+Paper1s eta=0.375 G0_Baseline L=3 rmin=0.4405 L0=0.343287 D0=0.619437
+Paper1s eta=0.375 G1_OracleRecenter L=1 rmin=7.21189e-15 L0=6.87433e-15 D0=0.256059
+Paper1s eta=0.375 G2_ContinuousStrongOnly L=3 rmin=1.63906e-08 L0=1.26989e-08 D0=0.619659
+Paper1s eta=0.5 G0_Baseline L=1 rmin=0.48353 L0=0.435215 D0=0.435721
+Paper1s eta=0.5 G1_OracleRecenter L=1 rmin=7.1478e-15 L0=6.72487e-15 D0=0.256059
+Paper1s eta=0.5 G2_ContinuousStrongOnly L=3 rmin=1.09119e-08 L0=8.45414e-09 D0=0.619659
+BeamDerived eta=0 G0_Baseline L=1 rmin=1.18979e-14 L0=1.14978e-14 D0=0.175999
+BeamDerived eta=0 G1_OracleRecenter L=1 rmin=1.18979e-14 L0=1.14978e-14 D0=0.175999
+BeamDerived eta=0 G2_ContinuousStrongOnly L=5 rmin=1.48396e-08 L0=1.12112e-08 D0=0.595507
+BeamDerived eta=0.125 G0_Baseline L=5 rmin=0.136692 L0=0.108371 D0=0.6036
+BeamDerived eta=0.125 G1_OracleRecenter L=1 rmin=1.38036e-14 L0=1.34992e-14 D0=0.175999
+BeamDerived eta=0.125 G2_ContinuousStrongOnly L=5 rmin=1.43017e-08 L0=1.14195e-08 D0=0.595507
+BeamDerived eta=0.25 G0_Baseline L=5 rmin=0.254932 L0=0.200956 D0=0.613581
+BeamDerived eta=0.25 G1_OracleRecenter L=1 rmin=1.38104e-14 L0=1.33977e-14 D0=0.175999
+BeamDerived eta=0.25 G2_ContinuousStrongOnly L=5 rmin=1.5658e-08 L0=1.25024e-08 D0=0.595507
+BeamDerived eta=0.375 G0_Baseline L=5 rmin=0.335085 L0=0.264134 D0=0.615253
+BeamDerived eta=0.375 G1_OracleRecenter L=1 rmin=1.35041e-14 L0=1.29143e-14 D0=0.175999
+BeamDerived eta=0.375 G2_ContinuousStrongOnly L=5 rmin=1.2445e-08 L0=9.93696e-09 D0=0.595507
+BeamDerived eta=0.5 G0_Baseline L=5 rmin=0.351748 L0=0.258682 D0=0.676308
+BeamDerived eta=0.5 G1_OracleRecenter L=1 rmin=1.40649e-14 L0=1.38536e-14 D0=0.175999
+BeamDerived eta=0.5 G2_ContinuousStrongOnly L=5 rmin=1.66808e-08 L0=1.33191e-08 D0=0.595507
+
+Gate summary
+------------
+Paper1s eta=0 mixRMSE=0.0847548 BICrate=0.740625 gateRate=0.120833 splitMed=0.131153 shiftMed=0.0388032
+Paper1s eta=0.125 mixRMSE=0.0835072 BICrate=0.902083 gateRate=0.519792 splitMed=0.13075 shiftMed=0.125843
+Paper1s eta=0.25 mixRMSE=0.0878691 BICrate=0.986458 gateRate=0.732292 splitMed=0.130436 shiftMed=0.247299
+Paper1s eta=0.375 mixRMSE=0.0903376 BICrate=0.988542 gateRate=0.867708 splitMed=0.128991 shiftMed=0.37016
+Paper1s eta=0.5 mixRMSE=0.0965174 BICrate=0.988542 gateRate=0.896875 splitMed=0.128413 shiftMed=0.460629
+BeamDerived eta=0 mixRMSE=0.0681726 BICrate=0.660417 gateRate=0.0635417 splitMed=0.104387 shiftMed=0.0298072
+BeamDerived eta=0.125 mixRMSE=0.0684275 BICrate=0.922917 gateRate=0.575 splitMed=0.104138 shiftMed=0.125618
+BeamDerived eta=0.25 mixRMSE=0.0686709 BICrate=0.990625 gateRate=0.794792 splitMed=0.10362 shiftMed=0.248359
+BeamDerived eta=0.375 mixRMSE=0.0692442 BICrate=0.996875 gateRate=0.909375 splitMed=0.102902 shiftMed=0.372471
+BeamDerived eta=0.5 mixRMSE=0.0683541 BICrate=1 gateRate=0.938542 splitMed=0.104387 shiftMed=0.470193
+
+Best practical summary
+----------------------
+Paper1s eta=0 G0_Baseline L=1 medE=0.256059 feasible=1 success=1
+Paper1s eta=0 G1_OracleRecenter L=1 medE=0.256059 feasible=1 success=1
+Paper1s eta=0 G2_ContinuousStrongOnly L=1 medE=0.256059 feasible=1 success=1
+Paper1s eta=0 G3_ContinuousMixtureAlways L=1 medE=0.383613 feasible=1 success=1
+Paper1s eta=0 G4_EvidenceGatedMixture L=1 medE=0.28979 feasible=1 success=1
+Paper1s eta=0.125 G0_Baseline L=1 medE=0.816948 feasible=0.576042 success=0.995833
+Paper1s eta=0.125 G1_OracleRecenter L=1 medE=0.256059 feasible=1 success=1
+Paper1s eta=0.125 G2_ContinuousStrongOnly L=1 medE=0.256059 feasible=1 success=1
+Paper1s eta=0.125 G3_ContinuousMixtureAlways L=1 medE=0.384583 feasible=0.995833 success=1
+Paper1s eta=0.125 G4_EvidenceGatedMixture L=1 medE=0.481636 feasible=0.9125 success=1
+Paper1s eta=0.25 G0_Baseline L=17 medE=1.05665 feasible=0.1 success=0.0416667
+Paper1s eta=0.25 G1_OracleRecenter L=1 medE=0.256059 feasible=1 success=1
+Paper1s eta=0.25 G2_ContinuousStrongOnly L=1 medE=0.256059 feasible=1 success=1
+Paper1s eta=0.25 G3_ContinuousMixtureAlways L=1 medE=0.384583 feasible=0.992708 success=1
+Paper1s eta=0.25 G4_EvidenceGatedMixture L=1 medE=0.465223 feasible=0.929167 success=1
+Paper1s eta=0.375 G0_Baseline L=17 medE=1.09659 feasible=0.0166667 success=0.0520833
+Paper1s eta=0.375 G1_OracleRecenter L=1 medE=0.256059 feasible=1 success=1
+Paper1s eta=0.375 G2_ContinuousStrongOnly L=1 medE=0.256059 feasible=1 success=1
+Paper1s eta=0.375 G3_ContinuousMixtureAlways L=1 medE=0.385576 feasible=0.989583 success=1
+Paper1s eta=0.375 G4_EvidenceGatedMixture L=1 medE=0.40317 feasible=0.91875 success=0.996875
+Paper1s eta=0.5 G0_Baseline L=17 medE=1.11505 feasible=0.0166667 success=0.0552083
+Paper1s eta=0.5 G1_OracleRecenter L=1 medE=0.256059 feasible=1 success=1
+Paper1s eta=0.5 G2_ContinuousStrongOnly L=1 medE=0.256059 feasible=1 success=1
+Paper1s eta=0.5 G3_ContinuousMixtureAlways L=1 medE=0.387962 feasible=0.988542 success=1
+Paper1s eta=0.5 G4_EvidenceGatedMixture L=1 medE=0.397327 feasible=0.911458 success=0.994792
+BeamDerived eta=0 G0_Baseline L=1 medE=0.175999 feasible=1 success=1
+BeamDerived eta=0 G1_OracleRecenter L=1 medE=0.175999 feasible=1 success=1
+BeamDerived eta=0 G2_ContinuousStrongOnly L=1 medE=0.175999 feasible=1 success=1
+BeamDerived eta=0 G3_ContinuousMixtureAlways L=1 medE=0.267262 feasible=1 success=1
+BeamDerived eta=0 G4_EvidenceGatedMixture L=1 medE=0.183642 feasible=1 success=1
+BeamDerived eta=0.125 G0_Baseline L=3 medE=0.733514 feasible=0.728125 success=0.980208
+BeamDerived eta=0.125 G1_OracleRecenter L=1 medE=0.175999 feasible=1 success=1
+BeamDerived eta=0.125 G2_ContinuousStrongOnly L=1 medE=0.175999 feasible=1 success=1
+BeamDerived eta=0.125 G3_ContinuousMixtureAlways L=1 medE=0.267262 feasible=0.996875 success=1
+BeamDerived eta=0.125 G4_EvidenceGatedMixture L=1 medE=0.331997 feasible=0.95 success=1
+BeamDerived eta=0.25 G0_Baseline L=9 medE=1.01282 feasible=0.466667 success=0.657292
+BeamDerived eta=0.25 G1_OracleRecenter L=1 medE=0.175999 feasible=1 success=1
+BeamDerived eta=0.25 G2_ContinuousStrongOnly L=1 medE=0.175999 feasible=1 success=1
+BeamDerived eta=0.25 G3_ContinuousMixtureAlways L=1 medE=0.267262 feasible=0.995833 success=1
+BeamDerived eta=0.25 G4_EvidenceGatedMixture L=1 medE=0.295754 feasible=0.965625 success=1
+BeamDerived eta=0.375 G0_Baseline L=9 medE=1.06982 feasible=0.355208 success=0.648958
+BeamDerived eta=0.375 G1_OracleRecenter L=1 medE=0.175999 feasible=1 success=1
+BeamDerived eta=0.375 G2_ContinuousStrongOnly L=1 medE=0.175999 feasible=1 success=1
+BeamDerived eta=0.375 G3_ContinuousMixtureAlways L=1 medE=0.267262 feasible=0.994792 success=1
+BeamDerived eta=0.375 G4_EvidenceGatedMixture L=1 medE=0.271188 feasible=0.957292 success=0.997917
+BeamDerived eta=0.5 G0_Baseline L=9 medE=1.09184 feasible=0.333333 success=0.670833
+BeamDerived eta=0.5 G1_OracleRecenter L=1 medE=0.175999 feasible=1 success=1
+BeamDerived eta=0.5 G2_ContinuousStrongOnly L=1 medE=0.175999 feasible=1 success=1
+BeamDerived eta=0.5 G3_ContinuousMixtureAlways L=1 medE=0.267262 feasible=0.997917 success=1
+BeamDerived eta=0.5 G4_EvidenceGatedMixture L=1 medE=0.267262 feasible=0.951042 success=0.994792
+
+Identity
+--------
+G0_Baseline maxErr=3.66374e-15 pass=1
+G1_OracleRecenter maxErr=3.66374e-15 pass=1
+G2_ContinuousStrongOnly maxErr=3.9968e-15 pass=1
+G3_ContinuousMixtureAlways maxErr=3.69149e-15 pass=1
+G4_EvidenceGatedMixture maxErr=3.69149e-15 pass=1
+
+Decision
+--------
+Paper1s -> CONTINUOUS_ESTIMATOR_VALIDATED_AND_EVIDENCE_GATE_PROMISING
+BeamDerived -> CONTINUOUS_ESTIMATOR_VALIDATED_AND_EVIDENCE_GATE_PROMISING
+
+Interpretation discipline
+-------------------------
+1) Continuous ML/LS is model-derived, not selected after viewing the PA5G outcome.
+2) The BIC penalty is fixed by model dimension; the split condition uses internal disagreement, not a tuned threshold.
+3) G2 is not practical because it has access to strong-only data. It isolates estimator bias.
+4) G4 is the practical deterministic candidate.
+5) Noise, clutter and strong-chirp-rate estimation error remain OFF until this deterministic gate is audited.

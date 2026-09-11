@@ -1,0 +1,70 @@
+EXP009-C3 History-Aware Adaptive Computation
+============================================
+
+Experimental boundary
+---------------------
+This is a bootstrap sequential-state proof-of-concept using disjoint empirical train/test trial pools from C1/C2.1.
+It does not yet constitute a continuous physical SAR azimuth-motion experiment.
+
+Tuning
+------
+Best EMA alpha: 0.400000
+Best reset quantile: 0.975000
+Best reset threshold: 0.467566
+Tune budget: 0.250000
+
+State-estimation diagnostics
+----------------------------
+Smooth InstantPE rho_state=0.679783 aucB=0.741100
+Smooth EMA rho_state=0.754392 aucB=0.761843
+Smooth EMAReset rho_state=0.733979 aucB=0.756805
+Smooth KnownStatePrior rho_state=1.000000 aucB=0.813250
+Abrupt InstantPE rho_state=0.712971 aucB=0.759162
+Abrupt EMA rho_state=0.746681 aucB=0.767381
+Abrupt EMAReset rho_state=0.747593 aucB=0.769187
+Abrupt KnownStatePrior rho_state=1.000000 aucB=0.829649
+
+Highlighted budget points
+-------------------------
+Smooth InstantPE target=0.100 actual=0.103033 recall=0.782933 capture=0.240518 precision=0.504691 harm=0.051763 budget=1.103033
+Smooth InstantPE target=0.250 actual=0.255467 recall=0.831433 capture=0.512797 precision=0.433977 harm=0.061456 budget=1.255467
+Smooth InstantPE target=0.500 actual=0.520767 recall=0.892067 capture=0.810361 precision=0.336427 harm=0.037253 budget=1.520767
+Smooth EMA target=0.100 actual=0.115267 recall=0.793800 capture=0.289238 precision=0.542510 harm=0.043378 budget=1.115267
+Smooth EMA target=0.250 actual=0.266933 recall=0.848433 capture=0.587727 precision=0.476024 harm=0.055819 budget=1.266933
+Smooth EMA target=0.500 actual=0.526700 recall=0.892467 capture=0.815603 precision=0.334789 harm=0.038225 budget=1.526700
+Smooth EMAReset target=0.100 actual=0.103933 recall=0.788433 capture=0.259790 precision=0.540411 harm=0.038486 budget=1.103933
+Smooth EMAReset target=0.250 actual=0.260533 recall=0.845167 capture=0.573543 precision=0.475947 harm=0.057958 budget=1.260533
+Smooth EMAReset target=0.500 actual=0.532067 recall=0.891900 capture=0.813907 precision=0.330723 harm=0.038216 budget=1.532067
+Smooth KnownStatePrior target=0.100 actual=0.106433 recall=0.792267 capture=0.271508 precision=0.551519 harm=0.025368 budget=1.106433
+Smooth KnownStatePrior target=0.250 actual=0.255367 recall=0.848900 capture=0.582331 precision=0.493017 harm=0.051951 budget=1.255367
+Smooth KnownStatePrior target=0.500 actual=0.542233 recall=0.912733 capture=0.891304 precision=0.355382 harm=0.029938 budget=1.542233
+Smooth TrialOracle target=0.100 actual=0.100000 recall=0.836267 capture=0.462535 precision=1.000000 harm=0.000000 budget=1.100000
+Smooth TrialOracle target=0.250 actual=0.216200 recall=0.952467 capture=1.000000 precision=1.000000 harm=0.000000 budget=1.216200
+Smooth TrialOracle target=0.500 actual=0.216200 recall=0.952467 capture=1.000000 precision=1.000000 harm=0.000000 budget=1.216200
+Smooth RandomExpected target=0.100 actual=0.100000 recall=0.755383 capture=0.100000 precision=0.216200 harm=0.025033 budget=1.100000
+Smooth RandomExpected target=0.250 actual=0.250000 recall=0.784058 capture=0.250000 precision=0.216200 harm=0.025033 budget=1.250000
+Smooth RandomExpected target=0.500 actual=0.500000 recall=0.831850 capture=0.500000 precision=0.216200 harm=0.025033 budget=1.500000
+Abrupt InstantPE target=0.100 actual=0.118233 recall=0.789867 capture=0.284941 precision=0.534536 harm=0.050183 budget=1.118233
+Abrupt InstantPE target=0.250 actual=0.268833 recall=0.837167 capture=0.549594 precision=0.453441 harm=0.064476 budget=1.268833
+Abrupt InstantPE target=0.500 actual=0.509933 recall=0.894000 capture=0.821461 precision=0.357302 harm=0.040790 budget=1.509933
+Abrupt EMA target=0.100 actual=0.116667 recall=0.790367 capture=0.286444 precision=0.544571 harm=0.049429 budget=1.116667
+Abrupt EMA target=0.250 actual=0.268200 recall=0.847300 capture=0.587466 precision=0.485831 harm=0.058166 budget=1.268200
+Abrupt EMA target=0.500 actual=0.522767 recall=0.893733 capture=0.822964 precision=0.349168 harm=0.040936 budget=1.522767
+Abrupt EMAReset target=0.100 actual=0.120800 recall=0.793467 capture=0.298918 precision=0.548841 harm=0.044978 budget=1.120800
+Abrupt EMAReset target=0.250 actual=0.267233 recall=0.846767 capture=0.588368 precision=0.488337 harm=0.061120 budget=1.267233
+Abrupt EMAReset target=0.500 actual=0.517833 recall=0.893067 capture=0.822062 precision=0.352108 harm=0.042227 budget=1.517833
+Abrupt KnownStatePrior target=0.100 actual=0.119500 recall=0.798100 capture=0.308085 precision=0.571827 harm=0.023710 budget=1.119500
+Abrupt KnownStatePrior target=0.250 actual=0.273267 recall=0.855867 capture=0.624587 precision=0.506953 harm=0.055867 budget=1.273267
+Abrupt KnownStatePrior target=0.500 actual=0.528267 recall=0.914933 capture=0.903817 precision=0.379480 harm=0.034326 budget=1.528267
+Abrupt TrialOracle target=0.100 actual=0.100000 recall=0.832600 capture=0.450857 precision=1.000000 harm=0.000000 budget=1.100000
+Abrupt TrialOracle target=0.250 actual=0.221800 recall=0.954400 capture=1.000000 precision=1.000000 harm=0.000000 budget=1.221800
+Abrupt TrialOracle target=0.500 actual=0.221800 recall=0.954400 capture=1.000000 precision=1.000000 harm=0.000000 budget=1.221800
+Abrupt RandomExpected target=0.100 actual=0.100000 recall=0.752067 capture=0.100000 precision=0.221800 harm=0.027133 budget=1.100000
+Abrupt RandomExpected target=0.250 actual=0.250000 recall=0.781267 capture=0.250000 precision=0.221800 harm=0.027133 budget=1.250000
+Abrupt RandomExpected target=0.500 actual=0.500000 recall=0.829933 capture=0.500000 precision=0.221800 harm=0.027133 budget=1.500000
+
+Abrupt jump diagnostics
+-----------------------
+InstantPE meanAbsInnovation=0.404666 meanPostJumpRiskError=0.189170
+EMA meanAbsInnovation=0.151076 meanPostJumpRiskError=0.227254
+EMAReset meanAbsInnovation=0.293778 meanPostJumpRiskError=0.194223

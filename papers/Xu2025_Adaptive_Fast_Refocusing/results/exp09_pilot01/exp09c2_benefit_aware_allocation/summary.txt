@@ -1,0 +1,48 @@
+EXP009-C2 Benefit-Aware Computation Allocation
+==============================================
+
+Trial composition
+-----------------
+Trials: 4500
+Cheap recall: 0.717556
+Fallback recall: 0.922889
+Oracle union recall: 0.950222
+Beneficial rate: 0.232667
+Harmful rate: 0.027333
+Neutral rate: 0.740000
+
+LOCO score diagnostics
+----------------------
+Linear benefit AUC: 0.693930
+Linear harm AUC: 0.530720
+Linear value Spearman: 0.213938
+Quadratic benefit AUC: 0.697142
+Quadratic harm AUC: 0.528199
+Quadratic value Spearman: 0.108529
+
+Primary practical features
+--------------------------
+cheap_prominence
+cheap_entropy
+cheap_second_to_first
+
+Highlighted budget points
+-------------------------
+Prominence target=0.100 actual=0.116667 recall=0.785556 capture=0.298949 precision=0.596190 harm=0.013333 budget=1.116667
+Prominence target=0.250 actual=0.266889 recall=0.833556 capture=0.554919 precision=0.483764 harm=0.049126 budget=1.266889
+Prominence target=0.500 actual=0.502444 recall=0.882222 capture=0.793696 precision=0.367536 harm=0.039805 budget=1.502444
+Entropy target=0.100 actual=0.118444 recall=0.787778 capture=0.305635 precision=0.600375 harm=0.007505 budget=1.118444
+Entropy target=0.250 actual=0.270889 recall=0.836444 capture=0.567335 precision=0.487285 harm=0.048400 budget=1.270889
+Entropy target=0.500 actual=0.502444 recall=0.880000 capture=0.784145 precision=0.363114 harm=0.039805 budget=1.502444
+LinearValue target=0.100 actual=0.109778 recall=0.782000 capture=0.284623 precision=0.603239 harm=0.016194 budget=1.109778
+LinearValue target=0.250 actual=0.267333 recall=0.830000 capture=0.540592 precision=0.470490 harm=0.049875 budget=1.267333
+LinearValue target=0.500 actual=0.506889 recall=0.876444 capture=0.773639 precision=0.355107 harm=0.041648 budget=1.506889
+QuadraticValue target=0.100 actual=0.049111 recall=0.747111 capture=0.135626 precision=0.642534 harm=0.040724 budget=1.049111
+QuadraticValue target=0.250 actual=0.224000 recall=0.802667 capture=0.425024 precision=0.441468 harm=0.061508 budget=1.224000
+QuadraticValue target=0.500 actual=0.484667 recall=0.856889 capture=0.689589 precision=0.331041 harm=0.043558 budget=1.484667
+Oracle target=0.100 actual=0.100000 recall=0.817556 capture=0.429799 precision=1.000000 harm=0.000000 budget=1.100000
+Oracle target=0.250 actual=0.232667 recall=0.950222 capture=1.000000 precision=1.000000 harm=0.000000 budget=1.232667
+Oracle target=0.500 actual=0.232667 recall=0.950222 capture=1.000000 precision=1.000000 harm=0.000000 budget=1.232667
+RandomExpected target=0.100 actual=0.100000 recall=0.738089 capture=0.100000 precision=0.232667 harm=0.027333 budget=1.100000
+RandomExpected target=0.250 actual=0.250000 recall=0.768889 capture=0.250000 precision=0.232667 harm=0.027333 budget=1.250000
+RandomExpected target=0.500 actual=0.500000 recall=0.820222 capture=0.500000 precision=0.232667 harm=0.027333 budget=1.500000

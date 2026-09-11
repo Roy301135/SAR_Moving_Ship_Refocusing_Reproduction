@@ -1,0 +1,120 @@
+EXP009 PA5E / Peak Support + Resolution Cell + Pareto
+====================================================
+
+Purpose
+-------
+Audit whether PA5D half-bin degradation is a true operator floor, a discrete peak-semantic artifact, or both.
+Audit the natural window coordinate without changing the underlying actual windows.
+Replace the 90% balanced rule by Pareto fronts and E<=1 feasibility.
+
+Physical setup
+--------------
+fc=3e+09 Hz, PRF=188 Hz, lambda=0.1 m, R0=4242.64 m
+peak semantics=LocalMax, ConnectedSupport, PlateauAware
+windows=[1 3 5 9 17] bins
+fence offsets=[0 0.125 0.25 0.375 0.5] bins
+
+FrAc widths
+------------
+Paper1s N=188 Wbeta=0.00017
+BeamDerived N=266 Wbeta=8.6e-05
+
+Focused resolution-cell calibration
+-----------------------------------
+Paper1s eta=0 Wfocus=0.885908 bins (0.885908 Hz)
+Paper1s eta=0.125 Wfocus=0.885908 bins (0.885908 Hz)
+Paper1s eta=0.25 Wfocus=0.885908 bins (0.885908 Hz)
+Paper1s eta=0.375 Wfocus=0.885908 bins (0.885908 Hz)
+Paper1s eta=0.5 Wfocus=0.885908 bins (0.885908 Hz)
+BeamDerived eta=0 Wfocus=0.885903 bins (0.626127 Hz)
+BeamDerived eta=0.125 Wfocus=0.885903 bins (0.626127 Hz)
+BeamDerived eta=0.25 Wfocus=0.885903 bins (0.626127 Hz)
+BeamDerived eta=0.375 Wfocus=0.885903 bins (0.626127 Hz)
+BeamDerived eta=0.5 Wfocus=0.885903 bins (0.626127 Hz)
+
+Identity
+--------
+Paper1s LocalMax maxErr=2.88658e-15 pass=1
+Paper1s ConnectedSupport maxErr=2.88658e-15 pass=1
+Paper1s PlateauAware maxErr=2.88658e-15 pass=1
+BeamDerived LocalMax maxErr=2.66454e-15 pass=1
+BeamDerived ConnectedSupport maxErr=1.77636e-15 pass=1
+BeamDerived PlateauAware maxErr=2.66454e-15 pass=1
+
+Peak-semantics summary
+----------------------
+Paper1s LocalMax: onGridMinE=0.80993 halfBinMinE=1.10811 halfBinMaxSuccess=0.921348 halfBinMaxFeasibleFrac=0.258427 L1 rmin=0.789463 L0=0.771172 D0=0.213989
+Paper1s ConnectedSupport: onGridMinE=0.813353 halfBinMinE=1.10471 halfBinMaxSuccess=0.956461 halfBinMaxFeasibleFrac=0.25 L1 rmin=0.48353 L0=0.435215 D0=0.435721
+Paper1s PlateauAware: onGridMinE=0.80993 halfBinMinE=1.10811 halfBinMaxSuccess=0.921348 halfBinMaxFeasibleFrac=0.258427 L1 rmin=0.789463 L0=0.771172 D0=0.213989
+BeamDerived LocalMax: onGridMinE=0.620541 halfBinMinE=1.11002 halfBinMaxSuccess=0.914718 halfBinMaxFeasibleFrac=0.237964 L1 rmin=0.784021 L0=0.771175 D0=0.180284
+BeamDerived ConnectedSupport: onGridMinE=0.622689 halfBinMinE=1.10665 halfBinMaxSuccess=0.965612 halfBinMaxFeasibleFrac=0.244842 L1 rmin=0.459787 L0=0.435225 D0=0.321483
+BeamDerived PlateauAware: onGridMinE=0.620541 halfBinMinE=1.11002 halfBinMaxSuccess=0.914718 halfBinMaxFeasibleFrac=0.237964 L1 rmin=0.784021 L0=0.771175 D0=0.180284
+
+Coordinate-collapse summary
+---------------------------
+window_bins | median_practical_error_ratio: medianNRMSE=0.118857 maxNRMSE=0.32866
+window_bins | median_strong_leak_ratio: medianNRMSE=0.0292668 maxNRMSE=0.19274
+window_bins | median_weak_projection_loss_ratio: medianNRMSE=0.135407 maxNRMSE=0.149214
+window_fraction_N | median_practical_error_ratio: medianNRMSE=0.0644863 maxNRMSE=0.284925
+window_fraction_N | median_strong_leak_ratio: medianNRMSE=0.11146 maxNRMSE=0.280434
+window_fraction_N | median_weak_projection_loss_ratio: medianNRMSE=0.0336825 maxNRMSE=0.051109
+window_resolution_cells | median_practical_error_ratio: medianNRMSE=0.118858 maxNRMSE=0.328663
+window_resolution_cells | median_strong_leak_ratio: medianNRMSE=0.0292684 maxNRMSE=0.192739
+window_resolution_cells | median_weak_projection_loss_ratio: medianNRMSE=0.135409 maxNRMSE=0.149217
+
+Pareto semantics summary
+------------------------
+Paper1s LocalMax: globalPareto=16/25 minMedianE=0.80993 maxSuccess=0.988764 maxFeasibleFrac=0.716292
+Paper1s ConnectedSupport: globalPareto=16/25 minMedianE=0.813353 maxSuccess=0.981742 maxFeasibleFrac=0.706461
+Paper1s PlateauAware: globalPareto=16/25 minMedianE=0.80993 maxSuccess=0.988764 maxFeasibleFrac=0.716292
+BeamDerived LocalMax: globalPareto=14/25 minMedianE=0.620541 maxSuccess=0.993122 maxFeasibleFrac=0.854195
+BeamDerived ConnectedSupport: globalPareto=14/25 minMedianE=0.622689 maxSuccess=0.993122 maxFeasibleFrac=0.854195
+BeamDerived PlateauAware: globalPareto=14/25 minMedianE=0.620541 maxSuccess=0.993122 maxFeasibleFrac=0.854195
+
+Recoverability floor: representative half-bin entries
+----------------------------------------------------
+Paper1s LocalMax L=1: L0=0.771172 D0=0.213989 rminMed=0.789463 rminRange=[0.780074,1.01888]
+Paper1s LocalMax L=3: L0=0.379961 D0=0.488953 rminMed=0.43559 rminRange=[0.405635,2.34702]
+Paper1s LocalMax L=5: L0=0.288286 D0=0.828826 rminMed=0.55068 rminRange=[0.343274,5.77042]
+Paper1s LocalMax L=9: L0=0.21287 D0=0.96833 rminMed=0.87417 rminRange=[0.328998,11.9695]
+Paper1s LocalMax L=17: L0=0.15406 D0=0.98938 rminMed=1.06333 rminRange=[0.724568,18.3274]
+Paper1s ConnectedSupport L=1: L0=0.435215 D0=0.435721 rminMed=0.48353 rminRange=[0.45208,2.60495]
+Paper1s ConnectedSupport L=3: L0=0.315166 D0=0.824106 rminMed=0.592201 rminRange=[0.350099,5.92448]
+Paper1s ConnectedSupport L=5: L0=0.258627 D0=0.932019 rminMed=0.755474 rminRange=[0.319085,9.1129]
+Paper1s ConnectedSupport L=9: L0=0.200751 D0=0.976764 rminMed=0.938111 rminRange=[0.311071,13.9305]
+Paper1s ConnectedSupport L=17: L0=0.149408 D0=0.990787 rminMed=1.11036 rminRange=[0.708711,18.9903]
+Paper1s PlateauAware L=1: L0=0.771172 D0=0.213989 rminMed=0.789463 rminRange=[0.780074,1.01888]
+Paper1s PlateauAware L=3: L0=0.379961 D0=0.488953 rminMed=0.43559 rminRange=[0.405635,2.34702]
+Paper1s PlateauAware L=5: L0=0.288286 D0=0.828826 rminMed=0.55068 rminRange=[0.343274,5.77042]
+Paper1s PlateauAware L=9: L0=0.21287 D0=0.96833 rminMed=0.87417 rminRange=[0.328998,11.9695]
+Paper1s PlateauAware L=17: L0=0.15406 D0=0.98938 rminMed=1.06333 rminRange=[0.724568,18.3274]
+BeamDerived LocalMax L=1: L0=0.771175 D0=0.180284 rminMed=0.784021 rminRange=[0.776284,0.843672]
+BeamDerived LocalMax L=3: L0=0.37998 D0=0.354856 rminMed=0.406596 rminRange=[0.39029,0.551092]
+BeamDerived LocalMax L=5: L0=0.288327 D0=0.553259 rminMed=0.34753 rminRange=[0.309612,0.746534]
+BeamDerived LocalMax L=9: L0=0.21297 D0=0.798137 rminMed=0.370746 rminRange=[0.253572,0.936408]
+BeamDerived LocalMax L=17: L0=0.154321 D0=0.984002 rminMed=0.867912 rminRange=[0.225822,1.00908]
+BeamDerived ConnectedSupport L=1: L0=0.435225 D0=0.321483 rminMed=0.459787 rminRange=[0.442206,0.612928]
+BeamDerived ConnectedSupport L=3: L0=0.315196 D0=0.527879 rminMed=0.371549 rminRange=[0.327819,0.790619]
+BeamDerived ConnectedSupport L=5: L0=0.258682 D0=0.676308 rminMed=0.351748 rminRange=[0.279279,0.908912]
+BeamDerived ConnectedSupport L=9: L0=0.200868 D0=0.876731 rminMed=0.436654 rminRange=[0.239406,0.974344]
+BeamDerived ConnectedSupport L=17: L0=0.149693 D0=0.986708 rminMed=0.923526 rminRange=[0.219165,1.01158]
+BeamDerived PlateauAware L=1: L0=0.771175 D0=0.180284 rminMed=0.784021 rminRange=[0.776284,0.843672]
+BeamDerived PlateauAware L=3: L0=0.37998 D0=0.354856 rminMed=0.406596 rminRange=[0.39029,0.551092]
+BeamDerived PlateauAware L=5: L0=0.288327 D0=0.553259 rminMed=0.34753 rminRange=[0.309612,0.746534]
+BeamDerived PlateauAware L=9: L0=0.21297 D0=0.798137 rminMed=0.370746 rminRange=[0.253572,0.936408]
+BeamDerived PlateauAware L=17: L0=0.154321 D0=0.984002 rminMed=0.867912 rminRange=[0.225822,1.00908]
+
+Decision
+--------
+Paper1s -> FENCE_FLOOR_PERSISTS_ACROSS_PEAK_SEMANTICS | best coordinate=window_bins
+BeamDerived -> FENCE_FLOOR_PERSISTS_ACROSS_PEAK_SEMANTICS | best coordinate=window_bins
+
+Interpretation discipline
+-------------------------
+1) LocalMax is the legacy implementation, not asserted as the authors' exact private FindPeak semantics.
+2) ConnectedSupport and PlateauAware are implementation audits, not retroactive claims about Wang 2023.
+3) Window-coordinate collapse is evaluated on the same actual operators; PA5E does not create a new equal-Hz operator family.
+4) Pareto dominance replaces the arbitrary 90% balanced-window selection rule.
+5) E<=1 remains a diagnostic waveform-feasibility threshold, not a universal task-performance threshold.
+6) A nonzero rmin that survives tie-safe semantics is evidence for a genuine fence-aware recoverability floor in this bridge.
+7) Noise remains OFF until this audit is closed.

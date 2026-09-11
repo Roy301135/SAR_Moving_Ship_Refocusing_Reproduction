@@ -1,0 +1,24 @@
+﻿parameter,value,unit,source/status,role
+carrier_frequency,3,GHz,Wang 2023 Table 1 / paper-reported,physics
+PRF,188,Hz,Wang 2023 Table 1 / paper-reported,sampling
+bandwidth,150,MHz,Wang 2023 Table 1 / paper-reported,provenance
+platform_height,3000,m,Wang 2023 Table 1 / paper-reported,geometry
+antenna_length,2,m,Wang 2023 Table 1 / paper-reported,beam
+platform_velocity,150,m/s,Wang 2023 Table 1 / paper-reported,physics
+pulse_width,1.5,us,Wang 2023 Table 1 / paper-reported,provenance
+weak_velocity,15,m/s,Wang 2023 Table 2 / paper-grounded choice,weak reference
+residual_FM_mapping,Xu/Wang physical LFM mapping,,literature-derived bridge,velocity to beta
+Algorithm2_peak_gate,0.7,fraction of max magnitude,Wang 2023 Eq.26 / Algorithm 2 / paper-reported,fractional-domain peak selection
+Algorithm2_window,"Win(pk), length l",bins,Wang 2023 Eq.27 / paper-defined,narrowband filtering
+Algorithm2_residual,filtered component subtraction + inverse FrFT,,Wang 2023 Eq.29 / paper-reported,sequential removal
+filter_window_length_bins,1;3;5;9;17,bins,not numerically fixed by Wang Algorithm-2 text / controlled sweep,operator sensitivity
+transform_implementation,dechirp + unitary FFT + inverse + rechirp,,controlled algorithm-fidelity bridge,functional FrFT-removal surrogate
+bit_exact_DFrFT_claim,false,,paper discrete implementation under-specified,research discipline
+R0_over_H,sqrt(2),,inherited controlled representative,geometry
+delta_velocity,2.5;5;7.5;10;15;20,m/s,PA5B inherited controlled sweep,separation
+Aw_over_As,0.1;0.2;0.3;0.5;0.8,,PA5B inherited controlled sweep,contrast
+relative_phase,16 uniform values,rad,PA5B inherited,coherent interaction
+center_frequency_b,0,cycles/sample,P1C-informed control,isolate chirp-rate mechanism
+tolerance_geometry,"Delta-v=10, HighV",,PA5C controlled representative,tolerance bridge
+tolerance_delta_beta_over_width,-0.30 to 0.30,,PA5C controlled sweep,accuracy requirement
+noise,none,,PA5C design,deterministic operator bridge

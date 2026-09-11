@@ -1,0 +1,19 @@
+﻿parameter,value,unit,source,status,role
+carrier_frequency,3,GHz,Wang 2023 Table 1,paper-reported,physics input
+PRF,188,Hz,Wang 2023 Table 1,paper-reported,sampling / physics input
+bandwidth,150,MHz,Wang 2023 Table 1,paper-reported,provenance
+platform_height,3000,m,Wang 2023 Table 1,paper-reported,geometry scale
+antenna_length,2,m,Wang 2023 Table 1,paper-reported,beam aperture estimate
+platform_velocity,150,m/s,Wang 2023 Table 1,paper-reported,physics input
+pulse_width,1.5,us,Wang 2023 Table 1,paper-reported,provenance
+weak_velocity,15,m/s,Wang 2023 Table 2,paper-grounded choice,weak reference component
+residual_FM_mapping,"Xu Eq.7,8,11",,Xu 2025,literature-derived bridge,velocity to beta
+R0_over_H,sqrt(2),,not reported by Wang five-point experiment,controlled representative,fixed geometry
+aperture_modes,Paper1s;BeamDerived,,Wang text + first-order beam estimate,literature/derived,resolution comparison
+delta_velocity,2.5;5;7.5;10;15;20,m/s,Wang span + controlled extension,controlled physical sweep,component separation
+weak_to_strong_ratio,0.1;0.2;0.3;0.5;0.8,,not reported by Wang,controlled sweep,amplitude contrast
+relative_phase,16 uniform values,rad,not reported by Wang,controlled sweep,coherent interaction
+center_frequency_b,0,cycles/sample,P1C-informed control,controlled,isolate chirp-rate interaction
+noise,none,,PA4 design,controlled,deterministic topology
+CLEAN,none,,PA4 design,controlled,pre-CLEAN mechanism
+Gamma,abs(beta_s-beta_w)/weak_3dB_width,,PA4 derived coordinate,derived,resolution-regime axis

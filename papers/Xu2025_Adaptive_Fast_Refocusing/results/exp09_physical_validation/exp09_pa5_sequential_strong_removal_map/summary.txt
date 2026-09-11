@@ -1,0 +1,92 @@
+EXP009 PA5 / Physical Sequential Strong-Removal Recovery Map
+===========================================================
+
+Research question
+-----------------
+Can sequential strong removal reveal a weak component that was hidden in the pre-removal FrAc landscape?
+
+Paper-grounded / derived physics
+--------------------------------
+fc = 3e+09 Hz
+PRF = 188 Hz
+H = 3000 m
+L_a = 2 m
+V = 150 m/s
+lambda = 0.1 m
+representative R0/H = 1.41421356
+R0 = 4242.64069 m
+beamwidth ~= 0.05 rad
+
+Controlled sweep inherited from PA4
+-----------------------------------
+weak velocity = 15 m/s
+Delta v = [2.5 5 7.5 10 15 20] m/s
+A_w/A_s = [0.1 0.2 0.3 0.5 0.8]
+relative phases = 16 uniform values
+b_s=b_w=0
+No noise.
+
+Groups
+------
+G0 WeakOnly
+G1 FullMixture
+G2 OracleParamCLEAN: true strong chirp parameter + LS coefficient fit + subtraction
+G3 PracticalCLEAN: global-FrAc strong beta estimate + LS coefficient fit + subtraction
+Gx ExactOracleSubtract: diagnostic only; should reproduce the exact weak component up to numerical precision.
+
+Intrinsic widths
+----------------
+Paper1s N=188 T=0.994681 s Wbeta=0.00017 rad
+BeamDerived N=266 T=1.409574 s Wbeta=8.6e-05 rad
+
+Overall recovery summary
+------------------------
+Paper1s hidden=0.7417 oracleRescue=1.0000 practicalRescue=0.3511 gap=0.6489 opDist=0.222329 practicalErr=1.9077 strongEstOK=0.9944
+BeamDerived hidden=0.7573 oracleRescue=1.0000 practicalRescue=0.3824 gap=0.6176 opDist=0.183642 practicalErr=1.61804 strongEstOK=1.0000
+
+Contrast summary
+----------------
+Paper1s r=0.100 hidden=0.8333 oracle=1.0000 practical=0.3375 gap=0.6625 opDist=0.219794 practicalErr=2.15131
+Paper1s r=0.200 hidden=0.8646 oracle=1.0000 practical=0.3675 gap=0.6325 opDist=0.222329 practicalErr=2.13047
+Paper1s r=0.300 hidden=0.8438 oracle=1.0000 practical=0.3210 gap=0.6790 opDist=0.222329 practicalErr=2.07505
+Paper1s r=0.500 hidden=0.6823 oracle=1.0000 practical=0.3359 gap=0.6641 opDist=0.222329 practicalErr=1.94017
+Paper1s r=0.800 hidden=0.4844 oracle=1.0000 practical=0.4194 gap=0.5806 opDist=0.295028 practicalErr=1.37844
+BeamDerived r=0.100 hidden=1.0000 oracle=1.0000 practical=0.4010 gap=0.5990 opDist=0.175999 practicalErr=1.91148
+BeamDerived r=0.200 hidden=1.0000 oracle=1.0000 practical=0.3906 gap=0.6094 opDist=0.175999 practicalErr=1.63231
+BeamDerived r=0.300 hidden=0.9635 oracle=1.0000 practical=0.3784 gap=0.6216 opDist=0.168356 practicalErr=1.66376
+BeamDerived r=0.500 hidden=0.5208 oracle=1.0000 practical=0.3300 gap=0.6700 opDist=0.216066 practicalErr=1.68986
+BeamDerived r=0.800 hidden=0.3021 oracle=1.0000 practical=0.3966 gap=0.6034 opDist=0.219311 practicalErr=1.37937
+
+Regime summary
+--------------
+Paper1s Unresolved         n=480 hidden=0.6708 oracle=1.0000 practical=0.4814 practicalErr=2.31094 strongEstErr/W=0.0567657
+Paper1s Partial            n=480 hidden=0.8125 oracle=1.0000 practical=0.2436 practicalErr=1.71138 strongEstErr/W=0.0317865
+Paper1s ResolvedCandidate  n=0 hidden=NaN oracle=NaN practical=NaN practicalErr=NaN strongEstErr/W=NaN
+BeamDerived Unresolved         n=160 hidden=0.8500 oracle=1.0000 practical=0.6838 practicalErr=2.68997 strongEstErr/W=0.0561216
+BeamDerived Partial            n=480 hidden=0.8146 oracle=1.0000 practical=0.2711 practicalErr=1.67287 strongEstErr/W=0.0316408
+BeamDerived ResolvedCandidate  n=320 hidden=0.6250 oracle=1.0000 practical=0.3950 practicalErr=1.17444 strongEstErr/W=0.0172253
+
+Strong-estimation summary
+-------------------------
+Paper1s med|err|/W=0.043995 p90=0.157736 success=0.9958 hiddenMed=0.0409504 hiddenSuccess=0.9944
+BeamDerived med|err|/W=0.0340781 p90=0.12655 success=1.0000 hiddenMed=0.0257274 hiddenSuccess=1.0000
+
+Decision
+--------
+Paper1s -> STRONG_ESTIMATION_IMPLEMENTATION_GAP
+BeamDerived -> STRONG_ESTIMATION_IMPLEMENTATION_GAP
+
+Representative examples
+-----------------------
+Paper1s Hidden_PracticalRescue dv=2.5 side=LowV Gamma=0.160462 r=0.3 phi=4.31969 estErr/W=0.0420642 opDist=0.653179 practicalErr=1.97486
+Paper1s Hidden_ImplementationGap dv=5 side=LowV Gamma=0.318532 r=0.3 phi=0.392699 estErr/W=0.103476 opDist=0.28979 practicalErr=3.83684
+BeamDerived Hidden_PracticalRescue dv=2.5 side=LowV Gamma=0.317193 r=0.3 phi=0 estErr/W=0.0989427 opDist=0.290933 practicalErr=3.88393
+BeamDerived Hidden_ImplementationGap dv=2.5 side=LowV Gamma=0.317193 r=0.3 phi=1.1781 estErr/W=0.0751699 opDist=0.290933 practicalErr=2.90757
+
+Interpretation discipline
+-------------------------
+1) Hidden means no pre-removal LOCAL weak-associated FrAc peak. It is an analysis label, not something the practical algorithm knows.
+2) Recovery is strongest when the post-removal GLOBAL residual maximum is associated with the true weak component, matching the next sequential extraction step.
+3) G2 uses true strong parameter but practical LS subtraction. Therefore G0-vs-G2 measures operator distortion; G2-vs-G3 measures strong-parameter estimation / implementation gap.
+4) Exact subtraction is only a sanity check and must not be used to claim practical recoverability.
+5) Noise remains OFF. PA5 decides whether deterministic strong removal is structurally useful before stochastic mechanisms return.

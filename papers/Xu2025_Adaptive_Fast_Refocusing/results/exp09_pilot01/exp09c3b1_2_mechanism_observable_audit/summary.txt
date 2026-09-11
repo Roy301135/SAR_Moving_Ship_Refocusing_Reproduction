@@ -1,0 +1,134 @@
+EXP009-C3-B1.2 Mechanism-Informed Realization Observable Audit
+==============================================================
+
+Research question
+-----------------
+Which practical signal-level observables carry genuine within-state realization information for Beneficial and Harmful fallback outcomes?
+
+Controlled boundary
+-------------------
+Signal trajectory, q-grid, SNR, Cheap chain, parametric fallback, Monte-Carlo seeds and recovery threshold match C3-B1. q_strong remains oracle/known.
+
+State reproducibility
+---------------------
+Smooth rho: 0.929974
+Abrupt rho: 0.899944
+
+C3-B1 continuity check
+----------------------
+TrainSmooth available=1 cheapMismatch=0 fallbackMismatch=0 beneficialMismatch=0 harmfulMismatch=0
+TrainAbrupt available=1 cheapMismatch=0 fallbackMismatch=0 beneficialMismatch=0 harmfulMismatch=0
+TestSmooth available=1 cheapMismatch=0 fallbackMismatch=0 beneficialMismatch=0 harmfulMismatch=0
+TestAbrupt available=1 cheapMismatch=0 fallbackMismatch=0 beneficialMismatch=0 harmfulMismatch=0
+
+Best single features by within-line Beneficial AUC
+--------------------------------------------------
+Smooth
+  top2_q_separation                  withinB=0.618552 pooledB=0.623552
+  peak_to_strong_q_distance          withinB=0.580372 pooledB=0.539660
+  local_curvature_norm               withinB=0.568245 pooledB=0.535495
+  local_asymmetry                    withinB=0.540025 pooledB=0.530591
+  peak_second_ratio                  withinB=0.536705 pooledB=0.519718
+  peak_margin_norm                   withinB=0.536705 pooledB=0.519718
+  cheap_entropy                      withinB=0.535782 pooledB=0.671485
+  cheap_prominence                   withinB=0.535475 pooledB=0.667496
+Abrupt
+  top2_q_separation                  withinB=0.568242 pooledB=0.580646
+  strong_q_response_ratio            withinB=0.554721 pooledB=0.573983
+  local_curvature_norm               withinB=0.541523 pooledB=0.616779
+  peak_second_ratio                  withinB=0.531076 pooledB=0.591412
+  peak_margin_norm                   withinB=0.531076 pooledB=0.591412
+  peak_robust_z                      withinB=0.525436 pooledB=0.675359
+  cheap_prominence                   withinB=0.524082 pooledB=0.718508
+  local_asymmetry                    withinB=0.519331 pooledB=0.547234
+
+Best single features by within-line Harmful AUC
+------------------------------------------------
+Smooth
+  local_curvature_norm               withinH=0.819948 pooledH=0.554488
+  peak_second_ratio                  withinH=0.751109 pooledH=0.545909
+  peak_margin_norm                   withinH=0.751109 pooledH=0.545909
+  peak_to_strong_q_distance          withinH=0.684794 pooledH=0.498501
+  width50_q                          withinH=0.669267 pooledH=0.630627
+  strong_q_response_ratio            withinH=0.665672 pooledH=0.539441
+  strong_q_neighborhood_fraction     withinH=0.612360 pooledH=0.495052
+  local_asymmetry                    withinH=0.608383 pooledH=0.552899
+Abrupt
+  local_curvature_norm               withinH=0.840522 pooledH=0.643508
+  peak_second_ratio                  withinH=0.786646 pooledH=0.631109
+  peak_margin_norm                   withinH=0.786646 pooledH=0.631109
+  width50_q                          withinH=0.668227 pooledH=0.641027
+  strong_q_neighborhood_fraction     withinH=0.641596 pooledH=0.643617
+  cheap_prominence                   withinH=0.616731 pooledH=0.656950
+  strong_spec_peak_fraction          withinH=0.595088 pooledH=0.686350
+  top2_q_separation                  withinH=0.594935 pooledH=0.578808
+
+Group information audit
+-----------------------
+Smooth StateOnly                aucB=0.712459 withinB=0.500000 aucH=0.590637 withinH=0.500000 utilityRho=0.287793
+Smooth BaselinePE               aucB=0.671148 withinB=0.536059 aucH=0.678010 withinH=0.484779 utilityRho=0.211152
+Smooth StateBaseline            aucB=0.713749 withinB=0.532647 aucH=0.677354 withinH=0.481872 utilityRho=0.288347
+Smooth MorphologyOnly           aucB=0.672885 withinB=0.542945 aucH=0.678805 withinH=0.717149 utilityRho=0.222530
+Smooth StateMorphology          aucB=0.721634 withinB=0.565355 aucH=0.687280 withinH=0.711641 utilityRho=0.305752
+Smooth StrongCompetitionOnly    aucB=0.681093 withinB=0.526806 aucH=0.675224 withinH=0.503442 utilityRho=0.221807
+Smooth StateStrongCompetition   aucB=0.707118 withinB=0.523394 aucH=0.686486 withinH=0.516139 utilityRho=0.285238
+Smooth SubapertureOnly          aucB=0.670815 withinB=0.534676 aucH=0.669816 withinH=0.496252 utilityRho=0.209002
+Smooth StateSubaperture         aucB=0.713672 withinB=0.528128 aucH=0.669080 withinH=0.495181 utilityRho=0.286630
+Smooth AllObservable            aucB=0.682981 withinB=0.546296 aucH=0.705173 withinH=0.718066 utilityRho=0.233936
+Smooth StateAll                 aucB=0.715965 withinB=0.558992 aucH=0.738837 withinH=0.716843 utilityRho=0.306394
+Abrupt StateOnly                aucB=0.739374 withinB=0.500000 aucH=0.633930 withinH=0.500000 utilityRho=0.351774
+Abrupt BaselinePE               aucB=0.716811 withinB=0.517145 aucH=0.609165 withinH=0.419800 utilityRho=0.314322
+Abrupt StateBaseline            aucB=0.739458 withinB=0.515792 aucH=0.608850 withinH=0.419033 utilityRho=0.349657
+Abrupt MorphologyOnly           aucB=0.721239 withinB=0.535954 aucH=0.723698 withinH=0.755487 utilityRho=0.338138
+Abrupt StateMorphology          aucB=0.745664 withinB=0.550871 aucH=0.727336 withinH=0.760553 utilityRho=0.377641
+Abrupt StrongCompetitionOnly    aucB=0.714928 withinB=0.500000 aucH=0.674500 withinH=0.511589 utilityRho=0.312874
+Abrupt StateStrongCompetition   aucB=0.735161 withinB=0.505048 aucH=0.684551 withinH=0.528012 utilityRho=0.349788
+Abrupt SubapertureOnly          aucB=0.716310 withinB=0.515171 aucH=0.615543 withinH=0.450652 utilityRho=0.313686
+Abrupt StateSubaperture         aucB=0.739102 withinB=0.512464 aucH=0.615217 withinH=0.450499 utilityRho=0.348129
+Abrupt AllObservable            aucB=0.719670 withinB=0.518950 aucH=0.741010 withinH=0.746892 utilityRho=0.338404
+Abrupt StateAll                 aucB=0.744247 withinB=0.541227 aucH=0.762017 withinH=0.759325 utilityRho=0.378470
+
+25% budget
+----------
+Smooth StateOnly                recall=0.750826 capture=0.438791 precision=0.495833 harm=0.065000 actual=0.247934
+Smooth BaselinePE               recall=0.740289 capture=0.415929 precision=0.467662 harm=0.081260 actual=0.249174
+Smooth StateBaseline            recall=0.752479 capture=0.445428 precision=0.502496 harm=0.065724 actual=0.248347
+Smooth MorphologyOnly           recall=0.746488 capture=0.430678 precision=0.475958 harm=0.071720 actual=0.253512
+Smooth StateMorphology          recall=0.763223 capture=0.470501 precision=0.527709 harm=0.050455 actual=0.249793
+Smooth StrongCompetitionOnly    recall=0.739463 capture=0.411504 precision=0.477740 harm=0.082192 actual=0.241322
+Smooth StateStrongCompetition   recall=0.751860 capture=0.446903 precision=0.492283 harm=0.068237 actual=0.254339
+Smooth SubapertureOnly          recall=0.738017 capture=0.410767 precision=0.469250 harm=0.085931 actual=0.245248
+Smooth StateSubaperture         recall=0.752893 capture=0.445428 precision=0.502078 harm=0.064007 actual=0.248554
+Smooth AllObservable            recall=0.751240 capture=0.437316 precision=0.480551 harm=0.059968 actual=0.254959
+Smooth StateAll                 recall=0.766529 capture=0.476401 precision=0.523501 harm=0.042950 actual=0.254959
+Smooth TrialOracle              recall=0.894008 capture=0.892330 precision=1.000000 harm=0.000000 actual=0.250000
+Smooth RandomExpected           recall=0.704804 capture=0.250000 precision=0.280165 harm=0.036983 actual=0.250000
+Abrupt StateOnly                recall=0.581612 capture=0.381818 precision=0.579310 harm=0.061207 actual=0.239669
+Abrupt BaselinePE               recall=0.583884 capture=0.388068 precision=0.554383 harm=0.057630 actual=0.254545
+Abrupt StateBaseline            recall=0.584298 capture=0.388068 precision=0.575400 harm=0.058130 actual=0.245248
+Abrupt MorphologyOnly           recall=0.594008 capture=0.401705 precision=0.560222 harm=0.036450 actual=0.260744
+Abrupt StateMorphology          recall=0.605785 capture=0.417614 precision=0.593220 harm=0.013721 actual=0.255992
+Abrupt StrongCompetitionOnly    recall=0.576033 capture=0.370455 precision=0.542881 harm=0.064946 actual=0.248140
+Abrupt StateStrongCompetition   recall=0.593182 capture=0.409659 precision=0.571315 harm=0.050713 actual=0.260744
+Abrupt SubapertureOnly          recall=0.581405 capture=0.380682 precision=0.543390 harm=0.056772 actual=0.254752
+Abrupt StateSubaperture         recall=0.587603 capture=0.400000 precision=0.567742 harm=0.059677 actual=0.256198
+Abrupt AllObservable            recall=0.584711 capture=0.374432 precision=0.560851 harm=0.036596 actual=0.242769
+Abrupt StateAll                 recall=0.610950 capture=0.434659 precision=0.590734 harm=0.016988 actual=0.267562
+Abrupt TrialOracle              recall=0.707438 capture=0.687500 precision=1.000000 harm=0.000000 actual=0.250000
+Abrupt RandomExpected           recall=0.539101 capture=0.250000 precision=0.363636 harm=0.036983 actual=0.250000
+
+Decision summary
+----------------
+Smooth withinB: base 0.536 morph 0.543 strong 0.527 subap 0.535 all 0.546 | withinH: base 0.485 morph 0.717 strong 0.503 subap 0.496 all 0.718 | stateAll recall gain 0.0153 | oracleFrac 0.243 -> 0.326
+Abrupt withinB: base 0.517 morph 0.536 strong 0.500 subap 0.515 all 0.519 | withinH: base 0.420 morph 0.755 strong 0.512 subap 0.451 all 0.747 | stateAll recall gain 0.0262 | oracleFrac 0.253 -> 0.427
+
+Interpretation notices
+----------------------
+Smooth: richer observables still show limited within-state Beneficial discrimination (0.546 < 0.580).
+Smooth: richer observables reach strong Harmful discrimination (0.718 >= 0.620), supporting harm-aware gating.
+Abrupt: richer observables still show limited within-state Beneficial discrimination (0.519 < 0.580).
+Abrupt: richer observables reach strong Harmful discrimination (0.747 >= 0.620), supporting harm-aware gating.
+
+Scientific boundary
+-------------------
+This is an observable-information audit under oracle q_strong. Any feature gain is evidence that the signal contains exploitable realization information; it is not yet a deployable final policy.

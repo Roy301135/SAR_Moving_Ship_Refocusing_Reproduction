@@ -1,0 +1,19 @@
+﻿parameter,value,unit,source/status,role
+carrier_frequency,3,GHz,Wang 2023 paper-grounded,physics
+PRF,188,Hz,Wang 2023 paper-grounded,sampling
+platform_height,3000,m,Wang 2023 paper-grounded,geometry
+antenna_length,2,m,Wang 2023 paper-grounded,beam
+platform_velocity,150,m/s,Wang 2023 paper-grounded,physics
+weak_velocity,15,m/s,PA5E inherited,weak reference
+R0_over_H,sqrt(2),,PA5E inherited,geometry
+delta_velocity,2.5;5;7.5;10;15;20,m/s,PA5E inherited,separation
+fractional_bin_offset,0;0.5,DFT bins,PA5E-R1 targeted patch,on-grid / exact half-bin
+window_bins,1;3;5;9;17,bins,PA5E inherited,removal support
+peak_gate,0.7,fraction max magnitude,Wang 2023 Algorithm-2 paper-reported,peak threshold
+LocalMax,strict-left / non-strict-right,,legacy PA5C/PA5D,baseline
+ConnectedSupport,all bins >= 0.7 max,,PA5E inherited audit,threshold-support control
+PlateauAwareExact,>= both neighbors; > one neighbor,,PA5E inherited,exact floating-point plateau
+PlateauAwareTol,same topology with machine-precision tolerance,,PA5E-R1 patch,near-equality plateau
+tie_eps_multiplier,100,,PA5E-R1 numerical rule,tau=100*N*eps(max|Y|)
+recoverability_floor,rmin=L0/sqrt(1-D0^2),,PA5B-PA5E exact mechanism,zero-mismatch floor
+noise,none,,PA5E-R1 design,targeted deterministic patch

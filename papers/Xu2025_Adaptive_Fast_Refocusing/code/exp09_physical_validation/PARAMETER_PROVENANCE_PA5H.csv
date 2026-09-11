@@ -1,0 +1,28 @@
+﻿parameter,value,unit,source/status,role
+carrier_frequency,3,GHz,Wang 2023 paper-grounded,physics
+PRF,188,Hz,Wang 2023 paper-grounded,sampling
+bandwidth,150,MHz,Wang 2023 paper-grounded,provenance
+platform_height,3000,m,Wang 2023 paper-grounded,geometry
+antenna_length,2,m,Wang 2023 paper-grounded,beam
+platform_velocity,150,m/s,Wang 2023 paper-grounded,physics
+pulse_width,1.5,us,Wang 2023 paper-grounded,provenance
+weak_velocity,15,m/s,PA5G inherited,weak reference
+R0_over_H,sqrt(2),,PA5G inherited,geometry
+delta_velocity,2.5;5;7.5;10;15;20,m/s,PA5G inherited,separation
+Aw_over_As,0.1;0.2;0.3;0.5;0.8,,PA5G inherited,contrast
+relative_phase,16 uniform values,rad,PA5G inherited,coherent mixture
+fractional_bin_offset,0;0.125;0.25;0.375;0.5,DFT bins,PA5G inherited,translation audit
+window_bins,1;3;5;9;17,bins,PA5G inherited,removal support
+peak_semantics,PlateauAwareTol,,PA5E-R1 fixed,removal semantics
+peak_gate,0.7,fraction max magnitude,Wang 2023 Algorithm-2 paper-reported,peak threshold
+continuous_estimator,single-tone concentrated ML/LS,,PA5G validated,fixed estimator
+gate,BIC + split-aperture consistency,,PA5G inherited,fixed decision rule
+bias_model,-Jcross_prime(0)/Jstrong_doubleprime(0),bins,PA5H derived,first-order perturbation law
+bias_derivative_step,1e-4,bins,PA5H numerical differentiation,numerics
+small_contrast_diagnostic,Aw/As<=0.3,,PA5H predefined,first-order validity audit
+binary_oracle_action,"min(E_no_recenter,E_always_recenter)",,PA5H,decision benchmark
+decision_regret,"E_gate-min(E0,E1)",,PA5H,decision quality
+action_tie_tolerance,1e-12,,PA5H numerical only,tie handling
+beta_s_error,0,,PA5H isolation,true strong chirp rate
+noise,none,,PA5H design,final deterministic closure
+clutter,none,,PA5H design,final deterministic closure

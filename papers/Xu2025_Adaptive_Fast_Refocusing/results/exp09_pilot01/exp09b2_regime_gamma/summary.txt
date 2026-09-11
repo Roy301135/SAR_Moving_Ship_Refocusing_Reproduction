@@ -1,0 +1,39 @@
+EXP009-B2 Regime Boundary + Gamma
+================================
+
+Gamma = |delta_q_pred| / tau_q
+tau_q = 0.003000
+B1 feasible threshold = 0.800
+Danger penalty threshold = 0.100
+
+B1 screening
+------------
+AUC Gamma = 0.872598
+AUC Lambda = 0.703147
+Optimal Gamma threshold = 0.217054
+Optimal Youden J = 0.643275
+Spearman Gamma vs penalty = 0.717079
+Spearman Lambda vs penalty = 0.408518
+Spearman Gamma vs |MC bias change| = 0.816611
+
+Gamma=1 confusion: TP=0 FP=0 TN=57 FN=63
+Optimal-Gamma confusion: TP=56 FP=14 TN=43 FN=7
+
+Refined MC
+----------
+Selected cells = 9
+MC trials/cell = 500
+Refined AUC Gamma = 0.833333
+Refined AUC Lambda = 0.472222
+Refined Spearman Gamma vs penalty = 0.811723
+Refined Spearman Lambda vs penalty = 0.371338
+
+#01 select=Easy refined=Easy SNR=+0 rA=0.40 sep=+0.020 Gamma=0.203 Lambda=0.554 Base=0.888 Res=0.862 Penalty=0.026 [-0.002,0.056] Cat=0.000 Bias=+0.00136
+#02 select=Easy refined=Easy SNR=+3 rA=0.40 sep=-0.030 Gamma=0.051 Lambda=0.554 Base=0.952 Res=0.990 Penalty=-0.038 [-0.054,-0.022] Cat=0.000 Bias=-0.00031
+#03 select=Easy refined=Easy SNR=+6 rA=0.40 sep=-0.030 Gamma=0.051 Lambda=0.554 Base=0.994 Res=0.998 Penalty=-0.004 [-0.010,0.000] Cat=0.000 Bias=-0.00024
+#04 select=Perturbative refined=Perturbative SNR=+0 rA=0.50 sep=-0.020 Gamma=0.315 Lambda=0.354 Base=0.938 Res=0.812 Penalty=0.126 [0.092,0.162] Cat=0.000 Bias=+0.00194
+#05 select=Perturbative refined=Perturbative SNR=+3 rA=0.40 sep=+0.040 Gamma=0.038 Lambda=0.554 Base=0.952 Res=0.776 Penalty=0.176 [0.142,0.212] Cat=0.000 Bias=-0.00161
+#06 select=Perturbative refined=Perturbative SNR=+6 rA=0.40 sep=-0.040 Gamma=0.395 Lambda=0.554 Base=0.994 Res=0.758 Penalty=0.236 [0.200,0.274] Cat=0.000 Bias=-0.00270
+#07 select=Catastrophic refined=Transition SNR=+0 rA=0.40 sep=-0.060 Gamma=0.326 Lambda=0.554 Base=0.888 Res=0.572 Penalty=0.316 [0.268,0.362] Cat=0.004 Bias=+0.00297
+#08 select=Catastrophic refined=Transition SNR=+3 rA=0.30 sep=-0.060 Gamma=0.435 Lambda=0.984 Base=0.856 Res=0.456 Penalty=0.400 [0.340,0.456] Cat=0.004 Bias=+0.00373
+#09 select=Catastrophic refined=Catastrophic SNR=+6 rA=0.20 sep=-0.050 Gamma=0.469 Lambda=2.214 Base=0.840 Res=0.234 Penalty=0.606 [0.564,0.646] Cat=0.422 Bias=-0.01904

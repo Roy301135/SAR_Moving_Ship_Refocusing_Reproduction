@@ -1,0 +1,105 @@
+EXP009-C3-B3B Near-Shift Mechanism and Local Peak Recovery
+==========================================================
+
+Research boundary
+-----------------
+q_strong remains known/oracle.
+SNR = 3.00 dB.
+q_weak = 1.470000.
+coarse q step = 0.001000.
+half-grid q step = 0.000500.
+success tau_q = 0.003000.
+
+Core questions
+--------------
+1. Does the A4/B1 first-order perturbation law predict matched-response q shift?
+2. Is coarse-grid discretization responsible for NearShift failure?
+3. Can observable local curve fitting reduce error without q_weak?
+4. Are Cheap and fallback q errors coupled?
+
+Estimator comparison
+--------------------
+Smooth  CoarseTop1       recovery=0.775078 RMSE=0.00314776 MAE=0.00246417 medAE=0.002
+Smooth  Parabolic3       recovery=0.693458 RMSE=0.00313755 MAE=0.00247429 medAE=0.00214461
+Smooth  LogQuadratic5    recovery=0.693458 RMSE=0.00313685 MAE=0.00247377 medAE=0.00214177
+Smooth  LocalCentroid7   recovery=0.693458 RMSE=0.0031365 MAE=0.00247352 medAE=0.00213895
+Abrupt  CoarseTop1       recovery=0.668929 RMSE=0.00568219 MAE=0.00326094 medAE=0.002
+Abrupt  Parabolic3       recovery=0.591629 RMSE=0.00567734 MAE=0.00326941 medAE=0.00248115
+Abrupt  LogQuadratic5    recovery=0.591629 RMSE=0.00567649 MAE=0.00326874 medAE=0.00248324
+Abrupt  LocalCentroid7   recovery=0.591629 RMSE=0.00567598 MAE=0.00326829 medAE=0.00248362
+
+Half-grid rescue diagnostic
+---------------------------
+Smooth nFail=361 rescued=0.000000 coarseMAE=0.00517729 halfMAE=0.00510526 nearFrac=0.988920
+Abrupt nFail=878 rescued=0.000000 coarseMAE=0.00653189 halfMAE=0.00648576 nearFrac=0.953303
+
+First-order validation
+----------------------
+Smooth AllCheapFailure  n=1605 Pearson=0.981763 Spearman=0.993298 slope=0.977563 RMSE=0.000393377 signAgree=1.000000
+Smooth FallbackFailure  n=361 Pearson=0.981077 Spearman=0.986262 slope=0.962376 RMSE=0.00059458 signAgree=1.000000
+Smooth NearShift        n=357 Pearson=0.984178 Spearman=0.987604 slope=0.977661 RMSE=0.000537501 signAgree=1.000000
+Abrupt AllCheapFailure  n=2652 Pearson=0.966684 Spearman=0.989627 slope=0.940286 RMSE=0.000687444 signAgree=1.000000
+Abrupt FallbackFailure  n=878 Pearson=0.966345 Spearman=0.980962 slope=0.919998 RMSE=0.00095545 signAgree=1.000000
+Abrupt NearShift        n=837 Pearson=0.970055 Spearman=0.981582 slope=0.940270 RMSE=0.000878433 signAgree=1.000000
+
+Perturbation contribution anatomy
+-------------------------------
+Smooth AllCheapFailure  StrongPower          medianAbsShift=1.46361e-09 meanAbsShift=5.00838e-09
+Smooth AllCheapFailure  NoisePower           medianAbsShift=9.7791e-05 meanAbsShift=0.000161363
+Smooth AllCheapFailure  WeakStrongCross      medianAbsShift=5.71239e-05 meanAbsShift=8.04095e-05
+Smooth AllCheapFailure  WeakNoiseCross       medianAbsShift=0.00135996 meanAbsShift=0.00161746
+Smooth AllCheapFailure  StrongNoiseCross     medianAbsShift=4.04411e-06 meanAbsShift=8.14576e-06
+Smooth NearShift        StrongPower          medianAbsShift=1.84067e-09 meanAbsShift=5.49238e-09
+Smooth NearShift        NoisePower           medianAbsShift=0.000144477 meanAbsShift=0.000225915
+Smooth NearShift        WeakStrongCross      medianAbsShift=5.89759e-05 meanAbsShift=8.79902e-05
+Smooth NearShift        WeakNoiseCross       medianAbsShift=0.00242226 meanAbsShift=0.00258256
+Smooth NearShift        StrongNoiseCross     medianAbsShift=5.00296e-06 meanAbsShift=9.58947e-06
+Abrupt AllCheapFailure  StrongPower          medianAbsShift=7.84185e-09 meanAbsShift=2.13585e-08
+Abrupt AllCheapFailure  NoisePower           medianAbsShift=0.000160983 meanAbsShift=0.000274504
+Abrupt AllCheapFailure  WeakStrongCross      medianAbsShift=6.96708e-05 meanAbsShift=0.000100807
+Abrupt AllCheapFailure  WeakNoiseCross       medianAbsShift=0.00168076 meanAbsShift=0.00205257
+Abrupt AllCheapFailure  StrongNoiseCross     medianAbsShift=7.33749e-06 meanAbsShift=1.46923e-05
+Abrupt NearShift        StrongPower          medianAbsShift=9.82533e-09 meanAbsShift=2.26534e-08
+Abrupt NearShift        NoisePower           medianAbsShift=0.000221326 meanAbsShift=0.0003338
+Abrupt NearShift        WeakStrongCross      medianAbsShift=7.10928e-05 meanAbsShift=0.000102592
+Abrupt NearShift        WeakNoiseCross       medianAbsShift=0.00274778 meanAbsShift=0.00300211
+Abrupt NearShift        StrongNoiseCross     medianAbsShift=8.01192e-06 meanAbsShift=1.5231e-05
+
+Cheap/fallback error coupling
+-----------------------------
+Smooth AllCheapFailure  n=1605 Pearson=0.574897 Spearman=0.736625 slope=0.218480 signAgree=0.906380
+Smooth FallbackFailure  n=361 Pearson=0.658281 Spearman=0.734631 slope=0.322665 signAgree=0.952909
+Smooth NearShift        n=357 Pearson=0.676311 Spearman=0.744334 slope=0.312745 signAgree=0.955182
+Abrupt AllCheapFailure  n=2652 Pearson=0.112898 Spearman=0.337272 slope=0.021087 signAgree=0.731481
+Abrupt FallbackFailure  n=878 Pearson=0.161863 Spearman=0.314686 slope=0.047903 signAgree=0.748292
+Abrupt NearShift        n=837 Pearson=0.293149 Spearman=0.360257 slope=0.052268 signAgree=0.762246
+
+NearShift local correction
+--------------------------
+Smooth CoarseTop1       n=357 recovery=0.000000 MAE=0.00503361 directionAcc=NaN
+Smooth Parabolic3       n=357 recovery=0.000000 MAE=0.00496994 directionAcc=0.579832
+Smooth LogQuadratic5    n=357 recovery=0.000000 MAE=0.00496887 directionAcc=0.585434
+Smooth LocalCentroid7   n=357 recovery=0.000000 MAE=0.0049677 directionAcc=0.585434
+Abrupt CoarseTop1       n=837 recovery=0.000000 MAE=0.00543011 directionAcc=NaN
+Abrupt Parabolic3       n=837 recovery=0.000000 MAE=0.00538498 directionAcc=0.577061
+Abrupt LogQuadratic5    n=837 recovery=0.000000 MAE=0.00538354 directionAcc=0.577061
+Abrupt LocalCentroid7   n=837 recovery=0.000000 MAE=0.00538234 directionAcc=0.577061
+
+Decision summary
+----------------
+Smooth nearFrac=0.2224 coarseRec=0.7751 bestLocal=Parabolic3 0.6935 gain=-0.0816 | halfGridRescue=0.0000 | FO-r=0.9842 FO-sign=1.0000 | cheapFB-r=0.6763 cheapFB-sign=0.9552 | dominant=WeakNoiseCross (0.00242226)
+Abrupt nearFrac=0.3156 coarseRec=0.6689 bestLocal=Parabolic3 0.5916 gain=-0.0773 | halfGridRescue=0.0000 | FO-r=0.9701 FO-sign=1.0000 | cheapFB-r=0.2931 cheapFB-sign=0.7622 | dominant=WeakNoiseCross (0.00274778)
+
+Interpretation logic
+--------------------
+A. High first-order correlation/sign agreement -> A4/B1 perturbation law survives in stochastic fallback residuals.
+B. Very low half-grid rescue -> NearShift is NOT mainly grid quantization; the operational peak itself is physically biased.
+C. Large Parabolic/LogQuadratic/Centroid gain -> cheap local curve geometry contains corrective information and can support a simple method.
+D. Little local-estimator gain but strong first-order law -> the shift is mechanistically understandable but not recoverable from top-peak geometry alone; next use extra evidence such as history/subaperture/multi-look.
+E. Strong Cheap-vs-fallback error coupling -> both branches share a perturbation source; next test should convert that oracle error relation into an observable history/prior-assisted correction.
+F. Weak first-order validation -> revisit the matched-response model and the operational max-over-frequency nonlinearity before proposing an algorithm.
+
+Runtime
+-------
+Smooth 20.543 s
+Abrupt 19.898 s

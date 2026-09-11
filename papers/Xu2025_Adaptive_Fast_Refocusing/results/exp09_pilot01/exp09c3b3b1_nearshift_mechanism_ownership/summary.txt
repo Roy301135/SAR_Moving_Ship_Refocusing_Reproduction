@@ -1,0 +1,91 @@
+EXP009-C3-B3B.1 NearShift Mechanism Ownership Test
+=================================================
+
+Research boundary
+-----------------
+q_strong remains known/oracle.
+SNR = 3.00 dB.
+q_weak = 1.470000.
+q step = 0.001000.
+success tau_q = 0.003000.
+near-shift max = 0.010000.
+paired noise across G0-G3 = YES.
+projection atom is fitted once from full mixture per trial/line.
+bootstrap unit = complete Monte-Carlo sequence.
+
+Ownership groups
+----------------
+G0 WeakOnly      = Sw + N
+G1 OperatorOnly  = Ew + En
+G2 ResidualOnly  = Sw + N + Es
+G3 FullCLEAN     = Ew + En + Es
+
+Sanity checks
+-------------
+Smooth oracleSubtractMismatch=4.96507e-16 fullDecompMismatch=0
+Abrupt oracleSubtractMismatch=4.96507e-16 fullDecompMismatch=0
+
+Group summary
+-------------
+Smooth G0_WeakOnly        n=4840 success=0.87955 failure=0.12045 nearAll=0.12004 MAE=0.00173884 RMSE=0.00232219 medAE=0.001 retention=1.00000 curvNorm=3553.17 weakBiasAbs=0
+Smooth G1_OperatorOnly    n=4840 success=0.88017 failure=0.11983 nearAll=0.11942 MAE=0.00173946 RMSE=0.00232152 medAE=0.001 retention=0.99999 curvNorm=3553.11 weakBiasAbs=0
+Smooth G2_ResidualOnly    n=4840 success=0.88099 failure=0.11901 nearAll=0.11860 MAE=0.00174545 RMSE=0.00232868 medAE=0.001 retention=1.00000 curvNorm=3553.17 weakBiasAbs=0
+Smooth G3_FullCLEAN       n=4840 success=0.88264 failure=0.11736 nearAll=0.11694 MAE=0.00174194 RMSE=0.00232312 medAE=0.001 retention=0.99999 curvNorm=3553.11 weakBiasAbs=0
+Abrupt G0_WeakOnly        n=4840 success=0.79029 failure=0.20971 nearAll=0.19876 MAE=0.00238988 RMSE=0.00414033 medAE=0.002 retention=1.00000 curvNorm=3553.17 weakBiasAbs=0
+Abrupt G1_OperatorOnly    n=4840 success=0.79091 failure=0.20909 nearAll=0.19793 MAE=0.0024124 RMSE=0.00428625 medAE=0.002 retention=0.99998 curvNorm=3552.9 weakBiasAbs=0
+Abrupt G2_ResidualOnly    n=4840 success=0.79194 failure=0.20806 nearAll=0.19711 MAE=0.0023843 RMSE=0.00410563 medAE=0.002 retention=1.00000 curvNorm=3553.17 weakBiasAbs=0
+Abrupt G3_FullCLEAN       n=4840 success=0.79070 failure=0.20930 nearAll=0.19855 MAE=0.0023969 RMSE=0.00412579 medAE=0.002 retention=0.99998 curvNorm=3552.9 weakBiasAbs=0
+
+Ownership effects with sequence-cluster bootstrap 95% CI
+------------------------------------------------------
+Smooth AbsError | G0=0.00173884 G1=0.00173946 G2=0.00174545 G3=0.00174194 | Operator=+6.19835e-07 [-6.81818e-06,+7.85124e-06] | Residual=+6.61157e-06 [+6.19835e-07,+1.28099e-05] | Interaction=-4.13223e-06 [-1.19835e-05,+3.5124e-06] | Total=+3.09917e-06 [-5.16529e-06,+1.19835e-05]
+Smooth Failure  | G0=0.120455 G1=0.119835 G2=0.119008 G3=0.117355 | Operator=-0.000619835 [-0.00268595,+0.00144628] | Residual=-0.00144628 [-0.0041374,+0.000826446] | Interaction=-0.00103306 [-0.00289256,+0.000619835] | Total=-0.00309917 [-0.00640496,+0]
+Abrupt AbsError | G0=0.00238988 G1=0.0024124 G2=0.0023843 G3=0.0023969 | Operator=+2.25207e-05 [-2.68595e-06,+5.88843e-05] | Residual=-5.57851e-06 [-5.20868e-05,+3.82283e-05] | Interaction=-9.91736e-06 [-4.36002e-05,+1.21901e-05] | Total=+7.02479e-06 [-4.19421e-05,+5.14463e-05]
+Abrupt Failure  | G0=0.209711 G1=0.209091 G2=0.208058 G3=0.209298 | Operator=-0.000619835 [-0.0035124,+0.00227273] | Residual=-0.00165289 [-0.00454545,+0.00103306] | Interaction=+0.0018595 [-0.00123967,+0.00495868] | Total=-0.000413223 [-0.00330579,+0.00247934]
+
+G3-NearShift-conditioned counterfactual
+--------------------------------------
+Smooth G0_WeakOnly        n=566 success=0.02473 near=0.97527 MAE=0.00484099 medAE=0.004
+Smooth G1_OperatorOnly    n=566 success=0.01767 near=0.98233 MAE=0.00484276 medAE=0.004
+Smooth G2_ResidualOnly    n=566 success=0.01590 near=0.98410 MAE=0.00485866 medAE=0.004
+Smooth G3_FullCLEAN       n=566 success=0.00000 near=1.00000 MAE=0.00486749 medAE=0.004
+Abrupt G0_WeakOnly        n=961 success=0.03018 near=0.96566 MAE=0.00534339 medAE=0.005
+Abrupt G1_OperatorOnly    n=961 success=0.02497 near=0.97399 MAE=0.00533923 medAE=0.005
+Abrupt G2_ResidualOnly    n=961 success=0.02497 near=0.97190 MAE=0.00532778 medAE=0.005
+Abrupt G3_FullCLEAN       n=961 success=0.00000 near=1.00000 MAE=0.0053486 medAE=0.005
+
+G3 NearShift first-order validation
+----------------------------------
+Smooth n=566 Pearson=0.978377 slope=0.952212 RMSE=0.000656178 sign=1.000000
+Abrupt n=961 Pearson=0.964470 slope=0.941293 RMSE=0.000931556 sign=1.000000
+
+G3 NearShift perturbation anatomy
+--------------------------------
+Smooth StrongPower          medianAbsShift=1.45469e-09 meanAbsShift=4.57715e-09
+Smooth NoisePower           medianAbsShift=0.000155335 meanAbsShift=0.000229104
+Smooth WeakStrongCross      medianAbsShift=5.85025e-05 meanAbsShift=8.29268e-05
+Smooth WeakNoiseCross       medianAbsShift=0.00253394 meanAbsShift=0.00269462
+Smooth StrongNoiseCross     medianAbsShift=5.28507e-06 meanAbsShift=1.00093e-05
+Abrupt StrongPower          medianAbsShift=9.37202e-09 meanAbsShift=2.25265e-08
+Abrupt NoisePower           medianAbsShift=0.000241709 meanAbsShift=0.000366877
+Abrupt WeakStrongCross      medianAbsShift=7.73436e-05 meanAbsShift=0.000105844
+Abrupt WeakNoiseCross       medianAbsShift=0.00268585 meanAbsShift=0.0028989
+Abrupt StrongNoiseCross     medianAbsShift=1.00424e-05 meanAbsShift=1.68777e-05
+
+Decision summary
+----------------
+Smooth | failure G0/G1/G2/G3=0.1205/0.1198/0.1190/0.1174 | MAE G0/G1/G2/G3=0.00173884/0.00173946/0.00174545/0.00174194 | curvRatio=1.0000 retention=1.0000 | AbsEff op/res/int=+6.19835e-07/+6.61157e-06/-4.13223e-06 | FailEff op/res/int=-0.000619835/-0.00144628/-0.00103306 | G3FO-r=0.9784 dominant=WeakNoiseCross (0.00253394)
+Abrupt | failure G0/G1/G2/G3=0.2097/0.2091/0.2081/0.2093 | MAE G0/G1/G2/G3=0.00238988/0.0024124/0.0023843/0.0023969 | curvRatio=0.9999 retention=1.0000 | AbsEff op/res/int=+2.25207e-05/-5.57851e-06/-9.91736e-06 | FailEff op/res/int=-0.000619835/-0.00165289/+0.0018595 | G3FO-r=0.9645 dominant=WeakNoiseCross (0.00268585)
+
+Interpretation branches
+-----------------------
+Branch A / intrinsic noise-limited: G0~G1~G2~G3, WeakNoiseCross dominates, little operator/residual/interaction excess.
+Branch B / operator amplification: G1~G3 >> G0 while G2~G0; check weak retention and normalized curvature loss.
+Branch C / residual dominated: G2~G3 >> G0 while G1~G0; expect WeakStrongCross/residual geometry to strengthen.
+Branch D / interaction dominated: G1>G0 and/or G2>G0, but G3 exceeds their additive expectation; interaction CI should exclude zero.
+Do not select a branch from bar height alone. Use paired effect sizes, cluster-bootstrap CIs, the G3-conditioned counterfactual, and first-order anatomy together.
+
+Runtime
+-------
+Smooth 20.286 s
+Abrupt 19.316 s

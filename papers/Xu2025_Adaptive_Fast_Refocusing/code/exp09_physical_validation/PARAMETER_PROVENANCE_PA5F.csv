@@ -1,0 +1,28 @@
+﻿parameter,value,unit,source/status,role
+carrier_frequency,3,GHz,Wang 2023 paper-grounded,physics
+PRF,188,Hz,Wang 2023 paper-grounded,sampling
+bandwidth,150,MHz,Wang 2023 paper-grounded,provenance
+platform_height,3000,m,Wang 2023 paper-grounded,geometry
+antenna_length,2,m,Wang 2023 paper-grounded,beam
+platform_velocity,150,m/s,Wang 2023 paper-grounded,physics
+pulse_width,1.5,us,Wang 2023 paper-grounded,provenance
+weak_velocity,15,m/s,PA5E-R1 inherited,weak reference
+R0_over_H,sqrt(2),,PA5E-R1 inherited,geometry
+delta_velocity,2.5;5;7.5;10;15;20,m/s,PA5E-R1 inherited,separation
+Aw_over_As,0.1;0.2;0.3;0.5;0.8,,PA5E inherited,contrast
+relative_phase,16 uniform values,rad,PA5E inherited,coherent mixture
+fractional_bin_offset,0;0.125;0.25;0.375;0.5,DFT bins,PA5D inherited,fence effect
+window_bins,1;3;5;9;17,bins,PA5E inherited,removal support
+peak_semantics,PlateauAwareTol,,PA5E-R1 selected audit implementation,fixed semantics
+peak_gate,0.7,fraction max magnitude,Wang 2023 Algorithm-2 paper-reported,peak threshold
+tie_eps_multiplier,100,,PA5E-R1 inherited numerical rule,near-equality handling
+subbin_estimator,3-point log-power parabola,,PA5F fixed a priori,fractional-bin estimation
+subbin_delta_clip,0.5,bins,standard local interpolation bound,estimator stability
+G0,eta_hat=0,,PA5F controlled baseline,no recenter
+G1,eta_hat=true eta,,PA5F oracle,mechanism upper bound
+G2,eta_hat from strong-only,,PA5F estimator isolation,estimator bias
+G3,eta_hat from strong+weak mixture,,PA5F practical deterministic,mixture contamination
+Dirichlet_model,finite-length exact DFT-bin energy,,PA5F analytic model,strong leakage prediction
+recoverability_floor,rmin=L0/sqrt(1-D0^2),,PA5B-PA5E exact mechanism,floor
+beta_s_error,0,,PA5F isolation,true chirp rate
+noise,none,,PA5F design,deterministic method validation

@@ -1,0 +1,16 @@
+﻿parameter,value,unit,source/status,role
+PA5I original trials,pa5i_trials.csv,,upstream PA5I,base-rate discovery set
+PA5I-R1 dense trials,pa5i_r1_dense_eta_trials.csv,,upstream PA5I-R1,stress-test set
+Paper1s W_beta_3dB,1.70e-4,rad,PA4 measured width,context Gamma only
+BeamDerived W_beta_3dB,8.60e-5,rad,PA4 measured width,context Gamma only
+G0 local halfwidth,0.75,bins,PA5I inherited,reconstruction
+G0 bracket points,33,samples,PA5I inherited,reconstruction
+reconstruction tolerance,1e-6,bins,PA5J-A audit,code-drift guard
+curvature probe h,0.05,bins,PA5J-A diagnostic choice,+2 objective feature
+plateau levels,0.90;0.95,relative magnitude,PA5J-A diagnostic choice,coarse ambiguity
+catastrophic threshold,0.10,bins,PA5I inherited,label
+branch match tolerance,0.02,bins,PA5I inherited,context
+trigger fractions,0.01;0.02;0.05;0.10;0.20;0.30;0.40;0.50,fraction,PA5J-A pre-registered,threshold-free capture audit
+univariate discovery AUC screen,0.75,,PA5J-A screening heuristic,shortlist only
+Gamma/contrast/eta as gate input,excluded,,design rule,prevent oracle/context leakage
+global branch error as gate input,excluded,,design rule,prevent label leakage

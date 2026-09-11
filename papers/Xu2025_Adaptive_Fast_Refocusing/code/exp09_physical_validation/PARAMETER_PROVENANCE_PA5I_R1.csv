@@ -1,0 +1,22 @@
+﻿parameter,value,unit,source/status,role
+Gamma definition,abs(beta_s-beta_w)/W_beta_3dB,,PA4 upstream definition,physical resolution coordinate
+beta mapping,beta=atan(K_res/PRF^2),rad,PA4 / P1B upstream definition,physical mapping
+Paper1s W_beta_3dB,1.70e-4,rad,PA4 measured intrinsic width,Gamma denominator
+BeamDerived W_beta_3dB,8.60e-5,rad,PA4 measured intrinsic width,Gamma denominator
+Paper HighV dv=5 Gamma,0.32798,,PA4 anchor,consistency audit
+Paper HighV dv=20 Gamma,1.36499,,PA4 anchor,consistency audit
+Beam HighV dv=5 Gamma,0.64834,,PA4 anchor,consistency audit
+Beam HighV dv=20 Gamma,2.69824,,PA4 anchor,consistency audit
+dense eta,0:0.01:0.5,bins,PA5I-R1 audit choice,fence continuum
+risk manifold,unique G0 catastrophic states from upstream PA5I,,"data-derived, not hand-picked",dense sweep scope
+G0,OriginalTop1,,PA5I inherited,baseline
+G1,Neighbor3,,PA5I inherited,branch-safe candidate
+G2,Top2Coarse,,PA5I inherited,comparison
+G3,Top3Coarse,,PA5I inherited,comparison
+G4,GlobalReference,,PA5I inherited,diagnostic reference
+dense global step,0.01,bins,PA5I-R1 accelerated audit,reference speed
+validation global step,0.001,bins,PA5I inherited,reference cross-check
+global reference tolerance,1e-5,bins,PA5I-R1 audit gate,reference validity
+branch match tolerance,0.02,bins,PA5I inherited,recovery metric
+catastrophic threshold,0.10,bins,PA5I inherited,rare-tail metric
+tail percentiles,95;99;99.5;99.9,percent,PA5I-R1,tail reporting

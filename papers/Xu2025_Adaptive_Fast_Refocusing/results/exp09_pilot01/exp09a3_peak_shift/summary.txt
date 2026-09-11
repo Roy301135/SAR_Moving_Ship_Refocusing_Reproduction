@@ -1,0 +1,31 @@
+EXP009-A3 Operator-Induced Peak-Shift Test
+==========================================
+
+MC trials: 100
+SNR: 3.000 dB
+q strong / weak: 1.420000 / 1.470000
+A weak / A strong: 0.400000
+Fixed strong FFT bin: 13
+Default notch halfwidth: 1
+
+Noiseless anatomy
+-----------------
+h=0: P1 bias=+0.00000000, P2 bias=-0.05000000, P3 bias=-0.05000000, strong residual/original strong energy=0.26315944, strong residual/weak energy=1.64474649, weak energy removed=0.00022473
+h=1: P1 bias=+0.00000000, P2 bias=-0.00100000, P3 bias=-0.00100000, strong residual/original strong energy=0.08857988, strong residual/weak energy=0.55362424, weak energy removed=0.00067994
+h=2: P1 bias=+0.00000000, P2 bias=-0.00100000, P3 bias=-0.00100000, strong residual/original strong energy=0.05309562, strong residual/weak energy=0.33184764, weak energy removed=0.00115290
+h=3: P1 bias=+0.00000000, P2 bias=-0.00100000, P3 bias=-0.00100000, strong residual/original strong energy=0.03790759, strong residual/weak energy=0.23692242, weak energy removed=0.00165745
+h=5: P1 bias=+0.00000000, P2 bias=-0.00200000, P3 bias=-0.00100000, strong residual/original strong energy=0.02411072, strong residual/weak energy=0.15069197, weak energy removed=0.00283656
+
+Default Monte Carlo
+-------------------
+D0_WeakNoise: Recall=0.980000, Bias=-0.00025000, RMSE=0.00150000, MAE=0.00113000
+D1_FilteredWeakNoise: Recall=0.980000, Bias=-0.00025000, RMSE=0.00151987, MAE=0.00115000
+D2_WeakNoisePlusStrongResidual: Recall=0.820000, Bias=-0.00155000, RMSE=0.00254362, MAE=0.00199000
+D3_CombinedFixedOperator: Recall=0.810000, Bias=-0.00152000, RMSE=0.00255734, MAE=0.00196000
+D4_PracticalAdaptiveNotch: Recall=0.810000, Bias=-0.00152000, RMSE=0.00255734, MAE=0.00196000
+
+Transitions
+D0->D1: SS=98 SF=0 FS=0 FF=2
+D0->D2: SS=82 SF=16 FS=0 FF=2
+D2->D3: SS=81 SF=1 FS=0 FF=18
+D3->D4: SS=81 SF=0 FS=0 FF=19

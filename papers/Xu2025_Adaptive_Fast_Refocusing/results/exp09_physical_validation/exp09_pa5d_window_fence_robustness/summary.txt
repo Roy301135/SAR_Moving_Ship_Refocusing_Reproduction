@@ -1,0 +1,462 @@
+EXP009 PA5D / Window Normalization + Fence Effect
+================================================
+
+Research questions
+------------------
+1) Does fixed-bin comparison bias aperture comparison?
+2) Does off-grid focusing change the leakage/loss tradeoff?
+3) Does contrast-scaled beta tolerance survive?
+4) Does off-grid focusing introduce directional mismatch asymmetry?
+
+Physical setup
+--------------
+fc=3e+09 Hz, PRF=188 Hz, lambda=0.1 m, R0=4242.64 m
+weak velocity=15 m/s
+Delta-v=[2.5 5 7.5 10 15 20] m/s
+Aw/As=[0.1 0.2 0.3 0.5 0.8]
+fence offsets=[0 0.125 0.25 0.375 0.5] bins
+
+Intrinsic widths
+----------------
+Paper1s N=188 T=0.994681 Wbeta=0.00017
+BeamDerived N=266 T=1.40957 Wbeta=8.6e-05
+
+Window specifications
+---------------------
+Paper1s FixedBins idx=1 L=1 L/N=0.00531915 BW=1 Hz targetL/N=0.00531915
+Paper1s BandwidthMatched idx=1 L=1 L/N=0.00531915 BW=1 Hz targetL/N=0.00531915
+Paper1s FixedBins idx=2 L=3 L/N=0.0159574 BW=3 Hz targetL/N=0.0159574
+Paper1s BandwidthMatched idx=2 L=3 L/N=0.0159574 BW=3 Hz targetL/N=0.0159574
+Paper1s FixedBins idx=3 L=5 L/N=0.0265957 BW=5 Hz targetL/N=0.0265957
+Paper1s BandwidthMatched idx=3 L=5 L/N=0.0265957 BW=5 Hz targetL/N=0.0265957
+Paper1s FixedBins idx=4 L=9 L/N=0.0478723 BW=9 Hz targetL/N=0.0478723
+Paper1s BandwidthMatched idx=4 L=9 L/N=0.0478723 BW=9 Hz targetL/N=0.0478723
+Paper1s FixedBins idx=5 L=17 L/N=0.0904255 BW=17 Hz targetL/N=0.0904255
+Paper1s BandwidthMatched idx=5 L=17 L/N=0.0904255 BW=17 Hz targetL/N=0.0904255
+BeamDerived FixedBins idx=1 L=1 L/N=0.0037594 BW=0.706767 Hz targetL/N=0.0037594
+BeamDerived BandwidthMatched idx=1 L=1 L/N=0.0037594 BW=0.706767 Hz targetL/N=0.00531915
+BeamDerived FixedBins idx=2 L=3 L/N=0.0112782 BW=2.1203 Hz targetL/N=0.0112782
+BeamDerived BandwidthMatched idx=2 L=5 L/N=0.018797 BW=3.53383 Hz targetL/N=0.0159574
+BeamDerived FixedBins idx=3 L=5 L/N=0.018797 BW=3.53383 Hz targetL/N=0.018797
+BeamDerived BandwidthMatched idx=3 L=7 L/N=0.0263158 BW=4.94737 Hz targetL/N=0.0265957
+BeamDerived FixedBins idx=4 L=9 L/N=0.0338346 BW=6.3609 Hz targetL/N=0.0338346
+BeamDerived BandwidthMatched idx=4 L=13 L/N=0.0488722 BW=9.18797 Hz targetL/N=0.0478723
+BeamDerived FixedBins idx=5 L=17 L/N=0.0639098 BW=12.015 Hz targetL/N=0.0639098
+BeamDerived BandwidthMatched idx=5 L=25 L/N=0.093985 BW=17.6692 Hz targetL/N=0.0904255
+
+Projection identity
+-------------------
+Paper1s FixedBins maxErr=2.88658e-15 pass=1
+Paper1s BandwidthMatched maxErr=2.88658e-15 pass=1
+BeamDerived FixedBins maxErr=2.66454e-15 pass=1
+BeamDerived BandwidthMatched maxErr=2.66454e-15 pass=1
+
+Family comparison
+-----------------
+Paper1s FixedBins medBalancedL=3 medL/N=0.0159574 medBW=3Hz success=0.945225 error=1.1297 offsetSpan=0.552531
+Paper1s BandwidthMatched medBalancedL=3 medL/N=0.0159574 medBW=3Hz success=0.945225 error=1.1297 offsetSpan=0.552531
+BeamDerived FixedBins medBalancedL=3 medL/N=0.0112782 medBW=2.1203Hz success=0.966988 error=1.18504 offsetSpan=1.13802
+BeamDerived BandwidthMatched medBalancedL=1 medL/N=0.0037594 medBW=0.706767Hz success=0.977992 error=1.942 offsetSpan=2.17376
+
+Balanced window by fence offset
+-------------------------------
+Paper1s FixedBins eta=0 idx=2 L=3 L/N=0.0159574 BW=3Hz success=0.945225 error=0.80993 leak=0.13698 weakLoss=0.558392
+Paper1s FixedBins eta=0.125 idx=2 L=3 L/N=0.0159574 BW=3Hz success=0.949438 error=0.965381 leak=0.182032 weakLoss=0.554811
+Paper1s FixedBins eta=0.25 idx=2 L=3 L/N=0.0159574 BW=3Hz success=0.953652 error=1.1297 leak=0.26042 weakLoss=0.567827
+Paper1s FixedBins eta=0.375 idx=2 L=3 L/N=0.0159574 BW=3Hz success=0.929775 error=1.34825 leak=0.319084 weakLoss=0.583732
+Paper1s FixedBins eta=0.5 idx=2 L=3 L/N=0.0159574 BW=3Hz success=0.852528 error=1.36246 leak=0.346928 weakLoss=0.598527
+Paper1s BandwidthMatched eta=0 idx=2 L=3 L/N=0.0159574 BW=3Hz success=0.945225 error=0.80993 leak=0.13698 weakLoss=0.558392
+Paper1s BandwidthMatched eta=0.125 idx=2 L=3 L/N=0.0159574 BW=3Hz success=0.949438 error=0.965381 leak=0.182032 weakLoss=0.554811
+Paper1s BandwidthMatched eta=0.25 idx=2 L=3 L/N=0.0159574 BW=3Hz success=0.953652 error=1.1297 leak=0.26042 weakLoss=0.567827
+Paper1s BandwidthMatched eta=0.375 idx=2 L=3 L/N=0.0159574 BW=3Hz success=0.929775 error=1.34825 leak=0.319084 weakLoss=0.583732
+Paper1s BandwidthMatched eta=0.5 idx=2 L=3 L/N=0.0159574 BW=3Hz success=0.852528 error=1.36246 leak=0.346928 weakLoss=0.598527
+BeamDerived FixedBins eta=0 idx=2 L=3 L/N=0.0112782 BW=2.1203Hz success=0.966988 error=0.620541 leak=0.0883849 weakLoss=0.402074
+BeamDerived FixedBins eta=0.125 idx=2 L=3 L/N=0.0112782 BW=2.1203Hz success=0.976616 error=0.929106 leak=0.163025 weakLoss=0.416403
+BeamDerived FixedBins eta=0.25 idx=2 L=3 L/N=0.0112782 BW=2.1203Hz success=0.975241 error=1.18504 leak=0.260148 weakLoss=0.427776
+BeamDerived FixedBins eta=0.375 idx=2 L=3 L/N=0.0112782 BW=2.1203Hz success=0.950481 error=1.45942 leak=0.330765 weakLoss=0.456174
+BeamDerived FixedBins eta=0.5 idx=2 L=3 L/N=0.0112782 BW=2.1203Hz success=0.872077 error=1.75856 leak=0.363566 weakLoss=0.458717
+BeamDerived BandwidthMatched eta=0 idx=1 L=1 L/N=0.0037594 BW=0.706767Hz success=0.993122 error=0.760692 leak=0.145448 weakLoss=0.184503
+BeamDerived BandwidthMatched eta=0.125 idx=1 L=1 L/N=0.0037594 BW=0.706767Hz success=0.990371 error=1.18842 leak=0.265694 weakLoss=0.198142
+BeamDerived BandwidthMatched eta=0.25 idx=1 L=1 L/N=0.0037594 BW=0.706767Hz success=0.977992 error=1.942 leak=0.437957 weakLoss=0.209652
+BeamDerived BandwidthMatched eta=0.375 idx=1 L=1 L/N=0.0037594 BW=0.706767Hz success=0.944979 error=2.53666 leak=0.588104 weakLoss=0.209319
+BeamDerived BandwidthMatched eta=0.5 idx=1 L=1 L/N=0.0037594 BW=0.706767Hz success=0.914718 error=2.93446 leak=0.682565 weakLoss=0.212903
+
+Adaptive tolerance summary
+--------------------------
+Paper1s FixedBins eta=0 idx=1 L=1 r=0.1 E0=0.222329 tolNeg=0.0174135 tolPos=0.017467 tolSym=0.0174135 asym=0.00306718 censored=0/0
+Paper1s FixedBins eta=0 idx=1 L=1 r=0.2 E0=0.222329 tolNeg=0.0349619 tolPos=0.0351573 tolSym=0.0349619 asym=0.0055732 censored=0/0
+Paper1s FixedBins eta=0 idx=1 L=1 r=0.3 E0=0.222329 tolNeg=0.0528709 tolPos=0.0532409 tolSym=0.0528709 asym=0.00697451 censored=0/0
+Paper1s FixedBins eta=0 idx=1 L=1 r=0.5 E0=0.222329 tolNeg=0.091071 tolPos=0.0914052 tolSym=0.091071 asym=0.00366255 censored=0/0
+Paper1s FixedBins eta=0 idx=1 L=1 r=0.8 E0=0.222329 tolNeg=0.165159 tolPos=0.16004 tolSym=0.16004 asym=0.0314824 censored=0/0
+Paper1s FixedBins eta=0.25 idx=1 L=1 r=0.1 E0=4.3585 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=1 L=1 r=0.2 E0=2.1885 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=1 L=1 r=0.3 E0=1.46923 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=1 L=1 r=0.5 E0=0.900891 tolNeg=0.0107555 tolPos=0.16907 tolSym=0.0107555 asym=1.76076 censored=0/0
+Paper1s FixedBins eta=0.25 idx=1 L=1 r=0.8 E0=0.591507 tolNeg=0.0830522 tolPos=0.242556 tolSym=0.0830522 asym=0.97973 censored=0/0
+Paper1s FixedBins eta=0.5 idx=1 L=1 r=0.1 E0=7.7146 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=1 L=1 r=0.2 E0=3.86163 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=1 L=1 r=0.3 E0=2.57922 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=1 L=1 r=0.5 E0=1.55671 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=1 L=1 r=0.8 E0=0.986794 tolNeg=0.000851049 tolPos=0.323353 tolSym=0.000851049 asym=1.9895 censored=0/0
+Paper1s FixedBins eta=0 idx=2 L=3 r=0.1 E0=0.54586 tolNeg=0.0244745 tolPos=0.0249325 tolSym=0.0244745 asym=0.0185369 censored=0/0
+Paper1s FixedBins eta=0 idx=2 L=3 r=0.2 E0=0.54586 tolNeg=0.0497665 tolPos=0.0513008 tolSym=0.0497665 asym=0.0303631 censored=0/0
+Paper1s FixedBins eta=0 idx=2 L=3 r=0.3 E0=0.54586 tolNeg=0.0780734 tolPos=0.0800458 tolSym=0.0780734 asym=0.0249491 censored=0/0
+Paper1s FixedBins eta=0 idx=2 L=3 r=0.5 E0=0.54586 tolNeg=0.166568 tolPos=0.148762 tolSym=0.148762 asym=0.112935 censored=0/0
+Paper1s FixedBins eta=0 idx=2 L=3 r=0.8 E0=0.54586 tolNeg=0.792417 tolPos=0.83686 tolSym=0.792417 asym=0.0545548 censored=0/0
+Paper1s FixedBins eta=0.25 idx=2 L=3 r=0.1 E0=2.64155 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=2 L=3 r=0.2 E0=1.39928 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=2 L=3 r=0.3 E0=1.01411 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=2 L=3 r=0.5 E0=0.743277 tolNeg=0.0845394 tolPos=0.226401 tolSym=0.0845394 asym=0.912469 censored=0/0
+Paper1s FixedBins eta=0.25 idx=2 L=3 r=0.8 E0=0.623953 tolNeg=2 tolPos=0.789724 tolSym=0.789724 asym=0.867667 censored=1/0
+Paper1s FixedBins eta=0.5 idx=2 L=3 r=0.1 E0=3.82639 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=2 L=3 r=0.2 E0=1.9528 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=2 L=3 r=0.3 E0=1.34473 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=2 L=3 r=0.5 E0=0.884111 tolNeg=0.00219179 tolPos=0.303439 tolSym=0.00219179 asym=1.97131 censored=0/0
+Paper1s FixedBins eta=0.5 idx=2 L=3 r=0.8 E0=0.655553 tolNeg=0.999415 tolPos=0.789006 tolSym=0.789006 asym=0.235302 censored=0/0
+Paper1s FixedBins eta=0 idx=3 L=5 r=0.1 E0=0.834164 tolNeg=0.0212973 tolPos=0.0205065 tolSym=0.0205065 asym=0.0378352 censored=0/0
+Paper1s FixedBins eta=0 idx=3 L=5 r=0.2 E0=0.834164 tolNeg=0.0450589 tolPos=0.041294 tolSym=0.041294 asym=0.0871961 censored=0/0
+Paper1s FixedBins eta=0 idx=3 L=5 r=0.3 E0=0.834164 tolNeg=0.0748401 tolPos=0.0632676 tolSym=0.0632676 asym=0.167586 censored=0/0
+Paper1s FixedBins eta=0 idx=3 L=5 r=0.5 E0=0.834164 tolNeg=0.167095 tolPos=0.115018 tolSym=0.115018 asym=0.369199 censored=0/0
+Paper1s FixedBins eta=0 idx=3 L=5 r=0.8 E0=0.834164 tolNeg=2 tolPos=0.460498 tolSym=0.460498 asym=1.25137 censored=1/0
+Paper1s FixedBins eta=0.25 idx=3 L=5 r=0.1 E0=2.1639 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=3 L=5 r=0.2 E0=1.28632 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=3 L=5 r=0.3 E0=1.04589 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=3 L=5 r=0.5 E0=0.898225 tolNeg=0.0844637 tolPos=0.186143 tolSym=0.0844637 asym=0.751489 censored=0/0
+Paper1s FixedBins eta=0.25 idx=3 L=5 r=0.8 E0=0.841666 tolNeg=2 tolPos=0.511955 tolSym=0.511955 asym=1.18477 censored=1/0
+Paper1s FixedBins eta=0.5 idx=3 L=5 r=0.1 E0=2.96601 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=3 L=5 r=0.2 E0=1.60126 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=3 L=5 r=0.3 E0=1.18733 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=3 L=5 r=0.5 E0=0.904853 tolNeg=0.00180682 tolPos=0.255714 tolSym=0.00180682 asym=1.97194 censored=0/0
+Paper1s FixedBins eta=0.5 idx=3 L=5 r=0.8 E0=0.784972 tolNeg=2 tolPos=0.529015 tolSym=0.529015 asym=1.16329 censored=1/0
+Paper1s FixedBins eta=0 idx=4 L=9 r=0.1 E0=0.992705 tolNeg=0.00601208 tolPos=0.00596718 tolSym=0.00596718 asym=0.00749578 censored=0/0
+Paper1s FixedBins eta=0 idx=4 L=9 r=0.2 E0=0.992705 tolNeg=0.0126046 tolPos=0.012393 tolSym=0.012393 asym=0.016934 censored=0/0
+Paper1s FixedBins eta=0 idx=4 L=9 r=0.3 E0=0.992705 tolNeg=0.0198428 tolPos=0.0192309 tolSym=0.0192309 asym=0.0313214 censored=0/0
+Paper1s FixedBins eta=0 idx=4 L=9 r=0.5 E0=0.992705 tolNeg=0.0403253 tolPos=0.0366524 tolSym=0.0366524 asym=0.0954272 censored=0/0
+Paper1s FixedBins eta=0 idx=4 L=9 r=0.8 E0=0.992705 tolNeg=2 tolPos=0.101529 tolSym=0.101529 asym=1.80675 censored=1/0
+Paper1s FixedBins eta=0.25 idx=4 L=9 r=0.1 E0=1.78827 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=4 L=9 r=0.2 E0=1.2305 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=4 L=9 r=0.3 E0=1.0965 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=4 L=9 r=0.5 E0=1.02111 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=4 L=9 r=0.8 E0=0.993953 tolNeg=0.0848706 tolPos=0.169167 tolSym=0.0848706 asym=0.663655 censored=0/0
+Paper1s FixedBins eta=0.5 idx=4 L=9 r=0.1 E0=2.32989 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=4 L=9 r=0.2 E0=1.42472 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=4 L=9 r=0.3 E0=1.18342 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=4 L=9 r=0.5 E0=1.03838 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=4 L=9 r=0.8 E0=0.983762 tolNeg=0.0020683 tolPos=0.23731 tolSym=0.0020683 asym=1.96544 censored=0/0
+Paper1s FixedBins eta=0 idx=5 L=17 r=0.1 E0=0.999653 tolNeg=0.00130492 tolPos=0.00139195 tolSym=0.00130492 asym=0.0645423 censored=0/0
+Paper1s FixedBins eta=0 idx=5 L=17 r=0.2 E0=0.999653 tolNeg=0.003374 tolPos=0.00368811 tolSym=0.003374 asym=0.0889563 censored=0/0
+Paper1s FixedBins eta=0 idx=5 L=17 r=0.3 E0=0.999653 tolNeg=0.00532014 tolPos=0.00604288 tolSym=0.00532014 asym=0.127211 censored=0/0
+Paper1s FixedBins eta=0 idx=5 L=17 r=0.5 E0=0.999653 tolNeg=0.00936522 tolPos=0.0120992 tolSym=0.00936522 asym=0.254744 censored=0/0
+Paper1s FixedBins eta=0 idx=5 L=17 r=0.8 E0=0.999653 tolNeg=0.0195534 tolPos=0.0352499 tolSym=0.0195534 asym=0.572831 censored=0/0
+Paper1s FixedBins eta=0.25 idx=5 L=17 r=0.1 E0=1.47341 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=5 L=17 r=0.2 E0=1.13279 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=5 L=17 r=0.3 E0=1.05774 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=5 L=17 r=0.5 E0=1.01717 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.25 idx=5 L=17 r=0.8 E0=1.00289 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=5 L=17 r=0.1 E0=1.82923 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=5 L=17 r=0.2 E0=1.25139 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=5 L=17 r=0.3 E0=1.11191 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=5 L=17 r=0.5 E0=1.03323 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s FixedBins eta=0.5 idx=5 L=17 r=0.8 E0=1.00484 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=1 L=1 r=0.1 E0=0.222329 tolNeg=0.0174135 tolPos=0.017467 tolSym=0.0174135 asym=0.00306718 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=1 L=1 r=0.2 E0=0.222329 tolNeg=0.0349619 tolPos=0.0351573 tolSym=0.0349619 asym=0.0055732 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=1 L=1 r=0.3 E0=0.222329 tolNeg=0.0528709 tolPos=0.0532409 tolSym=0.0528709 asym=0.00697451 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=1 L=1 r=0.5 E0=0.222329 tolNeg=0.091071 tolPos=0.0914052 tolSym=0.091071 asym=0.00366255 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=1 L=1 r=0.8 E0=0.222329 tolNeg=0.165159 tolPos=0.16004 tolSym=0.16004 asym=0.0314824 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=1 L=1 r=0.1 E0=4.3585 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=1 L=1 r=0.2 E0=2.1885 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=1 L=1 r=0.3 E0=1.46923 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=1 L=1 r=0.5 E0=0.900891 tolNeg=0.0107555 tolPos=0.16907 tolSym=0.0107555 asym=1.76076 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=1 L=1 r=0.8 E0=0.591507 tolNeg=0.0830522 tolPos=0.242556 tolSym=0.0830522 asym=0.97973 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=1 L=1 r=0.1 E0=7.7146 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=1 L=1 r=0.2 E0=3.86163 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=1 L=1 r=0.3 E0=2.57922 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=1 L=1 r=0.5 E0=1.55671 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=1 L=1 r=0.8 E0=0.986794 tolNeg=0.000851049 tolPos=0.323353 tolSym=0.000851049 asym=1.9895 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=2 L=3 r=0.1 E0=0.54586 tolNeg=0.0244745 tolPos=0.0249325 tolSym=0.0244745 asym=0.0185369 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=2 L=3 r=0.2 E0=0.54586 tolNeg=0.0497665 tolPos=0.0513008 tolSym=0.0497665 asym=0.0303631 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=2 L=3 r=0.3 E0=0.54586 tolNeg=0.0780734 tolPos=0.0800458 tolSym=0.0780734 asym=0.0249491 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=2 L=3 r=0.5 E0=0.54586 tolNeg=0.166568 tolPos=0.148762 tolSym=0.148762 asym=0.112935 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=2 L=3 r=0.8 E0=0.54586 tolNeg=0.792417 tolPos=0.83686 tolSym=0.792417 asym=0.0545548 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=2 L=3 r=0.1 E0=2.64155 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=2 L=3 r=0.2 E0=1.39928 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=2 L=3 r=0.3 E0=1.01411 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=2 L=3 r=0.5 E0=0.743277 tolNeg=0.0845394 tolPos=0.226401 tolSym=0.0845394 asym=0.912469 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=2 L=3 r=0.8 E0=0.623953 tolNeg=2 tolPos=0.789724 tolSym=0.789724 asym=0.867667 censored=1/0
+Paper1s BandwidthMatched eta=0.5 idx=2 L=3 r=0.1 E0=3.82639 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=2 L=3 r=0.2 E0=1.9528 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=2 L=3 r=0.3 E0=1.34473 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=2 L=3 r=0.5 E0=0.884111 tolNeg=0.00219179 tolPos=0.303439 tolSym=0.00219179 asym=1.97131 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=2 L=3 r=0.8 E0=0.655553 tolNeg=0.999415 tolPos=0.789006 tolSym=0.789006 asym=0.235302 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=3 L=5 r=0.1 E0=0.834164 tolNeg=0.0212973 tolPos=0.0205065 tolSym=0.0205065 asym=0.0378352 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=3 L=5 r=0.2 E0=0.834164 tolNeg=0.0450589 tolPos=0.041294 tolSym=0.041294 asym=0.0871961 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=3 L=5 r=0.3 E0=0.834164 tolNeg=0.0748401 tolPos=0.0632676 tolSym=0.0632676 asym=0.167586 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=3 L=5 r=0.5 E0=0.834164 tolNeg=0.167095 tolPos=0.115018 tolSym=0.115018 asym=0.369199 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=3 L=5 r=0.8 E0=0.834164 tolNeg=2 tolPos=0.460498 tolSym=0.460498 asym=1.25137 censored=1/0
+Paper1s BandwidthMatched eta=0.25 idx=3 L=5 r=0.1 E0=2.1639 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=3 L=5 r=0.2 E0=1.28632 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=3 L=5 r=0.3 E0=1.04589 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=3 L=5 r=0.5 E0=0.898225 tolNeg=0.0844637 tolPos=0.186143 tolSym=0.0844637 asym=0.751489 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=3 L=5 r=0.8 E0=0.841666 tolNeg=2 tolPos=0.511955 tolSym=0.511955 asym=1.18477 censored=1/0
+Paper1s BandwidthMatched eta=0.5 idx=3 L=5 r=0.1 E0=2.96601 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=3 L=5 r=0.2 E0=1.60126 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=3 L=5 r=0.3 E0=1.18733 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=3 L=5 r=0.5 E0=0.904853 tolNeg=0.00180682 tolPos=0.255714 tolSym=0.00180682 asym=1.97194 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=3 L=5 r=0.8 E0=0.784972 tolNeg=2 tolPos=0.529015 tolSym=0.529015 asym=1.16329 censored=1/0
+Paper1s BandwidthMatched eta=0 idx=4 L=9 r=0.1 E0=0.992705 tolNeg=0.00601208 tolPos=0.00596718 tolSym=0.00596718 asym=0.00749578 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=4 L=9 r=0.2 E0=0.992705 tolNeg=0.0126046 tolPos=0.012393 tolSym=0.012393 asym=0.016934 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=4 L=9 r=0.3 E0=0.992705 tolNeg=0.0198428 tolPos=0.0192309 tolSym=0.0192309 asym=0.0313214 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=4 L=9 r=0.5 E0=0.992705 tolNeg=0.0403253 tolPos=0.0366524 tolSym=0.0366524 asym=0.0954272 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=4 L=9 r=0.8 E0=0.992705 tolNeg=2 tolPos=0.101529 tolSym=0.101529 asym=1.80675 censored=1/0
+Paper1s BandwidthMatched eta=0.25 idx=4 L=9 r=0.1 E0=1.78827 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=4 L=9 r=0.2 E0=1.2305 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=4 L=9 r=0.3 E0=1.0965 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=4 L=9 r=0.5 E0=1.02111 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=4 L=9 r=0.8 E0=0.993953 tolNeg=0.0848706 tolPos=0.169167 tolSym=0.0848706 asym=0.663655 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=4 L=9 r=0.1 E0=2.32989 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=4 L=9 r=0.2 E0=1.42472 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=4 L=9 r=0.3 E0=1.18342 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=4 L=9 r=0.5 E0=1.03838 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=4 L=9 r=0.8 E0=0.983762 tolNeg=0.0020683 tolPos=0.23731 tolSym=0.0020683 asym=1.96544 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=5 L=17 r=0.1 E0=0.999653 tolNeg=0.00130492 tolPos=0.00139195 tolSym=0.00130492 asym=0.0645423 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=5 L=17 r=0.2 E0=0.999653 tolNeg=0.003374 tolPos=0.00368811 tolSym=0.003374 asym=0.0889563 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=5 L=17 r=0.3 E0=0.999653 tolNeg=0.00532014 tolPos=0.00604288 tolSym=0.00532014 asym=0.127211 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=5 L=17 r=0.5 E0=0.999653 tolNeg=0.00936522 tolPos=0.0120992 tolSym=0.00936522 asym=0.254744 censored=0/0
+Paper1s BandwidthMatched eta=0 idx=5 L=17 r=0.8 E0=0.999653 tolNeg=0.0195534 tolPos=0.0352499 tolSym=0.0195534 asym=0.572831 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=5 L=17 r=0.1 E0=1.47341 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=5 L=17 r=0.2 E0=1.13279 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=5 L=17 r=0.3 E0=1.05774 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=5 L=17 r=0.5 E0=1.01717 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.25 idx=5 L=17 r=0.8 E0=1.00289 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=5 L=17 r=0.1 E0=1.82923 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=5 L=17 r=0.2 E0=1.25139 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=5 L=17 r=0.3 E0=1.11191 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=5 L=17 r=0.5 E0=1.03323 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+Paper1s BandwidthMatched eta=0.5 idx=5 L=17 r=0.8 E0=1.00484 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0 idx=1 L=1 r=0.1 E0=0.16308 tolNeg=0.0173956 tolPos=0.0174159 tolSym=0.0173956 asym=0.00116783 censored=0/0
+BeamDerived FixedBins eta=0 idx=1 L=1 r=0.2 E0=0.16308 tolNeg=0.0349819 tolPos=0.035058 tolSym=0.0349819 asym=0.00217482 censored=0/0
+BeamDerived FixedBins eta=0 idx=1 L=1 r=0.3 E0=0.16308 tolNeg=0.0529992 tolPos=0.0531507 tolSym=0.0529992 asym=0.00285533 censored=0/0
+BeamDerived FixedBins eta=0 idx=1 L=1 r=0.5 E0=0.16308 tolNeg=0.0916472 tolPos=0.0918672 tolSym=0.0916472 asym=0.00239807 censored=0/0
+BeamDerived FixedBins eta=0 idx=1 L=1 r=0.8 E0=0.16308 tolNeg=0.164198 tolPos=0.475255 tolSym=0.164198 asym=0.972887 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=1 L=1 r=0.1 E0=4.35559 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=1 L=1 r=0.2 E0=2.18267 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=1 L=1 r=0.3 E0=1.46051 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=1 L=1 r=0.5 E0=0.886595 tolNeg=0.0120455 tolPos=0.168049 tolSym=0.0120455 asym=1.73246 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=1 L=1 r=0.8 E0=0.569491 tolNeg=0.397547 tolPos=0.542646 tolSym=0.397547 asym=0.308658 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=1 L=1 r=0.1 E0=7.71333 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=1 L=1 r=0.2 E0=3.85903 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=1 L=1 r=0.3 E0=2.57531 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=1 L=1 r=0.5 E0=1.55022 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=1 L=1 r=0.8 E0=0.976508 tolNeg=0.323684 tolPos=0.325938 tolSym=0.323684 asym=0.00694192 censored=0/0
+BeamDerived FixedBins eta=0 idx=2 L=3 r=0.1 E0=0.339521 tolNeg=0.0272921 tolPos=0.0274855 tolSym=0.0272921 asym=0.00706044 censored=0/0
+BeamDerived FixedBins eta=0 idx=2 L=3 r=0.2 E0=0.339521 tolNeg=0.0560494 tolPos=0.0567224 tolSym=0.0560494 asym=0.0119351 censored=0/0
+BeamDerived FixedBins eta=0 idx=2 L=3 r=0.3 E0=0.339521 tolNeg=0.0892985 tolPos=0.0902501 tolSym=0.0892985 asym=0.0106 censored=0/0
+BeamDerived FixedBins eta=0 idx=2 L=3 r=0.5 E0=0.339521 tolNeg=0.462368 tolPos=0.478955 tolSym=0.462368 asym=0.0352411 censored=0/0
+BeamDerived FixedBins eta=0 idx=2 L=3 r=0.8 E0=0.339521 tolNeg=2 tolPos=2 tolSym=2 asym=0 censored=1/1
+BeamDerived FixedBins eta=0.25 idx=2 L=3 r=0.1 E0=2.6095 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=2 L=3 r=0.2 E0=1.33761 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=2 L=3 r=0.3 E0=0.927094 tolNeg=0.00950919 tolPos=0.170155 tolSym=0.00950919 asym=1.78829 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=2 L=3 r=0.5 E0=0.619277 tolNeg=0.402308 tolPos=0.545753 tolSym=0.402308 asym=0.302606 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=2 L=3 r=0.8 E0=0.469408 tolNeg=2 tolPos=1.55612 tolSym=1.55612 asym=0.249646 censored=1/0
+BeamDerived FixedBins eta=0.5 idx=2 L=3 r=0.1 E0=3.81205 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=2 L=3 r=0.2 E0=1.92428 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=2 L=3 r=0.3 E0=1.30288 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=2 L=3 r=0.5 E0=0.819007 tolNeg=0.329467 tolPos=0.612922 tolSym=0.329467 asym=0.601567 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=2 L=3 r=0.8 E0=0.564655 tolNeg=2 tolPos=1.63962 tolSym=1.63962 asym=0.198029 censored=1/0
+BeamDerived FixedBins eta=0 idx=3 L=5 r=0.1 E0=0.54128 tolNeg=0.0313838 tolPos=0.0317937 tolSym=0.0313838 asym=0.0129749 censored=0/0
+BeamDerived FixedBins eta=0 idx=3 L=5 r=0.2 E0=0.54128 tolNeg=0.0657771 tolPos=0.0670481 tolSym=0.0657771 asym=0.0191377 censored=0/0
+BeamDerived FixedBins eta=0 idx=3 L=5 r=0.3 E0=0.54128 tolNeg=0.113231 tolPos=0.112375 tolSym=0.112375 asym=0.00758842 censored=0/0
+BeamDerived FixedBins eta=0 idx=3 L=5 r=0.5 E0=0.54128 tolNeg=0.781952 tolPos=1.17629 tolSym=0.781952 asym=0.40275 censored=0/0
+BeamDerived FixedBins eta=0 idx=3 L=5 r=0.8 E0=0.54128 tolNeg=2 tolPos=1.27987 tolSym=1.27987 asym=0.439124 censored=1/0
+BeamDerived FixedBins eta=0.25 idx=3 L=5 r=0.1 E0=2.07788 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=3 L=5 r=0.2 E0=1.13527 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=3 L=5 r=0.3 E0=0.8532 tolNeg=0.0348228 tolPos=0.194889 tolSym=0.0348228 asym=1.39363 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=3 L=5 r=0.5 E0=0.663912 tolNeg=1.67799 tolPos=1.24893 tolSym=1.24893 asym=0.293186 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=3 L=5 r=0.8 E0=0.585103 tolNeg=2 tolPos=1.33127 tolSym=1.33127 asym=0.401486 censored=1/0
+BeamDerived FixedBins eta=0.5 idx=3 L=5 r=0.1 E0=2.92068 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=3 L=5 r=0.2 E0=1.51507 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=3 L=5 r=0.3 E0=1.06809 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=3 L=5 r=0.5 E0=0.741387 tolNeg=0.983545 tolPos=0.989589 tolSym=0.983545 asym=0.00612595 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=3 L=5 r=0.8 E0=0.589084 tolNeg=2 tolPos=1.41055 tolSym=1.41055 asym=0.345664 censored=1/0
+BeamDerived FixedBins eta=0 idx=4 L=9 r=0.1 E0=0.737138 tolNeg=0.0340302 tolPos=0.0341076 tolSym=0.0340302 asym=0.00227041 censored=0/0
+BeamDerived FixedBins eta=0 idx=4 L=9 r=0.2 E0=0.737138 tolNeg=0.0729308 tolPos=0.0719277 tolSym=0.0719277 asym=0.01385 censored=0/0
+BeamDerived FixedBins eta=0 idx=4 L=9 r=0.3 E0=0.737138 tolNeg=0.162524 tolPos=0.120439 tolSym=0.120439 asym=0.297456 censored=0/0
+BeamDerived FixedBins eta=0 idx=4 L=9 r=0.5 E0=0.737138 tolNeg=2 tolPos=0.824652 tolSym=0.824652 asym=0.832207 censored=1/0
+BeamDerived FixedBins eta=0 idx=4 L=9 r=0.8 E0=0.737138 tolNeg=2 tolPos=1.06629 tolSym=1.06629 asym=0.609019 censored=1/0
+BeamDerived FixedBins eta=0.25 idx=4 L=9 r=0.1 E0=1.66719 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=4 L=9 r=0.2 E0=1.04602 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=4 L=9 r=0.3 E0=0.884339 tolNeg=0.080098 tolPos=0.20025 tolSym=0.080098 asym=0.857164 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=4 L=9 r=0.5 E0=0.788833 tolNeg=2 tolPos=0.800379 tolSym=0.800379 asym=0.856756 censored=1/0
+BeamDerived FixedBins eta=0.25 idx=4 L=9 r=0.8 E0=0.753315 tolNeg=2 tolPos=1.02584 tolSym=1.02584 asym=0.643894 censored=1/0
+BeamDerived FixedBins eta=0.5 idx=4 L=9 r=0.1 E0=2.24175 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=4 L=9 r=0.2 E0=1.27425 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=4 L=9 r=0.3 E0=0.996883 tolNeg=0.00013629 tolPos=0.279195 tolSym=0.00013629 asym=1.99805 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=4 L=9 r=0.5 E0=0.819294 tolNeg=2 tolPos=0.779783 tolSym=0.779783 asym=0.877922 censored=1/0
+BeamDerived FixedBins eta=0.5 idx=4 L=9 r=0.8 E0=0.74879 tolNeg=2 tolPos=0.972121 tolSym=0.972121 asym=0.69168 censored=1/0
+BeamDerived FixedBins eta=0 idx=5 L=17 r=0.1 E0=0.992304 tolNeg=0.00845617 tolPos=0.00840418 tolSym=0.00840418 asym=0.00616688 censored=0/0
+BeamDerived FixedBins eta=0 idx=5 L=17 r=0.2 E0=0.992304 tolNeg=0.0176299 tolPos=0.0173667 tolSym=0.0173667 asym=0.0150395 censored=0/0
+BeamDerived FixedBins eta=0 idx=5 L=17 r=0.3 E0=0.992304 tolNeg=0.028012 tolPos=0.0271905 tolSym=0.0271905 asym=0.0297661 censored=0/0
+BeamDerived FixedBins eta=0 idx=5 L=17 r=0.5 E0=0.992304 tolNeg=0.0613895 tolPos=0.0534327 tolSym=0.0534327 asym=0.138593 censored=0/0
+BeamDerived FixedBins eta=0 idx=5 L=17 r=0.8 E0=0.992304 tolNeg=2 tolPos=0.438822 tolSym=0.438822 asym=1.28027 censored=1/0
+BeamDerived FixedBins eta=0.25 idx=5 L=17 r=0.1 E0=1.46747 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=5 L=17 r=0.2 E0=1.12371 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=5 L=17 r=0.3 E0=1.04774 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=5 L=17 r=0.5 E0=1.00663 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.25 idx=5 L=17 r=0.8 E0=0.99215 tolNeg=2 tolPos=0.241017 tolSym=0.241017 asym=1.56981 censored=1/0
+BeamDerived FixedBins eta=0.5 idx=5 L=17 r=0.1 E0=1.82081 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=5 L=17 r=0.2 E0=1.23662 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=5 L=17 r=0.3 E0=1.09474 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=5 L=17 r=0.5 E0=1.01445 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived FixedBins eta=0.5 idx=5 L=17 r=0.8 E0=0.985427 tolNeg=2 tolPos=0.305036 tolSym=0.305036 asym=1.47066 censored=1/0
+BeamDerived BandwidthMatched eta=0 idx=1 L=1 r=0.1 E0=0.16308 tolNeg=0.0173956 tolPos=0.0174159 tolSym=0.0173956 asym=0.00116783 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=1 L=1 r=0.2 E0=0.16308 tolNeg=0.0349819 tolPos=0.035058 tolSym=0.0349819 asym=0.00217482 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=1 L=1 r=0.3 E0=0.16308 tolNeg=0.0529992 tolPos=0.0531507 tolSym=0.0529992 asym=0.00285533 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=1 L=1 r=0.5 E0=0.16308 tolNeg=0.0916472 tolPos=0.0918672 tolSym=0.0916472 asym=0.00239807 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=1 L=1 r=0.8 E0=0.16308 tolNeg=0.164198 tolPos=0.475255 tolSym=0.164198 asym=0.972887 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=1 L=1 r=0.1 E0=4.35559 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=1 L=1 r=0.2 E0=2.18267 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=1 L=1 r=0.3 E0=1.46051 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=1 L=1 r=0.5 E0=0.886595 tolNeg=0.0120455 tolPos=0.168049 tolSym=0.0120455 asym=1.73246 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=1 L=1 r=0.8 E0=0.569491 tolNeg=0.397547 tolPos=0.542646 tolSym=0.397547 asym=0.308658 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=1 L=1 r=0.1 E0=7.71333 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=1 L=1 r=0.2 E0=3.85903 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=1 L=1 r=0.3 E0=2.57531 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=1 L=1 r=0.5 E0=1.55022 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=1 L=1 r=0.8 E0=0.976508 tolNeg=0.323684 tolPos=0.325938 tolSym=0.323684 asym=0.00694192 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=2 L=5 r=0.1 E0=0.54128 tolNeg=0.0313838 tolPos=0.0317937 tolSym=0.0313838 asym=0.0129749 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=2 L=5 r=0.2 E0=0.54128 tolNeg=0.0657771 tolPos=0.0670481 tolSym=0.0657771 asym=0.0191377 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=2 L=5 r=0.3 E0=0.54128 tolNeg=0.113231 tolPos=0.112375 tolSym=0.112375 asym=0.00758842 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=2 L=5 r=0.5 E0=0.54128 tolNeg=0.781952 tolPos=1.17629 tolSym=0.781952 asym=0.40275 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=2 L=5 r=0.8 E0=0.54128 tolNeg=2 tolPos=1.27987 tolSym=1.27987 asym=0.439124 censored=1/0
+BeamDerived BandwidthMatched eta=0.25 idx=2 L=5 r=0.1 E0=2.07788 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=2 L=5 r=0.2 E0=1.13527 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=2 L=5 r=0.3 E0=0.8532 tolNeg=0.0348228 tolPos=0.194889 tolSym=0.0348228 asym=1.39363 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=2 L=5 r=0.5 E0=0.663912 tolNeg=1.67799 tolPos=1.24893 tolSym=1.24893 asym=0.293186 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=2 L=5 r=0.8 E0=0.585103 tolNeg=2 tolPos=1.33127 tolSym=1.33127 asym=0.401486 censored=1/0
+BeamDerived BandwidthMatched eta=0.5 idx=2 L=5 r=0.1 E0=2.92068 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=2 L=5 r=0.2 E0=1.51507 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=2 L=5 r=0.3 E0=1.06809 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=2 L=5 r=0.5 E0=0.741387 tolNeg=0.983545 tolPos=0.989589 tolSym=0.983545 asym=0.00612595 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=2 L=5 r=0.8 E0=0.589084 tolNeg=2 tolPos=1.41055 tolSym=1.41055 asym=0.345664 censored=1/0
+BeamDerived BandwidthMatched eta=0 idx=3 L=7 r=0.1 E0=0.673486 tolNeg=0.0329698 tolPos=0.0328432 tolSym=0.0328432 asym=0.00384654 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=3 L=7 r=0.2 E0=0.673486 tolNeg=0.0706902 tolPos=0.0694282 tolSym=0.0694282 asym=0.018013 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=3 L=7 r=0.3 E0=0.673486 tolNeg=0.134639 tolPos=0.119541 tolSym=0.119541 asym=0.118795 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=3 L=7 r=0.5 E0=0.673486 tolNeg=2 tolPos=1.04229 tolSym=1.04229 asym=0.629598 censored=1/0
+BeamDerived BandwidthMatched eta=0 idx=3 L=7 r=0.8 E0=0.673486 tolNeg=2 tolPos=1.25654 tolSym=1.25654 asym=0.456597 censored=1/0
+BeamDerived BandwidthMatched eta=0.25 idx=3 L=7 r=0.1 E0=1.82282 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=3 L=7 r=0.2 E0=1.07537 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=3 L=7 r=0.3 E0=0.869056 tolNeg=0.0547122 tolPos=0.200751 tolSym=0.0547122 asym=1.14333 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=3 L=7 r=0.5 E0=0.741528 tolNeg=2 tolPos=0.864956 tolSym=0.864956 asym=0.792364 censored=1/0
+BeamDerived BandwidthMatched eta=0.25 idx=3 L=7 r=0.8 E0=0.69243 tolNeg=2 tolPos=1.19896 tolSym=1.19896 asym=0.500816 censored=1/0
+BeamDerived BandwidthMatched eta=0.5 idx=3 L=7 r=0.1 E0=2.49646 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=3 L=7 r=0.2 E0=1.35435 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=3 L=7 r=0.3 E0=1.00986 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=3 L=7 r=0.5 E0=0.776416 tolNeg=2 tolPos=0.92791 tolSym=0.92791 asym=0.732324 censored=1/0
+BeamDerived BandwidthMatched eta=0.5 idx=3 L=7 r=0.8 E0=0.678149 tolNeg=2 tolPos=1.14463 tolSym=1.14463 asym=0.544016 censored=1/0
+BeamDerived BandwidthMatched eta=0 idx=4 L=13 r=0.1 E0=0.93689 tolNeg=0.0215441 tolPos=0.020667 tolSym=0.020667 asym=0.0415584 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=4 L=13 r=0.2 E0=0.93689 tolNeg=0.0466161 tolPos=0.0421131 tolSym=0.0421131 asym=0.101499 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=4 L=13 r=0.3 E0=0.93689 tolNeg=0.083249 tolPos=0.0658837 tolSym=0.0658837 asym=0.232884 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=4 L=13 r=0.5 E0=0.93689 tolNeg=2 tolPos=0.131559 tolSym=0.131559 asym=1.75312 censored=1/0
+BeamDerived BandwidthMatched eta=0 idx=4 L=13 r=0.8 E0=0.93689 tolNeg=2 tolPos=0.824564 tolSym=0.824564 asym=0.832295 censored=1/0
+BeamDerived BandwidthMatched eta=0.25 idx=4 L=13 r=0.1 E0=1.54971 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=4 L=13 r=0.2 E0=1.11148 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=4 L=13 r=0.3 E0=1.00966 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=4 L=13 r=0.5 E0=0.95333 tolNeg=2 tolPos=0.200319 tolSym=0.200319 asym=1.63584 censored=1/0
+BeamDerived BandwidthMatched eta=0.25 idx=4 L=13 r=0.8 E0=0.933239 tolNeg=2 tolPos=0.808875 tolSym=0.808875 asym=0.848116 censored=1/0
+BeamDerived BandwidthMatched eta=0.5 idx=4 L=13 r=0.1 E0=1.97165 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=4 L=13 r=0.2 E0=1.24283 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=4 L=13 r=0.3 E0=1.05394 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=4 L=13 r=0.5 E0=0.942682 tolNeg=2 tolPos=0.269851 tolSym=0.269851 asym=1.52446 censored=1/0
+BeamDerived BandwidthMatched eta=0.5 idx=4 L=13 r=0.8 E0=0.901393 tolNeg=2 tolPos=0.778973 tolSym=0.778973 asym=0.878761 censored=1/0
+BeamDerived BandwidthMatched eta=0 idx=5 L=25 r=0.1 E0=0.99934 tolNeg=0.00284969 tolPos=0.00292656 tolSym=0.00284969 asym=0.0266141 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=5 L=25 r=0.2 E0=0.99934 tolNeg=0.00584773 tolPos=0.00624741 tolSym=0.00584773 asym=0.0660882 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=5 L=25 r=0.3 E0=0.99934 tolNeg=0.00899429 tolPos=0.0100532 tolSym=0.00899429 asym=0.111183 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=5 L=25 r=0.5 E0=0.99934 tolNeg=0.0162981 tolPos=0.0197511 tolSym=0.0162981 asym=0.191569 censored=0/0
+BeamDerived BandwidthMatched eta=0 idx=5 L=25 r=0.8 E0=0.99934 tolNeg=0.0396984 tolPos=0.0607268 tolSym=0.0396984 asym=0.418788 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=5 L=25 r=0.1 E0=1.33957 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=5 L=25 r=0.2 E0=1.09134 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=5 L=25 r=0.3 E0=1.03889 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=5 L=25 r=0.5 E0=1.01098 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.25 idx=5 L=25 r=0.8 E0=1.00123 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=5 L=25 r=0.1 E0=1.60928 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=5 L=25 r=0.2 E0=1.17536 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=5 L=25 r=0.3 E0=1.07597 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=5 L=25 r=0.5 E0=1.02134 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+BeamDerived BandwidthMatched eta=0.5 idx=5 L=25 r=0.8 E0=1.00193 tolNeg=0 tolPos=0 tolSym=0 asym=0 censored=0/0
+
+Tolerance scaling fits
+----------------------
+Paper1s FixedBins eta=0 idx=1 L=1 alpha=0.192391 R2=0.991972 medianAsym=0.0055732 censored=0
+Paper1s FixedBins eta=0 idx=2 L=3 alpha=0.722464 R2=0.710499 medianAsym=0.0303631 censored=0
+Paper1s FixedBins eta=0 idx=3 L=5 alpha=0.22256 R2=0.991988 medianAsym=0.167586 censored=1
+Paper1s FixedBins eta=0 idx=4 L=9 alpha=0.0696687 R2=0.981947 medianAsym=0.0313214 censored=1
+Paper1s FixedBins eta=0 idx=5 L=17 alpha=0.0220647 R2=0.952158 medianAsym=0.127211 censored=0
+Paper1s FixedBins eta=0.25 idx=1 L=1 alpha=0.0697276 R2=0.618237 medianAsym=0 censored=0
+Paper1s FixedBins eta=0.25 idx=2 L=3 alpha=0.108384 R2=0.521368 medianAsym=0 censored=1
+Paper1s FixedBins eta=0.25 idx=3 L=5 alpha=0.108287 R2=0.521368 medianAsym=0 censored=1
+Paper1s FixedBins eta=0.25 idx=4 L=9 alpha=0.0659189 R2=0.526699 medianAsym=0 censored=0
+Paper1s FixedBins eta=0.25 idx=5 L=17 alpha=0 R2=NaN medianAsym=0 censored=0
+Paper1s FixedBins eta=0.5 idx=1 L=1 alpha=0.000661009 R2=0.526699 medianAsym=0 censored=0
+Paper1s FixedBins eta=0.5 idx=2 L=3 alpha=0.613884 R2=0.528738 medianAsym=0 censored=0
+Paper1s FixedBins eta=0.5 idx=3 L=5 alpha=0.00231643 R2=0.521368 medianAsym=0 censored=1
+Paper1s FixedBins eta=0.5 idx=4 L=9 alpha=0.00160645 R2=0.526699 medianAsym=0 censored=0
+Paper1s FixedBins eta=0.5 idx=5 L=17 alpha=0 R2=NaN medianAsym=0 censored=0
+Paper1s BandwidthMatched eta=0 idx=1 L=1 alpha=0.192391 R2=0.991972 medianAsym=0.0055732 censored=0
+Paper1s BandwidthMatched eta=0 idx=2 L=3 alpha=0.722464 R2=0.710499 medianAsym=0.0303631 censored=0
+Paper1s BandwidthMatched eta=0 idx=3 L=5 alpha=0.22256 R2=0.991988 medianAsym=0.167586 censored=1
+Paper1s BandwidthMatched eta=0 idx=4 L=9 alpha=0.0696687 R2=0.981947 medianAsym=0.0313214 censored=1
+Paper1s BandwidthMatched eta=0 idx=5 L=17 alpha=0.0220647 R2=0.952158 medianAsym=0.127211 censored=0
+Paper1s BandwidthMatched eta=0.25 idx=1 L=1 alpha=0.0697276 R2=0.618237 medianAsym=0 censored=0
+Paper1s BandwidthMatched eta=0.25 idx=2 L=3 alpha=0.108384 R2=0.521368 medianAsym=0 censored=1
+Paper1s BandwidthMatched eta=0.25 idx=3 L=5 alpha=0.108287 R2=0.521368 medianAsym=0 censored=1
+Paper1s BandwidthMatched eta=0.25 idx=4 L=9 alpha=0.0659189 R2=0.526699 medianAsym=0 censored=0
+Paper1s BandwidthMatched eta=0.25 idx=5 L=17 alpha=0 R2=NaN medianAsym=0 censored=0
+Paper1s BandwidthMatched eta=0.5 idx=1 L=1 alpha=0.000661009 R2=0.526699 medianAsym=0 censored=0
+Paper1s BandwidthMatched eta=0.5 idx=2 L=3 alpha=0.613884 R2=0.528738 medianAsym=0 censored=0
+Paper1s BandwidthMatched eta=0.5 idx=3 L=5 alpha=0.00231643 R2=0.521368 medianAsym=0 censored=1
+Paper1s BandwidthMatched eta=0.5 idx=4 L=9 alpha=0.00160645 R2=0.526699 medianAsym=0 censored=0
+Paper1s BandwidthMatched eta=0.5 idx=5 L=17 alpha=0 R2=NaN medianAsym=0 censored=0
+BeamDerived FixedBins eta=0 idx=1 L=1 alpha=0.195939 R2=0.988868 medianAsym=0.00239807 censored=0
+BeamDerived FixedBins eta=0 idx=2 L=3 alpha=0.697212 R2=0.711108 medianAsym=0.0106 censored=1
+BeamDerived FixedBins eta=0 idx=3 L=5 alpha=1.13072 R2=0.659149 medianAsym=0.0191377 censored=1
+BeamDerived FixedBins eta=0 idx=4 L=9 alpha=0.385145 R2=0.981317 medianAsym=0.297456 censored=2
+BeamDerived FixedBins eta=0 idx=5 L=17 alpha=0.10048 R2=0.974427 medianAsym=0.0297661 censored=1
+BeamDerived FixedBins eta=0.25 idx=1 L=1 alpha=0.314621 R2=0.548826 medianAsym=0 censored=0
+BeamDerived FixedBins eta=0.25 idx=2 L=3 alpha=0.523095 R2=0.538015 medianAsym=0.249646 censored=1
+BeamDerived FixedBins eta=0.25 idx=3 L=5 alpha=1.62797 R2=0.540992 medianAsym=0.293186 censored=1
+BeamDerived FixedBins eta=0.25 idx=4 L=9 alpha=0.171639 R2=0.464286 medianAsym=0.643894 censored=2
+BeamDerived FixedBins eta=0.25 idx=5 L=17 alpha=0 R2=NaN medianAsym=0 censored=1
+BeamDerived FixedBins eta=0.5 idx=1 L=1 alpha=0.251405 R2=0.526699 medianAsym=0 censored=0
+BeamDerived FixedBins eta=0.5 idx=2 L=3 alpha=0.422394 R2=0.521368 medianAsym=0 censored=1
+BeamDerived FixedBins eta=0.5 idx=3 L=5 alpha=1.26096 R2=0.521368 medianAsym=0 censored=1
+BeamDerived FixedBins eta=0.5 idx=4 L=9 alpha=0.00029205 R2=0.464286 medianAsym=0.69168 censored=2
+BeamDerived FixedBins eta=0.5 idx=5 L=17 alpha=0 R2=NaN medianAsym=0 censored=1
+BeamDerived BandwidthMatched eta=0 idx=1 L=1 alpha=0.195939 R2=0.988868 medianAsym=0.00239807 censored=0
+BeamDerived BandwidthMatched eta=0 idx=2 L=5 alpha=1.13072 R2=0.659149 medianAsym=0.0191377 censored=1
+BeamDerived BandwidthMatched eta=0 idx=3 L=7 alpha=0.378802 R2=0.973531 medianAsym=0.118795 censored=2
+BeamDerived BandwidthMatched eta=0 idx=4 L=13 alpha=0.216103 R2=0.996848 medianAsym=0.232884 censored=2
+BeamDerived BandwidthMatched eta=0 idx=5 L=25 alpha=0.0427773 R2=0.908952 medianAsym=0.111183 censored=0
+BeamDerived BandwidthMatched eta=0.25 idx=1 L=1 alpha=0.314621 R2=0.548826 medianAsym=0 censored=0
+BeamDerived BandwidthMatched eta=0.25 idx=2 L=5 alpha=1.62797 R2=0.540992 medianAsym=0.293186 censored=1
+BeamDerived BandwidthMatched eta=0.25 idx=3 L=7 alpha=0.11724 R2=0.464286 medianAsym=0.500816 censored=2
+BeamDerived BandwidthMatched eta=0.25 idx=4 L=13 alpha=0 R2=NaN medianAsym=0 censored=2
+BeamDerived BandwidthMatched eta=0.25 idx=5 L=25 alpha=0 R2=NaN medianAsym=0 censored=0
+BeamDerived BandwidthMatched eta=0.5 idx=1 L=1 alpha=0.251405 R2=0.526699 medianAsym=0 censored=0
+BeamDerived BandwidthMatched eta=0.5 idx=2 L=5 alpha=1.26096 R2=0.521368 medianAsym=0 censored=1
+BeamDerived BandwidthMatched eta=0.5 idx=3 L=7 alpha=0 R2=NaN medianAsym=0 censored=2
+BeamDerived BandwidthMatched eta=0.5 idx=4 L=13 alpha=0 R2=NaN medianAsym=0 censored=2
+BeamDerived BandwidthMatched eta=0.5 idx=5 L=25 alpha=0 R2=NaN medianAsym=0 censored=0
+
+Decision
+--------
+Paper1s -> FENCE_OR_WINDOW_NORMALIZATION_CHANGES_TOLERANCE_LAW
+BeamDerived -> FENCE_OR_WINDOW_NORMALIZATION_CHANGES_TOLERANCE_LAW
+
+Interpretation discipline
+-------------------------
+1) Same bin count across different N is NOT automatically a fair physical-bandwidth comparison; BandwidthMatched is the fairer bridge.
+2) l=3 from PA5C is not treated as a universal optimum.
+3) eta=0.5 tests the strongest standard FFT fence-effect position.
+4) Tolerance search is adaptive; values at the search cap are marked censored rather than falsely reported as exact thresholds.
+5) Scaling slope alpha is an experiment-specific descriptor, not a universal constant.
+6) Noise remains OFF until window normalization and fence robustness are closed.

@@ -1,0 +1,29 @@
+﻿parameter,value,unit,source/status,role
+carrier_frequency,3,GHz,Wang 2023 Table 1 / paper-reported,physics
+PRF,188,Hz,Wang 2023 Table 1 / paper-reported,sampling
+bandwidth,150,MHz,Wang 2023 Table 1 / paper-reported,provenance
+platform_height,3000,m,Wang 2023 Table 1 / paper-reported,geometry
+antenna_length,2,m,Wang 2023 Table 1 / paper-reported,beam
+platform_velocity,150,m/s,Wang 2023 Table 1 / paper-reported,physics
+pulse_width,1.5,us,Wang 2023 Table 1 / paper-reported,provenance
+weak_velocity,15,m/s,Wang 2023 Table 2 / paper-grounded choice,weak reference
+R0_over_H,sqrt(2),,inherited representative control,geometry
+delta_velocity,2.5;5;7.5;10;15;20,m/s,PA5D inherited,separation
+Aw_over_As,0.1;0.2;0.3;0.5;0.8,,PA5D inherited,contrast
+relative_phase,16 uniform values,rad,PA5D inherited,coherence
+fractional_bin_offset,0;0.125;0.25;0.375;0.5,DFT bins,PA5D inherited,fence effect
+Algorithm2_peak_gate,0.7,fraction max magnitude,Wang 2023 Algorithm 2 / paper-reported,peak threshold
+peak_semantics_LocalMax,strict-left/non-strict-right local max,,legacy PA5C/PA5D implementation,audit baseline
+peak_semantics_ConnectedSupport,all bins >= 0.7 max then support dilation,,PA5E controlled implementation audit,literal threshold-support interpretation
+peak_semantics_PlateauAware,>= both neighbors and > at least one,,PA5E controlled implementation audit,tie-safe peak-centered interpretation
+window_bins,1;3;5;9;17,bins,PA5C/PA5D inherited controlled sweep,actual removal operators
+window_coordinate_1,l,bins,PA5E audit,raw transform cells
+window_coordinate_2,l/N,dimensionless,PA5E audit,normalized bandwidth
+window_coordinate_3,l/Wfocus_3dB,focused resolution cells,PA5E audit,resolution-cell normalized bandwidth
+focus_width_oversampling,128,x N,PA5E controlled calibration,3-dB focused width
+focus_width_definition,3-dB power width,,PA5E controlled calibration,resolution-cell scale
+Pareto_objective_1,maximize weak-stage success,,PA5E design,operating-point audit
+Pareto_objective_2,minimize median waveform error,,PA5E design,operating-point audit
+waveform_feasibility,E<=1,,PA5B inherited diagnostic,feasible-region reporting
+recoverability_floor,rmin=L0/sqrt(1-D0^2),,exact consequence of PA5B/PA5C identity,zero-mismatch floor
+noise,none,,PA5E design,deterministic audit

@@ -1,0 +1,43 @@
+EXP009-B4 Observable q-Uncertainty
+=================================
+
+Selected B2 cells: 9
+MC trials/cell: 500
+Sub-apertures: 4 x 384 samples
+Sub-aperture starts: 1   44   86  129
+Max B2 reproduction diff: 1.110223e-16
+
+Label counts
+------------
+Baseline-success trials: 4151
+Residual-induced failures: 1050
+Perturbative evaluation trials: 3994
+Perturbative failures: 893
+Catastrophic failures: 157
+
+Feature AUC ranking by perturbative failure
+------------------------------------------
+prominence: AUC_pert=0.735630 dir=-, AUC_any=0.773344, AUC_cat=0.979043
+curve_entropy: AUC_pert=0.729200 dir=+, AUC_any=0.767417, AUC_cat=0.973738
+second_to_first: AUC_pert=0.674530 dir=+, AUC_any=0.630921, AUC_cat=0.645363
+peak_zscore: AUC_pert=0.646870 dir=-, AUC_any=0.696437, AUC_cat=0.969092
+curvature_sigma_q_norm: AUC_pert=0.646620 dir=+, AUC_any=0.673656, AUC_cat=0.799558
+subap_consensus_fraction: AUC_pert=0.597625 dir=+, AUC_any=0.574559, AUC_cat=0.577775
+subap_range_norm: AUC_pert=0.546165 dir=-, AUC_any=0.510548, AUC_cat=0.692322
+subap_mad_norm: AUC_pert=0.541122 dir=-, AUC_any=0.543204, AUC_cat=0.550177
+subap_full_dev_norm: AUC_pert=0.531365 dir=-, AUC_any=0.545476, AUC_cat=0.982316
+subap_std_norm: AUC_pert=0.524296 dir=-, AUC_any=0.507900, AUC_cat=0.691363
+
+B3 comparison
+-------------
+B3 best perturbative AUC: 0.702666 (prominence)
+B4 best single perturbative AUC: 0.735630 (prominence)
+
+LOCO diagnostic fusion
+----------------------
+Local-only perturbative AUC: 0.407485
+Two-channel perturbative AUC: 0.679247
+Two-channel any-failure AUC: 0.733971
+Two-channel catastrophic AUC: NaN
+Local cell-risk vs penalty Spearman: -0.100000
+Two-channel cell-risk vs penalty Spearman: 0.683333

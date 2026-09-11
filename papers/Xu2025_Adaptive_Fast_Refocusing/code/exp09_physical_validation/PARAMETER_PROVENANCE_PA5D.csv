@@ -1,0 +1,27 @@
+﻿parameter,value,unit,source/status,role
+carrier_frequency,3,GHz,Wang 2023 Table 1 / paper-reported,physics
+PRF,188,Hz,Wang 2023 Table 1 / paper-reported,sampling
+bandwidth,150,MHz,Wang 2023 Table 1 / paper-reported,provenance
+platform_height,3000,m,Wang 2023 Table 1 / paper-reported,geometry
+antenna_length,2,m,Wang 2023 Table 1 / paper-reported,beam
+platform_velocity,150,m/s,Wang 2023 Table 1 / paper-reported,physics
+pulse_width,1.5,us,Wang 2023 Table 1 / paper-reported,provenance
+weak_velocity,15,m/s,Wang 2023 Table 2 / paper-grounded choice,weak reference
+R0_over_H,sqrt(2),,inherited representative control,geometry
+delta_velocity,2.5;5;7.5;10;15;20,m/s,PA5C inherited,separation
+Aw_over_As,0.1;0.2;0.3;0.5;0.8,,PA5C inherited,contrast
+relative_phase,16 uniform values,rad,PA5C inherited,coherence
+fractional_bin_offset,0;0.125;0.25;0.375;0.5,DFT bins,PA5D controlled sweep,fence effect
+common_center_frequency,eta/N,cycles/sample,PA5D controlled construction,off-grid focusing without relative b separation
+fixed_window_bins,1;3;5;9;17,bins,PA5C inherited,baseline window family
+bandwidth_matched_target,[1;3;5;9;17]/N_Paper1s,fraction N,PA5D controlled fair comparison,equal normalized/physical bandwidth
+peak_gate,0.7,fraction max,Wang 2023 Algorithm 2 / paper-reported,peak detection
+balanced_success_fraction,0.90,,PA5D diagnostic rule,balanced-window selection
+tolerance_geometry,"Delta-v=10, HighV",,PA5C inherited representative,controlled tolerance
+tolerance_offsets,0;0.25;0.5,DFT bins,PA5D controlled subset,fence-aware tolerance
+tolerance_initial_range,0.30,beta-width units,PA5D adaptive search,threshold search
+tolerance_max_cap,2.00,beta-width units,PA5D adaptive search,censoring cap
+tolerance_step,0.0025,beta-width units,PA5D adaptive search,threshold interpolation
+tolerance_threshold,1.0,relative waveform norm,PA5B/PA5C inherited,safe-subtraction diagnostic
+scaling_model,delta_tol=alpha*r_A,,PA5D diagnostic fit through origin,robustness of contrast scaling
+noise,none,,PA5D design,deterministic robustness

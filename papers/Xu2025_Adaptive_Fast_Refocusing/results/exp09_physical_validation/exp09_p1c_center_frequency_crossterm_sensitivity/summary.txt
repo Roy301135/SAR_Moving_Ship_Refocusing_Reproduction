@@ -1,0 +1,64 @@
+EXP009 P1C / Center-Frequency Cross-Term Sensitivity
+===================================================
+
+Purpose
+-------
+Final Wang-2023 reproduction audit before PA4: test whether unreported b_i / cross-term geometry can explain P1B failure.
+
+Paper-grounded physical inputs
+------------------------------
+fc = 3e+09 Hz
+PRF = 188 Hz
+H = 3000 m
+L_a = 2 m
+V = 150 m/s
+v_a = [5 10 15 20 25] m/s
+
+Derived / controlled
+--------------------
+lambda = 0.1 m
+representative R0/H = 1.41421356
+R0 = 4242.64069 m
+beamwidth ~= lambda/L_a = 0.05 rad
+gamma bin sweep = [0 0.5 1 2 4]
+b_i = [-2,-1,0,1,2]*(gamma/N); exact Wang b_i are not reported.
+phase MC = 40
+No noise. No CLEAN.
+
+Physical components
+-------------------
+P1 v=+5.000 Kres=+51.2357958 a=+0.00144963207 beta=+0.00144963105
+P2 v=+10.000 Kres=+49.3799035 a=+0.00139712267 beta=+0.00139712176
+P3 v=+15.000 Kres=+47.4660077 a=+0.00134297215 beta=+0.00134297134
+P4 v=+20.000 Kres=+45.4953221 a=+0.00128721486 beta=+0.00128721415
+P5 v=+25.000 Kres=+43.4696792 a=+0.00122990265 beta=+0.00122990203
+
+Sweep summary
+-------------
+Paper1s gamma=0.000 N=188 Deltaf=0 Hz idealAll5=0 avgTotalAll5=0 phaseAll5=0.0000 cross/auto(true)=0.347853 interaction/auto(true)=0.489743
+Paper1s gamma=0.500 N=188 Deltaf=0.5 Hz idealAll5=0 avgTotalAll5=0 phaseAll5=0.0000 cross/auto(true)=0.365092 interaction/auto(true)=0.677874
+Paper1s gamma=1.000 N=188 Deltaf=1 Hz idealAll5=0 avgTotalAll5=0 phaseAll5=0.0000 cross/auto(true)=0.35665 interaction/auto(true)=1.11579
+Paper1s gamma=2.000 N=188 Deltaf=2 Hz idealAll5=0 avgTotalAll5=0 phaseAll5=0.0000 cross/auto(true)=0.344333 interaction/auto(true)=0.195301
+Paper1s gamma=4.000 N=188 Deltaf=4 Hz idealAll5=0 avgTotalAll5=0 phaseAll5=0.0000 cross/auto(true)=0.0439215 interaction/auto(true)=0.0492945
+BeamDerived gamma=0.000 N=266 Deltaf=0 Hz idealAll5=0 avgTotalAll5=0 phaseAll5=0.0000 cross/auto(true)=0.39813 interaction/auto(true)=0.376168
+BeamDerived gamma=0.500 N=266 Deltaf=0.353383 Hz idealAll5=0 avgTotalAll5=0 phaseAll5=0.0000 cross/auto(true)=0.466779 interaction/auto(true)=0.600871
+BeamDerived gamma=1.000 N=266 Deltaf=0.706767 Hz idealAll5=0 avgTotalAll5=0 phaseAll5=0.0000 cross/auto(true)=0.423184 interaction/auto(true)=0.935326
+BeamDerived gamma=2.000 N=266 Deltaf=1.41353 Hz idealAll5=0 avgTotalAll5=0 phaseAll5=0.0000 cross/auto(true)=0.44059 interaction/auto(true)=0.944753
+BeamDerived gamma=4.000 N=266 Deltaf=2.82707 Hz idealAll5=0 avgTotalAll5=0 phaseAll5=0.0000 cross/auto(true)=0.352199 interaction/auto(true)=0.252711
+
+Decision
+--------
+Paper1s -> A_RESOLUTION_LIMITED | idealAny=0 ideal0=0 total0=0 rate0=0.0000 gammaRecovery=NaN crossReduction=0.873735
+BeamDerived -> A_RESOLUTION_LIMITED | idealAny=0 ideal0=0 total0=0 rate0=0.0000 gammaRecovery=NaN crossReduction=0.115366
+
+Branch meanings
+---------------
+A_RESOLUTION_LIMITED: even ideal incoherent auto energy cannot produce five peaks; aperture/response width is the dominant limit.
+B_CROSSTERM_RECOVERED_BY_bi: ideal auto resolves five peaks, gamma=0 total does not, and finite b_i spacing restores robust five-peak detection while cross contamination decreases.
+C_PHASE_SENSITIVE_CROSSTERM_PERSISTS: ideal auto is resolvable but realistic coherent total remains phase-sensitive across b_i sweep.
+D_ALREADY_RESOLVED_AT_bi0: b_i is not needed to explain five peaks in this implementation.
+E_MIXED_OR_PARTIAL: no single clean explanation; proceed to PA4 with an explicit controlled separation framework.
+
+Research discipline
+-------------------
+P1C is the final reproduction audit. Regardless of the branch, do not keep tuning Wang-missing parameters to force Fig.8. Proceed to PA4 and label every non-published quantity as controlled or derived.

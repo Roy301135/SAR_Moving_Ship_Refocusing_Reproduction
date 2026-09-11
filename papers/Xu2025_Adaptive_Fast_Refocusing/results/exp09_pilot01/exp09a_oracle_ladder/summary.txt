@@ -1,0 +1,43 @@
+EXP009-A / Pilot-01 Oracle Ladder
+=================================
+
+Seed: 20260908
+MC trials: 100
+N: 512
+SNR: 3.000 dB (clean-mixture referenced)
+q strong / weak: 1.420000 / 1.470000
+A weak / A strong: 0.400000
+Full q candidates: 201
+Local q candidates: 31
+Local prior bias: 0.000000
+
+L0_OracleExact
+  Recovery rate: 0.920000
+  Weak q RMSE:   0.00195448
+  Weak q MAE:    0.00154000
+  q evals/trial: 201
+
+L1_QErrorOnly
+  Recovery rate: 0.880000
+  Weak q RMSE:   0.00200250
+  Weak q MAE:    0.00157000
+  q evals/trial: 402
+
+L2_PracticalCLEANFull
+  Recovery rate: 0.710000
+  Weak q RMSE:   0.00306920
+  Weak q MAE:    0.00236000
+  q evals/trial: 402
+
+L3_PracticalCLEANLocalValid
+  Recovery rate: 0.750000
+  Weak q RMSE:   0.00306920
+  Weak q MAE:    0.00236000
+  q evals/trial: 232
+
+Strong q RMSE: 0.00087750
+Mean L2 residual energy ratio: 0.47074897
+Mean corr(r2,strong): 0.09301229
+Mean corr(r2,weak): 0.43411600
+Mean L2 peak ratio: 1.02753985
+Mean L2 peak prominence: 0.69511454

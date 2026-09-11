@@ -1,0 +1,84 @@
+EXP009 PA5H / Mixture Bias Law + Gate Regret Audit
+=================================================
+
+Purpose
+-------
+Final deterministic closure before realistic error sources.
+A) validate first-order mixture-induced continuous-ML bias law.
+B) quantify evidence-gate decision regret vs a per-trial binary oracle.
+
+Physical setup
+--------------
+lambda=0.1 m, R0=4242.64 m, PRF=188 Hz
+eta=[0 0.125 0.25 0.375 0.5] bins
+Aw/As=[0.1 0.2 0.3 0.5 0.8]
+windows=[1 3 5 9 17] bins
+
+Bias-law summary
+----------------
+Paper1s r=0.1 RMSE=0.000837516 slope=0.999775 R2=0.997764 small=1
+Paper1s r=0.2 RMSE=0.003365 slope=0.999101 R2=0.991027 small=1
+Paper1s r=0.3 RMSE=0.00763051 slope=0.997974 R2=0.979684 small=1
+Paper1s r=0.5 RMSE=0.0253605 slope=0.987423 R2=0.922434 small=0
+Paper1s r=0.8 RMSE=0.108041 slope=0.873306 R2=0.572329 small=0
+BeamDerived r=0.1 RMSE=0.000555636 slope=1.00071 R2=0.998394 small=1
+BeamDerived r=0.2 RMSE=0.00223976 slope=1.00283 R2=0.993541 small=1
+BeamDerived r=0.3 RMSE=0.00510566 slope=1.00638 R2=0.985332 small=1
+BeamDerived r=0.5 RMSE=0.0196772 slope=1.00682 R2=0.926185 small=0
+BeamDerived r=0.8 RMSE=0.0627301 slope=0.972785 R2=0.746926 small=0
+
+Eta-collapse summary
+--------------------
+Paper1s r=0.1 medSpread=1.29269e-08 maxSpread=2.54487e-08 strictPass=1
+Paper1s r=0.2 medSpread=1.22015e-08 maxSpread=2.27959e-08 strictPass=1
+Paper1s r=0.3 medSpread=1.17667e-08 maxSpread=2.23668e-08 strictPass=1
+Paper1s r=0.5 medSpread=1.18658e-08 maxSpread=0.392306 strictPass=0
+Paper1s r=0.8 medSpread=1.30576e-08 maxSpread=0.595726 strictPass=0
+BeamDerived r=0.1 medSpread=1.32901e-08 maxSpread=2.50741e-08 strictPass=1
+BeamDerived r=0.2 medSpread=1.28732e-08 maxSpread=2.6372e-08 strictPass=1
+BeamDerived r=0.3 medSpread=1.23994e-08 maxSpread=2.10832e-08 strictPass=1
+BeamDerived r=0.5 medSpread=1.25585e-08 maxSpread=0.393074 strictPass=0
+BeamDerived r=0.8 medSpread=1.29331e-08 maxSpread=0.391574 strictPass=0
+
+Best-window regret
+------------------
+Paper1s eta=0 L=1 medR=0 p90R=0.128222 agree=0.854167 false=0.11875 miss=0.0270833
+Paper1s eta=0.125 L=1 medR=0 p90R=0.462992 agree=0.56875 false=0.0364583 miss=0.394792
+Paper1s eta=0.25 L=1 medR=0 p90R=0.488968 agree=0.732292 false=0.0135417 miss=0.254167
+Paper1s eta=0.375 L=1 medR=0 p90R=0.407928 agree=0.864583 false=0.00416667 miss=0.13125
+Paper1s eta=0.5 L=1 medR=0 p90R=0 agree=0.904167 false=0.00208333 miss=0.09375
+BeamDerived eta=0 L=1 medR=0 p90R=0 agree=0.934375 false=0.0635417 miss=0.00208333
+BeamDerived eta=0.125 L=1 medR=0 p90R=0.40907 agree=0.617708 false=0.0104167 miss=0.371875
+BeamDerived eta=0.25 L=1 medR=0 p90R=0.388759 agree=0.801042 false=0.00104167 miss=0.197917
+BeamDerived eta=0.375 L=1 medR=0 p90R=0 agree=0.905208 false=0.00416667 miss=0.090625
+BeamDerived eta=0.5 L=1 medR=0 p90R=0 agree=0.936458 false=0.00208333 miss=0.0614583
+
+Oracle-action summary
+---------------------
+Paper1s eta=0 oracleRec=0.0816667 gateRec=0.120833 agree=0.80125 medR=0 p90R=0.0112856
+Paper1s eta=0.125 oracleRec=0.846875 gateRec=0.519792 agree=0.583333 medR=0 p90R=0.125314
+Paper1s eta=0.25 oracleRec=0.959583 gateRec=0.732292 agree=0.741042 medR=0 p90R=0.0974955
+Paper1s eta=0.375 oracleRec=0.981458 gateRec=0.867708 agree=0.865833 medR=0 p90R=0.0252246
+Paper1s eta=0.5 oracleRec=0.985 gateRec=0.896875 agree=0.894792 medR=0 p90R=0.00117621
+BeamDerived eta=0 oracleRec=0.0820833 gateRec=0.0635417 agree=0.854375 medR=0 p90R=0.000784388
+BeamDerived eta=0.125 oracleRec=0.912917 gateRec=0.575 agree=0.622083 medR=0 p90R=0.100841
+BeamDerived eta=0.25 oracleRec=0.975625 gateRec=0.794792 agree=0.794167 medR=0 p90R=0.0604676
+BeamDerived eta=0.375 oracleRec=0.979167 gateRec=0.909375 agree=0.898958 medR=0 p90R=0.000342788
+BeamDerived eta=0.5 oracleRec=0.985625 gateRec=0.938542 agree=0.92875 medR=0 p90R=0
+
+Identity
+--------
+max gate-action identity err=0 pass=1
+
+Decision
+--------
+Paper1s -> TRANSLATION_INVARIANCE_MODEL_REVIEW
+BeamDerived -> TRANSLATION_INVARIANCE_MODEL_REVIEW
+
+Interpretation discipline
+-------------------------
+1) PA5H adds no new estimator.
+2) The first-order law is tested against the SAME continuous ML bias measured in PA5G-style mixtures.
+3) Gate regret is evaluated per trial; it is not a group-median surrogate.
+4) No gate threshold is tuned in PA5H.
+5) If deterministic closure is adequate, PA5H ends PA5 and the next stage must add realistic error sources rather than continue micro-tuning the gate.

@@ -1,0 +1,20 @@
+EXP009-B1 Failure / Mechanism Map
+================================
+
+MC trials/cell: 50
+Weak ratios: 0.2         0.3         0.4         0.5         0.6
+Signed separations: -0.06       -0.05       -0.04       -0.03       -0.02        0.02        0.03        0.04        0.05        0.06
+SNRs: 0  3  6 dB
+CLEAN notch halfwidth: 1 bins
+
+Mechanism summary
+-----------------
+Median cross-slope dominance |dPcross|/|dPe|: 588.78295352
+Median first-order abs error: 0.00005021
+Median first-order relative error: 0.07354438
+
+Performance summary
+-------------------
+SNR=+0 dB: baseline recall=0.776000, residual recall=0.658800, penalty=0.117200, catastrophic increase=0.070400
+SNR=+3 dB: baseline recall=0.924000, residual recall=0.772000, penalty=0.152000, catastrophic increase=0.040800
+SNR=+6 dB: baseline recall=0.960000, residual recall=0.788800, penalty=0.171200, catastrophic increase=0.028400

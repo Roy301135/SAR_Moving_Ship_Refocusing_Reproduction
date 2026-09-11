@@ -1,0 +1,79 @@
+EXP009 PA5B / LS Projection Error Decomposition
+================================================
+
+CRITICAL CORRECTION
+Correct row-vector complex LS: c=(x*h')/(h*h').
+PA5 legacy: c=(h*x')/(h*h').
+PA5 quantitative G2/G3 values are provisional until this audit.
+
+fc=3e+09 Hz, PRF=188 Hz, lambda=0.1 m, R0=4242.64 m
+
+Intrinsic widths
+Paper1s N=188 T=0.994681 Wbeta=0.00017
+BeamDerived N=266 T=1.40957 Wbeta=8.6e-05
+
+Projection identity
+Paper1s maxAbsErr=9.40081e-14 gate=1 oracleMaxErr=2.33147e-15
+BeamDerived maxAbsErr=1.24928e-13 gate=1 oracleMaxErr=3.38618e-15
+
+Legacy vs corrected
+Paper1s practicalRescue correct/legacy=0.86236/0.351124; practicalError correct/legacy=0.970414/1.9077; oracleError correct/legacy=0.222329/0.222329
+BeamDerived practicalRescue correct/legacy=0.933975/0.382393; practicalError correct/legacy=0.760692/1.61804; oracleError correct/legacy=0.183642/0.183642
+
+Corrected contrast
+Paper1s r=0.1 practical=0.93125 error=0.937744 leakFrac=0.945281 medBetaErr/W=0.016329
+Paper1s r=0.2 practical=0.903614 error=0.961389 leakFrac=0.941925 medBetaErr/W=0.0338409
+Paper1s r=0.3 practical=0.882716 error=0.973789 leakFrac=0.934883 medBetaErr/W=0.0505177
+Paper1s r=0.5 practical=0.824427 error=0.967039 leakFrac=0.919471 medBetaErr/W=0.0861707
+Paper1s r=0.8 practical=0.688172 error=1.03144 leakFrac=0.90784 medBetaErr/W=0.176932
+BeamDerived r=0.1 practical=0.984375 error=0.861725 leakFrac=0.941033 medBetaErr/W=0.0148365
+BeamDerived r=0.2 practical=0.979167 error=0.734559 leakFrac=0.946573 medBetaErr/W=0.0255568
+BeamDerived r=0.3 practical=0.945946 error=0.760692 leakFrac=0.942427 medBetaErr/W=0.0398183
+BeamDerived r=0.5 practical=0.86 error=0.809637 leakFrac=0.918516 medBetaErr/W=0.0708057
+BeamDerived r=0.8 practical=0.706897 error=1.0257 leakFrac=0.899208 medBetaErr/W=0.168807
+
+Corrected regime
+Paper1s Unresolved hidden=0.670833 practical=0.773292 error=1.20386
+Paper1s Partial hidden=0.8125 practical=0.935897 error=0.879663
+Paper1s ResolvedCandidate hidden=NaN practical=NaN error=NaN
+BeamDerived Unresolved hidden=0.85 practical=0.845588 error=1.29935
+BeamDerived Partial hidden=0.814583 practical=0.930946 error=0.862132
+BeamDerived ResolvedCandidate hidden=0.625 practical=1 error=0.524322
+
+Tolerance summary
+Paper1s r=0.1 Ethr=0.5 tol median/min/max=0.005/0/0.005
+Paper1s r=0.1 Ethr=1 tol median/min/max=0.015/0.01/0.015
+Paper1s r=0.2 Ethr=0.5 tol median/min/max=0.0125/0/0.015
+Paper1s r=0.2 Ethr=1 tol median/min/max=0.03/0.02/0.035
+Paper1s r=0.3 Ethr=0.5 tol median/min/max=0.02/0/0.025
+Paper1s r=0.3 Ethr=1 tol median/min/max=0.05/0.03/0.05
+Paper1s r=0.5 Ethr=0.5 tol median/min/max=0.0325/0/0.04
+Paper1s r=0.5 Ethr=1 tol median/min/max=0.0875/0.05/0.09
+Paper1s r=0.8 Ethr=0.5 tol median/min/max=0.055/0/0.065
+Paper1s r=0.8 Ethr=1 tol median/min/max=0.16/0.07/0.165
+BeamDerived r=0.1 Ethr=0.5 tol median/min/max=0.005/0.005/0.005
+BeamDerived r=0.1 Ethr=1 tol median/min/max=0.015/0.015/0.015
+BeamDerived r=0.2 Ethr=0.5 tol median/min/max=0.015/0.01/0.015
+BeamDerived r=0.2 Ethr=1 tol median/min/max=0.03/0.03/0.035
+BeamDerived r=0.3 Ethr=0.5 tol median/min/max=0.02/0.02/0.025
+BeamDerived r=0.3 Ethr=1 tol median/min/max=0.05/0.05/0.05
+BeamDerived r=0.5 Ethr=0.5 tol median/min/max=0.04/0.03/0.04
+BeamDerived r=0.5 Ethr=1 tol median/min/max=0.09/0.085/0.09
+BeamDerived r=0.8 Ethr=0.5 tol median/min/max=0.065/0.05/0.07
+BeamDerived r=0.8 Ethr=1 tol median/min/max=0.1625/0.13/0.17
+
+Practical estimator vs E<=1 tolerance
+Paper1s r=0.1 betaErr=0.016329 tol=0.015 inside=0.4125 measuredErr=0.937744
+Paper1s r=0.2 betaErr=0.0338409 tol=0.03 inside=0.5 measuredErr=0.961389
+Paper1s r=0.3 betaErr=0.0505177 tol=0.05 inside=0.45679 measuredErr=0.973789
+Paper1s r=0.5 betaErr=0.0861707 tol=0.09 inside=0.496183 measuredErr=0.967039
+Paper1s r=0.8 betaErr=0.176932 tol=0.16 inside=0.419355 measuredErr=1.03144
+BeamDerived r=0.1 betaErr=0.0148365 tol=0.015 inside=0.546875 measuredErr=0.861725
+BeamDerived r=0.2 betaErr=0.0255568 tol=0.03 inside=0.635417 measuredErr=0.734559
+BeamDerived r=0.3 betaErr=0.0398183 tol=0.05 inside=0.697297 measuredErr=0.760692
+BeamDerived r=0.5 betaErr=0.0708057 tol=0.085 inside=0.64 measuredErr=0.809637
+BeamDerived r=0.8 betaErr=0.168807 tol=0.155 inside=0.431034 measuredErr=1.0257
+
+Decision
+Paper1s -> PA5_QUANTITATIVE_RESULTS_REQUIRE_CORRECTION | SUBTRACTION_TOLERANCE_TIGHTER_THAN_ESTIMATOR
+BeamDerived -> PA5_QUANTITATIVE_RESULTS_REQUIRE_CORRECTION | MIXED_TOLERANCE_AND_OPERATOR_LIMIT

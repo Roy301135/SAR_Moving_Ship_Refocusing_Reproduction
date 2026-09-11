@@ -1,0 +1,69 @@
+EXP009-C3-B1.3 State-Conditioned Harm-Aware Fallback
+====================================================
+
+Research hypothesis
+-------------------
+C3-B1.2 showed asymmetric observability: Beneficial fate remained difficult within state, while Harmful fate was strongly observable from q-landscape morphology. C3-B1.3 therefore tests:
+
+  opportunity(state) - harm_risk(morphology)
+
+against StateOnly and direct State+feature fusion at exactly matched computation budgets.
+
+OOF-selected hyperparameters
+----------------------------
+lambda = 4.000000
+veto pH threshold = 0.071894
+
+Harm-risk model audit
+---------------------
+OOF-Train Combined pooledH=0.721007 withinH=0.768147 validLines=98
+Test Smooth pooledH=0.678805 withinH=0.717149 validLines=71
+Test Abrupt pooledH=0.723698 withinH=0.755487 validLines=65
+
+25% matched-budget policy comparison
+------------------------------------
+Smooth StateOnly                recall=0.751446 capture=0.441003 precision=0.494215 harm=0.064463 netUtility=0.429752
+Smooth HarmOnlyMorph            recall=0.680579 capture=0.149705 precision=0.167769 harm=0.021488 netUtility=0.146281
+Smooth StateMorphDirect         recall=0.763430 capture=0.471239 precision=0.528099 harm=0.050413 netUtility=0.477686
+Smooth StateAllDirect           recall=0.766529 capture=0.471976 precision=0.528926 harm=0.038843 netUtility=0.490083
+Smooth OpportunityMinusHarm     recall=0.753926 capture=0.446903 precision=0.500826 harm=0.061157 netUtility=0.439669
+Smooth OpportunityHardVeto      recall=0.759711 capture=0.443215 precision=0.496694 harm=0.033884 netUtility=0.462810
+Smooth OracleHarmVeto           recall=0.774174 capture=0.464602 precision=0.520661 harm=0.000000 netUtility=0.520661
+Smooth TrialOracle              recall=0.894008 capture=0.892330 precision=1.000000 harm=0.000000 netUtility=1.000000
+Smooth RandomExpected           recall=0.704804 capture=0.250000 precision=0.280165 harm=0.036983 netUtility=0.243182
+Abrupt StateOnly                recall=0.588223 capture=0.401136 precision=0.583471 harm=0.060331 netUtility=0.523140
+Abrupt HarmOnlyMorph            recall=0.516116 capture=0.173295 precision=0.252066 harm=0.017355 netUtility=0.234711
+Abrupt StateMorphDirect         recall=0.602273 capture=0.407955 precision=0.593388 harm=0.014050 netUtility=0.579339
+Abrupt StateAllDirect           recall=0.602066 capture=0.407386 precision=0.592562 harm=0.014050 netUtility=0.578512
+Abrupt OpportunityMinusHarm     recall=0.597107 capture=0.409091 precision=0.595041 harm=0.036364 netUtility=0.558678
+Abrupt OpportunityHardVeto      recall=0.599174 capture=0.411932 precision=0.599174 harm=0.032231 netUtility=0.566942
+Abrupt OracleHarmVeto           recall=0.611777 capture=0.424432 precision=0.617355 harm=0.000000 netUtility=0.617355
+Abrupt TrialOracle              recall=0.707438 capture=0.687500 precision=1.000000 harm=0.000000 netUtility=1.000000
+Abrupt RandomExpected           recall=0.539101 capture=0.250000 precision=0.363636 harm=0.036983 netUtility=0.326653
+
+Oracle-harm decomposition
+-------------------------
+Smooth State=0.751446 Practical=0.753926 HardVeto=0.759711 OracleHarm=0.774174 TrialOracle=0.894008
+  Perfect harm avoidance explains 0.159 of TrialOracle gap.
+  Practical score captures 0.017 of total TrialOracle gap and 0.109 of OracleHarm gain.
+Abrupt State=0.588223 Practical=0.597107 HardVeto=0.599174 OracleHarm=0.611777 TrialOracle=0.707438
+  Perfect harm avoidance explains 0.198 of TrialOracle gap.
+  Practical score captures 0.075 of total TrialOracle gap and 0.377 of OracleHarm gain.
+
+Decision summary
+----------------
+Smooth withinH=0.717 | State 0.7514 -> Practical 0.7539 (delta +0.0025), HardVeto 0.7597 (delta +0.0083)
+  Harm allocation State 0.0645 -> Practical 0.0612 (delta -0.0033), HardVeto 0.0339 (delta -0.0306)
+Abrupt withinH=0.755 | State 0.5882 -> Practical 0.5971 (delta +0.0089), HardVeto 0.5992 (delta +0.0110)
+  Harm allocation State 0.0603 -> Practical 0.0364 (delta -0.0240), HardVeto 0.0322 (delta -0.0281)
+
+Interpretation logic
+--------------------
+1. If OpportunityMinusHarm / HardVeto improves recovery and reduces harmful allocation at matched cost, the asymmetric policy hypothesis is supported.
+2. If OracleHarmVeto gives a large gain but the practical policy does not, the remaining bottleneck is harm-risk estimation.
+3. If OracleHarmVeto itself gives little gain, harm avoidance alone cannot close the gap; better Beneficial-opportunity observability is required.
+4. If direct StateAll fusion matches or beats the decomposed policy, the decomposition remains scientifically informative but not yet algorithmically advantageous.
+
+Scientific boundary
+-------------------
+q_strong is still oracle/known because C3-B1.3 isolates weak-stage allocation logic. This is a mechanism-policy pilot, not yet the final deployable ship-refocusing method.

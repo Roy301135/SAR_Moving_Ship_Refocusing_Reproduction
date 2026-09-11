@@ -1,0 +1,71 @@
+EXP009 P1 / Wang 2023 MC-LFM Physical Baseline
+==============================================
+
+Paper-grounded inputs (Wang 2023 Table 1/2)
+--------------------------------------------
+fc = 3e+09 Hz
+PRF = 188 Hz
+B = 150000000 Hz
+platform height = 3000 m
+antenna length = 2 m
+V_SAR = 150 m/s
+pulse width = 1.5e-06 s
+target azimuth velocities = [5 10 15 20 25] m/s
+
+Derived
+-------
+lambda = 0.1 m
+Residual FM rates use Xu 2025 Eq. (7),(8),(11), with range acceleration neglected.
+
+Not reported by Wang for the one-line experiment
+------------------------------------------------
+Exact closest slant range R0 / incidence angle: NOT REPORTED.
+Exact azimuth-line sample count N_a: NOT REPORTED.
+Exact component amplitudes: NOT REPORTED.
+Exact b_i center frequencies: NOT REPORTED.
+Exact initial phases: NOT REPORTED.
+
+Controlled sensitivity settings
+-------------------------------
+R0/H factors = [1 1.4142135623731 2]
+Azimuth sample counts = [256 512 1024]
+Component amplitudes = equal, unit amplitude.
+Component center frequencies b_i = 0 for chirp-rate isolation.
+Initial phase MC = 200 trials.
+No noise. No CLEAN.
+
+Representative scenario
+-----------------------
+R0/H = 1.414214
+R0 = 4242.640687 m
+N = 512
+K_SAR = 106.066017 Hz/s
+K_A = [-99.1128 -92.395286 -85.913474 -79.667364 -73.656956] Hz/s
+K_res = [51.235796 49.379903 47.466008 45.495322 43.469679] Hz/s
+3-dB widths = [0.93954547 0.93954547 0.93954547 0.9511448 0.9511448] Hz/s
+phase-MC all-five detection rate = 1.000000
+
+Gate
+----
+status = PASS_WITH_SENSITIVITY
+scenario pass fraction = 0.555556
+
+Interpretation discipline
+-------------------------
+1) P1 establishes physically anchored residual-chirp separation, not exact reproduction of Wang Fig. 8.
+2) R0 and N_a are nuisance/sensitivity axes because Wang does not report them for the five-point one-line experiment.
+3) Do not label sqrt(2)*H or N=512 as Wang-paper parameters.
+4) The matched-chirp bank is a convention-light proxy for the FrFT energy-concentration principle; PA4 will handle the physical perturbation mechanism, not P1.
+5) If P1 passes, proceed to PA4 Physical Perturbation / Mirror Validation. Do not add noise or CLEAN here.
+
+Scenario table
+--------------
+R0/H=1.0000 N=256 minSep=2.62463 width=3.7565 sep/width=0.69869 avgAll5=0 phaseAll5=0.0000 gate=0
+R0/H=1.0000 N=512 minSep=2.62463 width=0.967832 sep/width=2.71186 avgAll5=1 phaseAll5=1.0000 gate=1
+R0/H=1.0000 N=1024 minSep=2.62463 width=0.246059 sep/width=10.6667 avgAll5=1 phaseAll5=1.0000 gate=1
+R0/H=1.4142 N=256 minSep=1.85589 width=3.76978 sep/width=0.492308 avgAll5=0 phaseAll5=0.0000 gate=0
+R0/H=1.4142 N=512 minSep=1.85589 width=0.939545 sep/width=1.97531 avgAll5=1 phaseAll5=1.0000 gate=1
+R0/H=1.4142 N=1024 minSep=1.85589 width=0.243586 sep/width=7.61905 avgAll5=1 phaseAll5=1.0000 gate=1
+R0/H=2.0000 N=256 minSep=1.31231 width=3.7647 sep/width=0.348584 avgAll5=0 phaseAll5=0.0000 gate=0
+R0/H=2.0000 N=512 minSep=1.31231 width=0.943226 sep/width=1.3913 avgAll5=1 phaseAll5=0.4150 gate=0
+R0/H=2.0000 N=1024 minSep=1.31231 width=0.237857 sep/width=5.51724 avgAll5=1 phaseAll5=1.0000 gate=1

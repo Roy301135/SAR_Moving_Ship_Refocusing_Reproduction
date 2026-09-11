@@ -1,0 +1,47 @@
+EXP009 P0 / Xu 2025 Velocity-ORO Calibration
+===========================================
+
+Paper-grounded inputs
+---------------------
+fc = 3e+09 Hz
+B = 1.5e+08 Hz
+PRF = 300 Hz
+V_SAR = 200 m/s
+pulse width = 4e-06 s
+incidence angle = 45 deg
+platform height = 10000 m
+target velocities = [-10 -5 0 5 10] m/s
+published ORO = [-0.415 -0.457 -0.5 -0.534 -0.583]
+published estimated speeds = [-11.09 -5.36 0 4.96 9.29] m/s
+
+Derived / inferred quantities
+-----------------------------
+lambda = 0.100000000 m
+R0 = H/cos(theta_inc) = 14142.135624 m
+rotation-order convention: p_reported = 2*alpha/pi - 0.5
+N_a is NOT listed in Xu Table I; this P0 treats it as an effective calibration quantity.
+
+Row-wise implied N_a
+--------------------
+P1: targetV=-10.000, publishedORO=-0.415000, publishedEstV=-11.090, impliedNa=1211.91, relDev=9.01981e-05, consistent=1
+P2: targetV=-5.000, publishedORO=-0.457000, publishedEstV=-5.360, impliedNa=1211.69, relDev=9.01981e-05, consistent=1
+P3: targetV=+0.000, publishedORO=-0.500000, publishedEstV=+0.000, impliedNa=NaN, relDev=NaN, consistent=1
+P4: targetV=+5.000, publishedORO=-0.534000, publishedEstV=+4.960, impliedNa=1532.96, relDev=0.265027, consistent=0
+P5: targetV=+10.000, publishedORO=-0.583000, publishedEstV=+9.290, impliedNa=1210.94, relDev=0.000710847, consistent=1
+
+Gate metrics
+------------
+robust consensus N_a = 1211.800641
+best all-row grid N_a = 1233
+best all-row RMSE = 0.00622385199
+median absolute ORO error = 0.00669878382
+maximum absolute ORO error = 0.00934535006
+consistent nonzero rows = 3 / 4
+gate status = PASS_WITH_PUBLICATION_INCONSISTENCY
+
+Interpretation discipline
+-------------------------
+1) Do NOT silently replace any Xu Table III value even if a row appears internally inconsistent.
+2) The purpose of P0 is to verify convention and scale, not to claim an exact parameter-free reproduction because N_a is omitted.
+3) If P0 passes or passes with one publication inconsistency, proceed to P1 Wang-2023 five-component MC-LFM baseline.
+4) If P0 fails, stop the physical validation track and revisit the Eq. (22) convention / R0 definition / N_a interpretation.

@@ -1,0 +1,20 @@
+EXP009-A4 Residual Interference Geometry
+========================================
+
+MC trials: 100
+SNR: 3.000 dB
+q weak: 1.470000
+A weak / A strong: 0.400000
+Notch halfwidth: 1 bins
+
+Mirror noiseless
+----------------
+LowerStrong: q_s=1.420000, signedSep=-0.050000, Eres/Ew=0.55362424, opBias=-0.00100000, matchedBias=-0.00080000, predictedBias=-0.00070492, dPe=+9.69476374e-04, dPcross=-4.01647913e-01, dDelta=-4.00678437e-01, ddPw=-5.68402690e+02
+UpperStrong: q_s=1.520000, signedSep=+0.050000, Eres/Ew=0.55362424, opBias=-0.00300000, matchedBias=-0.00120000, predictedBias=-0.00121407, dPe=-6.92457332e-04, dPcross=-6.89386091e-01, dDelta=-6.90078548e-01, ddPw=-5.68402690e+02
+
+Monte Carlo mirror
+------------------
+LowerStrong_Baseline: Recall=0.980000, Bias=-0.00025000, RMSE=0.00150000, MAE=0.00113000
+LowerStrong_PlusStrongResidual: Recall=0.820000, Bias=-0.00155000, RMSE=0.00254362, MAE=0.00199000
+UpperStrong_Baseline: Recall=0.980000, Bias=-0.00025000, RMSE=0.00150000, MAE=0.00113000
+UpperStrong_PlusStrongResidual: Recall=0.700000, Bias=-0.00291000, RMSE=0.00318277, MAE=0.00291000

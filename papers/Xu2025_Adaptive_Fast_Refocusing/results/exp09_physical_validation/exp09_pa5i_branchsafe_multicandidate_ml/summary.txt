@@ -1,0 +1,55 @@
+EXP009 PA5I / Branch-Safe Multi-Candidate Continuous ML
+=======================================================
+
+Research question
+-----------------
+Can a very small number of additional local refinements eliminate the fence-effect-induced coarse-to-fine branch switching confirmed in PA5H-R1?
+
+Methods
+-------
+G0 OriginalTop1
+G1 Neighbor3
+G2 Top2Coarse
+G3 Top3Coarse
+G4 GlobalReference (diagnostic only)
+
+Method summary
+--------------
+G0_OriginalTop1 recovery=0.994271 catastrophic=0.00572917 p95err=1.52523e-08 maxerr=0.497758 meanEval=44.1667 refinements=1
+G1_Neighbor3 recovery=1 catastrophic=0 p95err=1.43772e-08 maxerr=2.8044e-08 meanEval=163.07 refinements=3
+G2_Top2Coarse recovery=0.998854 catastrophic=0.00114583 p95err=1.49243e-08 maxerr=0.49267 meanEval=87.8619 refinements=2
+G3_Top3Coarse recovery=0.999792 catastrophic=0.000208333 p95err=1.47771e-08 maxerr=0.49267 meanEval=134.601 refinements=3
+G4_GlobalReference recovery=1 catastrophic=0 p95err=0 maxerr=0 meanEval=3010.94 refinements=1
+
+Catastrophic-tail summary
+-------------------------
+G0_OriginalTop1 / Paper1s: failures=38/4800 rate=0.00791667 Gamma=[0.00578887,0.0178732] maxContrast=0.8 etaMode=0.5
+G0_OriginalTop1 / BeamDerived: failures=17/4800 rate=0.00354167 Gamma=[0.00819069,0.00831138] maxContrast=0.8 etaMode=0.375
+G1_Neighbor3 / Paper1s: failures=0/4800 rate=0 Gamma=[NaN,NaN] maxContrast=NaN etaMode=NaN
+G1_Neighbor3 / BeamDerived: failures=0/4800 rate=0 Gamma=[NaN,NaN] maxContrast=NaN etaMode=NaN
+G2_Top2Coarse / Paper1s: failures=7/4800 rate=0.00145833 Gamma=[0.0114914,0.0171069] maxContrast=0.8 etaMode=0.125
+G2_Top2Coarse / BeamDerived: failures=4/4800 rate=0.000833333 Gamma=[0.00819069,0.00831138] maxContrast=0.8 etaMode=0.125
+G3_Top3Coarse / Paper1s: failures=2/4800 rate=0.000416667 Gamma=[0.0171069,0.0171069] maxContrast=0.8 etaMode=0.375
+G3_Top3Coarse / BeamDerived: failures=0/4800 rate=0 Gamma=[NaN,NaN] maxContrast=NaN etaMode=NaN
+G4_GlobalReference / Paper1s: failures=0/4800 rate=0 Gamma=[NaN,NaN] maxContrast=NaN etaMode=NaN
+G4_GlobalReference / BeamDerived: failures=0/4800 rate=0 Gamma=[NaN,NaN] maxContrast=NaN etaMode=NaN
+
+Practical cost-recovery Pareto
+------------------------------
+G0_OriginalTop1 recovery=0.994271 catastrophic=0.00572917 cost=44.1667 pareto=1
+G1_Neighbor3 recovery=1 catastrophic=0 cost=163.07 pareto=1
+G2_Top2Coarse recovery=0.998854 catastrophic=0.00114583 cost=87.8619 pareto=1
+G3_Top3Coarse recovery=0.999792 catastrophic=0.000208333 cost=134.601 pareto=1
+
+Decision
+--------
+Selected practical method: G1_Neighbor3
+Decision branch: BRANCH_SAFE_LOW_COST_METHOD_IDENTIFIED
+
+Interpretation discipline
+-------------------------
+1) G4 is a diagnostic global reference, not a proposed practical estimator.
+2) No gate threshold is tuned in PA5I.
+3) Branch recovery is evaluated against G4, not against a pre-assumed true mixture bias.
+4) A practical method must be judged jointly by catastrophic failure rate and computational cost.
+5) PA5I does not select the strong-removal window.

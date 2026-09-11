@@ -1,0 +1,25 @@
+﻿parameter,value,unit,source/status,role
+carrier_frequency,3,GHz,PA5H inherited / Wang-grounded,physics
+PRF,188,Hz,PA5H inherited / Wang-grounded,sampling
+platform_height,3000,m,PA5H inherited,geometry
+antenna_length,2,m,PA5H inherited,beam
+platform_velocity,150,m/s,PA5H inherited,physics
+R0_over_H,sqrt(2),,PA5H inherited,geometry
+weak_velocity,15,m/s,PA5H inherited,weak reference
+delta_velocity,2.5;5;7.5;10;15;20,m/s,PA5H inherited,separation
+Aw_over_As,0.1;0.2;0.3;0.5;0.8,,PA5H full grid,contrast
+relative_phase,16 uniform values,rad,PA5H inherited,coherent mixture
+fractional_bin_offset,0;0.125;0.25;0.375;0.5,bins,PA5H inherited,fence effect
+G0,Top1 coarse + 1 local refinement,,PA5G/PA5H baseline,baseline
+G1,neighbor-3 local refinements,,PA5I,candidate method
+G2,top-2 coarse local maxima refinements,,PA5I,candidate method
+G3,top-3 coarse local maxima refinements,,PA5I,candidate method
+G4,dense global search + local refinement,,PA5I diagnostic only,reference
+local_search_halfwidth,0.75,bins,PA5G/PA5H inherited,local refinement
+global_search_halfwidth,1.5,bins,PA5H-R1 inherited,global reference
+global_grid_step,1e-3,bins,PA5H-R1 inherited,global reference
+branch_match_tolerance,0.02,bins,PA5H-R1 diagnostic,branch recovery
+catastrophic_error_threshold,0.10,bins,PA5I diagnostic,tail failure
+Gamma,abs(delta_beta)/W_beta_3dB,,PA4-style physical coordinate,phase diagram
+noise,none,,PA5I deterministic isolation,control
+clutter,none,,PA5I deterministic isolation,control

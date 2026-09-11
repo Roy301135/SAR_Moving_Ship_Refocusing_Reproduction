@@ -1,0 +1,78 @@
+EXP009 PA4 / Physical Two-Component Resolution-Perturbation Regime Validation
+============================================================================
+
+Research question
+-----------------
+How does strong-weak interaction change as physical component separation crosses the intrinsic FrAc resolution boundary?
+
+Paper-grounded / derived physics
+--------------------------------
+fc = 3e+09 Hz
+PRF = 188 Hz
+H = 3000 m
+L_a = 2 m
+V = 150 m/s
+lambda = 0.1 m
+representative R0/H = 1.41421356
+R0 = 4242.64069 m
+beamwidth ~= 0.05 rad
+
+Controlled two-component sweep
+------------------------------
+weak velocity = 15 m/s
+Delta v = [2.5 5 7.5 10 15 20] m/s
+A_w/A_s = [0.1 0.2 0.3 0.5 0.8]
+relative phases = 16 equally spaced values on [0,2pi)
+b_s=b_w=0
+No noise. No CLEAN.
+
+Intrinsic weak-response widths
+------------------------------
+Paper1s N=188 T=0.994681 s W_beta_3dB=0.00017 rad
+BeamDerived N=266 T=1.409574 s W_beta_3dB=8.6e-05 rad
+
+Regime summary
+--------------
+Paper1s Unresolved         n=480 medGamma=0.323258 weakFound=0.3292 resolved=0.0042 perturbative=0.1333 med|shift|/W=0.132269 p90=0.18109
+Paper1s Partial            n=480 medGamma=0.968745 weakFound=0.1875 resolved=0.1875 perturbative=0.1792 med|shift|/W=0.218048 p90=0.343623
+Paper1s ResolvedCandidate  n=0 medGamma=NaN weakFound=NaN resolved=NaN perturbative=NaN med|shift|/W=NaN p90=NaN
+BeamDerived Unresolved         n=160 medGamma=0.31953 weakFound=0.1500 resolved=0.0000 perturbative=0.1187 med|shift|/W=0.10466 p90=0.175053
+BeamDerived Partial            n=480 medGamma=0.958341 weakFound=0.1854 resolved=0.1854 perturbative=0.1750 med|shift|/W=0.193345 p90=0.378211
+BeamDerived ResolvedCandidate  n=320 medGamma=2.20091 weakFound=0.3750 resolved=0.3750 perturbative=0.3531 med|shift|/W=0.150584 p90=0.343845
+
+First-order validation
+----------------------
+Paper1s AllValid           n=154 Pearson=0.243528 slope=0.261347 RMSE=4.29543e-05 sign=0.896104
+Paper1s PerturbativeOnly   n=150 Pearson=0.372756 slope=0.426893 RMSE=3.69679e-05 sign=0.913333
+Paper1s ResolvedCandidate  n=0 Pearson=NaN slope=NaN RMSE=NaN sign=NaN
+BeamDerived AllValid           n=225 Pearson=0.378339 slope=0.257115 RMSE=1.87883e-05 sign=0.92
+BeamDerived PerturbativeOnly   n=216 Pearson=0.556803 slope=0.452366 RMSE=1.40905e-05 sign=0.953704
+BeamDerived ResolvedCandidate  n=120 Pearson=0.499533 slope=0.229547 RMSE=1.76103e-05 sign=0.941667
+
+Mirror validation
+-----------------
+Paper1s dv=2.5 GammaLow=0.160462 GammaHigh=0.162827 n=49 signFlip=0.938776 magRatio=0.985515 antiErr=0.198314
+Paper1s dv=5 GammaLow=0.318532 GammaHigh=0.327983 n=5 signFlip=1 magRatio=0.914042 antiErr=0.917911
+Paper1s dv=7.5 GammaLow=0.474187 GammaHigh=0.495429 n=0 signFlip=NaN magRatio=NaN antiErr=NaN
+Paper1s dv=10 GammaLow=0.62741 GammaHigh=0.665114 n=1 signFlip=1 magRatio=1.31969 antiErr=0.27563
+Paper1s dv=15 GammaLow=0.926522 GammaHigh=1.01097 n=3 signFlip=0.666667 magRatio=0.0174843 antiErr=1.96336
+Paper1s dv=20 GammaLow=1.21583 GammaHigh=1.36499 n=16 signFlip=0.4375 magRatio=0.771613 antiErr=2
+BeamDerived dv=2.5 GammaLow=0.317193 GammaHigh=0.321867 n=4 signFlip=0.5 magRatio=0.950393 antiErr=1.02864
+BeamDerived dv=5 GammaLow=0.629656 GammaHigh=0.648339 n=1 signFlip=1 magRatio=1.18966 antiErr=0.173236
+BeamDerived dv=7.5 GammaLow=0.937346 GammaHigh=0.979336 n=2 signFlip=1 magRatio=0.503455 antiErr=0.987101
+BeamDerived dv=10 GammaLow=1.24023 GammaHigh=1.31476 n=20 signFlip=0.4 magRatio=1.16676 antiErr=2
+BeamDerived dv=15 GammaLow=1.8315 GammaHigh=1.99843 n=28 signFlip=0.571429 magRatio=1.18433 antiErr=1.27996
+BeamDerived dv=20 GammaLow=2.40339 GammaHigh=2.69824 n=28 signFlip=0.285714 magRatio=1.16347 antiErr=2
+
+Decision
+--------
+Paper1s -> PARTIAL_RESOLUTION_ONLY | resolvedRate low/partial/high=0.00416667/0.1875/NaN | highGamma FO-r=NaN FO-sign=NaN mirrorSign=0.938776
+BeamDerived -> PARTIAL_RESOLUTION_ONLY | resolvedRate low/partial/high=0/0.185417/0.375 | highGamma FO-r=0.499533 FO-sign=0.941667 mirrorSign=0.535714
+
+Interpretation discipline
+-------------------------
+1) Do not call a case "NearShift" unless a weak-associated observable total peak actually exists.
+2) Gamma is the primary separation coordinate; absolute beta/q differences are secondary.
+3) First-order perturbation is evaluated only where a weak peak exists and the predicted shift is locally bounded.
+4) Failure of old normalized A4 under physical parameters is a valid result; do not tune parameters to preserve the old mechanism.
+5) PA4 is noiseless and pre-CLEAN. Noise/CLEAN are reintroduced only after the physical topology is established.
