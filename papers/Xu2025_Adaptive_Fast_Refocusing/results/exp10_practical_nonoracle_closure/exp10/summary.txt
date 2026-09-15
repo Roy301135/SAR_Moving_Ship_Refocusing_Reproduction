@@ -1,0 +1,30 @@
+EXP009 Practical Non-Oracle Closure — SMOKE
+Noise/clutter OFF. SNR remains PENDING-DEFINITION.
+Policy: Refined-LR 0.20 -> FiveBin 0.10 conditional -> N3
+Removal: recenter -> PlateauAwareTol 0.70 -> 3-bin notch -> inverse -> undo recenter
+
+ORACLE_FIREWALL = 1
+
+Paper1s / G0_OriginalTop1: n=216 weakFeasible=0.8611 medE=0.5755 p90E=1.0003 medWeakBeta/W=0.1412 p90=0.3336 medStrongBeta/W=0.0362 medEtaErr=0.0887 branchCat=0.0000 branchCost=43.431 normCost=0.000
+Paper1s / Proposed_Frozen_Staged: n=216 weakFeasible=0.8611 medE=0.5755 p90E=1.0003 medWeakBeta/W=0.1412 p90=0.3336 medStrongBeta/W=0.0362 medEtaErr=0.0887 branchCat=0.0000 branchCost=77.912 normCost=0.291
+Paper1s / Always_Neighbor3: n=216 weakFeasible=0.8611 medE=0.5755 p90E=1.0003 medWeakBeta/W=0.1412 p90=0.3336 medStrongBeta/W=0.0362 medEtaErr=0.0887 branchCat=0.0000 branchCost=161.963 normCost=1.000
+Paper1s / ORACLE_ExactSubtraction: n=216 weakFeasible=1.0000 medE=0.0000 p90E=0.0000 medWeakBeta/W=0.0004 p90=0.0004 medStrongBeta/W=0.0000 medEtaErr=0.0000 branchCat=NaN branchCost=NaN normCost=NaN
+Paper1s / ORACLE_TrueBetaEta_Notch3: n=216 weakFeasible=1.0000 medE=0.5385 p90E=0.9201 medWeakBeta/W=0.1416 p90=0.2828 medStrongBeta/W=0.0000 medEtaErr=0.0000 branchCat=NaN branchCost=NaN normCost=NaN
+BeamDerived / G0_OriginalTop1: n=216 weakFeasible=0.8981 medE=0.3671 p90E=1.0012 medWeakBeta/W=0.0733 p90=0.2148 medStrongBeta/W=0.0354 medEtaErr=0.1268 branchCat=0.0046 branchCost=43.917 normCost=0.000
+BeamDerived / Proposed_Frozen_Staged: n=216 weakFeasible=0.9028 medE=0.3671 p90E=0.9996 medWeakBeta/W=0.0733 p90=0.2148 medStrongBeta/W=0.0354 medEtaErr=0.1268 branchCat=0.0000 branchCost=78.741 normCost=0.293
+BeamDerived / Always_Neighbor3: n=216 weakFeasible=0.9028 medE=0.3671 p90E=0.9996 medWeakBeta/W=0.0733 p90=0.2148 medStrongBeta/W=0.0354 medEtaErr=0.1268 branchCat=0.0000 branchCost=162.708 normCost=1.000
+BeamDerived / ORACLE_ExactSubtraction: n=216 weakFeasible=1.0000 medE=0.0000 p90E=0.0000 medWeakBeta/W=0.0017 p90=0.0017 medStrongBeta/W=0.0000 medEtaErr=0.0000 branchCat=NaN branchCost=NaN normCost=NaN
+BeamDerived / ORACLE_TrueBetaEta_Notch3: n=216 weakFeasible=1.0000 medE=0.3393 p90E=0.9497 medWeakBeta/W=0.0500 p90=0.2398 medStrongBeta/W=0.0000 medEtaErr=0.0000 branchCat=NaN branchCost=NaN normCost=NaN
+
+PAIRED OUTCOMES
+Paper1s: G0fail->PropSuccess=0 | G0success->PropFail=0 | PropFail->N3Success=0 | persistentN3=30 | branchRescue=0 | inducedBranchCat=0
+BeamDerived: G0fail->PropSuccess=1 | G0success->PropFail=0 | PropFail->N3Success=0 | persistentN3=21 | branchRescue=1 | inducedBranchCat=0
+
+SMOKE-TEST INTERPRETATION RULES
+1) This run is implementation closure, not final paper evidence.
+2) If strong-beta fixed-domain estimation is poor, STOP and repair upstream practical strong search.
+3) If Refined-LR/FiveBin risk directions reverse under practical beta_hat, POLICY FREEZE is falsified; do not silently retune.
+4) If N3 induces systematic downstream weak damage, report the boundary; do not upgrade to Neighbor-5 in this run.
+5) Truth columns are evaluation-only. Online output schema must remain truth-free.
+
+Total evaluation rows = 2160

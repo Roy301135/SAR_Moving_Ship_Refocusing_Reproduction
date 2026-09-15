@@ -1,0 +1,42 @@
+EXP009 / PA5J-B1 formal metric export
+No automatic research-branch interpretation.
+
+Inputs:
+  E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5ja_indicator_discovery\pa5ja_indicator_trials_original.csv
+  E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5ja_indicator_discovery\pa5ja_indicator_trials_dense_risk.csv
+  E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5i_branchsafe_multicandidate_ml\pa5i_trials.csv
+  E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5i_r1_gamma_denseeta_tail_audit\pa5i_r1_dense_eta_trials.csv
+
+Canonical trials: 11130
+Unique source+trial_id: 11130
+Policy sweep rows: 220
+All smoke tests pass: 1
+
+Stored upstream G0 -> Neighbor-3 audit:
+  original_grid: N=9600, G0 failures=55, N3 failures=0, G0 fail->N3 success=55, G0 success->N3 fail=0
+       mean evals G0=44.166667, N3=163.069583, delta=118.902917
+  dense_risk: N=1530, G0 failures=539, N3 failures=0, G0 fail->N3 success=539, G0 success->N3 fail=0
+       mean evals G0=42.959477, N3=149.743137, delta=106.783660
+
+Primary group baselines:
+  original_grid / Paper1s / G0_OriginalTop1: failures=38/4800, P_F=0.00791666667, mean evals=44.020625, max err=0.49775753
+  original_grid / Paper1s / Always_Neighbor3: failures=0/4800, P_F=0, mean evals=162.741250, max err=2.6055995e-08
+  original_grid / BeamDerived / G0_OriginalTop1: failures=17/4800, P_F=0.00354166667, mean evals=44.312708, max err=0.393074202
+  original_grid / BeamDerived / Always_Neighbor3: failures=0/4800, P_F=0, mean evals=163.397917, max err=2.80440026e-08
+  dense_risk / Paper1s / G0_OriginalTop1: failures=365/1122, P_F=0.325311943, mean evals=43.114973, max err=0.49775753
+  dense_risk / Paper1s / Always_Neighbor3: failures=0/1122, P_F=0, mean evals=150.909982, max err=2.12730706e-08
+  dense_risk / BeamDerived / G0_OriginalTop1: failures=174/408, P_F=0.426470588, mean evals=42.531863, max err=0.39307421
+  dense_risk / BeamDerived / Always_Neighbor3: failures=0/408, P_F=0, mean evals=146.534314, max err=2.12571264e-08
+
+Frozen policies:
+  G2_FiveBin; refined-LR diagnostic cost=0 eval/trial
+  G3_Entropy; refined-LR diagnostic cost=0 eval/trial
+  G4_Cost0_MaxRank; refined-LR diagnostic cost=0 eval/trial
+  G5_RefinedLR; refined-LR diagnostic cost=2 eval/trial
+  G6_All3_MaxRank; refined-LR diagnostic cost=2 eval/trial
+
+Cost model:
+  G0 is always paid before the diagnostic decision.
+  Triggered fallback cost adds (N3 evals - G0 evals).
+  Refined-LR policies add 2 objective evaluations to every trial.
+  No threshold or operating point is locked in this experiment.

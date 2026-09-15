@@ -1,0 +1,13 @@
+﻿parameter,value,source,role
+experiment_id,EXP009_PA5JB2,Frozen PA5J-B2 design,identity
+primary_source,dense_risk,PA5J-B1 result interpretation,stress-test mechanism analysis
+aperture_modes,Paper1s;BeamDerived,PA5J-B1,primary groups
+anchor_budgets,0.10;0.20;0.30;0.50,Frozen before PA5J-B2 run,G5 residual anchors
+primary_anchor_budgets,0.10;0.20;0.30,Frozen before PA5J-B2 run,low/mid-budget mechanism
+late_anchor_budget,0.50,Frozen before PA5J-B2 run,late-budget crossover reference
+residual_screen_budgets,0.05;0.10;0.20;0.30,Frozen before PA5J-B2 run,conditional Cost-0 information audit
+fivebin_risk_direction,low -> high risk,PA5J-A/B0/B1,frozen gate semantics
+entropy_risk_direction,high -> high risk,PA5J-A/B0/B1,frozen gate semantics
+refined_lr_risk_direction,high -> high risk,PA5J-A/B0/B1,frozen gate semantics
+selection_rule,tie-inclusive,PA5J-B0/B1,no arbitrary ID tie break
+truth_physics_role,post-hoc only,Research-layer constraint,forbidden in gate

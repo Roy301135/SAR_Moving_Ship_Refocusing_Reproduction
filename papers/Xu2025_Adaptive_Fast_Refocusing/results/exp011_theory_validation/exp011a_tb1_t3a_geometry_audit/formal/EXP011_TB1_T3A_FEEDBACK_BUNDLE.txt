@@ -1,0 +1,56 @@
+EXP011-A / THEORY BRIDGE 1 / T3A
+RETROSPECTIVE OBJECTIVE-GEOMETRY AUDIT
+======================================
+
+NON-FITTING DECLARATION
+-----------------------
+THIS AUDIT DOES NOT FIT THEORY TO DATA.
+NO THEORY PARAMETER IS ESTIMATED FROM FAILURE LABELS.
+Noise = OFF.
+Strong chirp/beta = TRUE-CONTROL.
+Practical beta estimation = OFF.
+
+FORMAL THEORY QUESTIONS
+-----------------------
+H1: Does effective coarse-margin sign agree with the replayed coarse branch winner in regular cases?
+H2: Does an R1 discrete-first regime exist (continuous branch correct, coarse branch wrong)?
+H3: Are mismatches concentrated in pre-declared tie/topology/non-smooth cases rather than silently fitted?
+
+
+[VERDICT]
+overall_verdict	n_trials	n_R1_discrete_first	n_potential_falsification	n_consistent	n_g0_catastrophic	n_n3_recovers_correct_branch	identity_pass	theory_fitting_used
+TB1_SUPPORTED_DISCRETE_FIRST_REGIME_OBSERVED	1530	514	0	1348	539	1530	1	0
+
+[SELFTEST]
+n_trials	max_objective_identity_rel_error	n_objective_identity_fail	max_abs_fence_decomposition_error	max_abs_component_margin_error	theory_fitting_used	noise_used	practical_beta_reestimated
+1530	1.25874109119944e-15	0	2.22044604925031e-16	1.55431223447522e-15	0	0	0
+
+[REGIME SUMMARY]
+aperture_mode	tb1_regime	n_aperture_trials	n_regime	regime_fraction	n_g0_catastrophic	n_near_halfbin	median_continuous_margin	median_effective_coarse_margin
+Paper1s	R0_CONTINUOUS_AND_COARSE_CORRECT	1122	780	0.695187165775401	23	30	0.717864596863854	0.48703634313508
+Paper1s	R1_DISCRETE_FIRST	1122	342	0.304812834224599	342	14	0.237532307366357	-0.105744382137679
+Paper1s	R2_CONTINUOUS_SWITCH_AND_COARSE_WRONG	1122	0	0	0	0	NaN	NaN
+Paper1s	R3_CONTINUOUS_SWITCH_COARSE_BASELINE	1122	0	0	0	0	NaN	NaN
+BeamDerived	R0_CONTINUOUS_AND_COARSE_CORRECT	408	236	0.57843137254902	2	14	0.572013632561158	0.207228977045516
+BeamDerived	R1_DISCRETE_FIRST	408	172	0.42156862745098	172	2	0.2441493042808	-0.120796377402841
+BeamDerived	R2_CONTINUOUS_SWITCH_AND_COARSE_WRONG	408	0	0	0	0	NaN	NaN
+BeamDerived	R3_CONTINUOUS_SWITCH_COARSE_BASELINE	408	0	0	0	0	NaN	NaN
+ALL	R0_CONTINUOUS_AND_COARSE_CORRECT	1530	1016	0.664052287581699	25	44	0.586551505800383	0.373460832021866
+ALL	R1_DISCRETE_FIRST	1530	514	0.335947712418301	514	16	0.237532307366357	-0.109702345251754
+ALL	R2_CONTINUOUS_SWITCH_AND_COARSE_WRONG	1530	0	0	0	0	NaN	NaN
+ALL	R3_CONTINUOUS_SWITCH_COARSE_BASELINE	1530	0	0	0	0	NaN	NaN
+
+[MISMATCH TAXONOMY]
+mismatch_taxonomy	n_trials	fraction	n_g0_catastrophic	n_near_halfbin
+CONSISTENT_WITH_TB1	1348	0.881045751633987	514	46
+TYPE_III_MARGIN_NEAR_ZERO	157	0.102614379084967	0	1
+TYPE_III_BRANCH_ASSIGNMENT_UNRESOLVED	25	0.0163398692810458	25	13
+
+INTERPRETATION DISCIPLINE
+-------------------------
+1) R1 > 0 strongly supports the discrete-first branch-failure mechanism, but R1 = 0 does NOT falsify TB1.
+2) If R1 = 0 and R2 dominates, report that the frozen PA5I-R1 background is continuous-competition dominated.
+3) TYPE_I_POTENTIAL_FALSIFICATION must be inspected before any theory revision.
+4) TYPE_III cases are outside the smooth fixed-representative assumption and must not be used to tune the theory.
+5) No regression, curve fitting, learned threshold, or label-based coefficient is permitted.
+6) EXP010-B/C practical-beta or noise mismatch belongs to Theory Bridge 2 / robustness, not TB1-T3A.

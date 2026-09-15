@@ -1,0 +1,328 @@
+EXP009 / PA5J-B3 — Staged Reliability Gate
+FORMAL RESULT EXPORT FOR RESEARCH-LAYER REVIEW
+No operating point or research branch is automatically selected.
+
+============================================================
+1. INPUT / SOFTWARE AUDIT
+============================================================
+Canonical trials : E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5jb1_selective_n3_pareto\pa5jb1_canonical_trials.csv
+B1 sweep         : E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5jb1_selective_n3_pareto\pa5jb1_policy_sweep.csv
+B1 baselines     : E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5jb1_selective_n3_pareto\pa5jb1_baselines.csv
+B2 residual audit: E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5jb2_residual_anatomy\pa5jb2_residual_cost0_screen.csv
+Canonical N=11130; unique source+trial_id=11130
+B1 reconstruction rows=32; all pass=1
+B2 reconstruction rows=96; all pass=1
+Smoke tests=8; all pass=1
+
+============================================================
+2. FROZEN DESIGN
+============================================================
+Stage-1 budgets: [0.005,0.01,0.02,0.05,0.1,0.2,0.3,0.5]
+Stage-2 conditional budgets: [0,0.01,0.02,0.05,0.1,0.2,0.3,0.5,1]
+Stage-2 signals: FiveBin, Entropy, Cost0_MaxRank
+Refined-LR diagnostic overhead: 2 eval/trial
+Stage-2 Cost-0 overhead: 0 objective eval
+Selection: tie-inclusive at both stages
+
+============================================================
+3. BASELINES
+============================================================
+original_grid / Paper1s / G0_OriginalTop1: P_F=0.00791666667 (38/4800), mean evals=44.020625
+original_grid / Paper1s / Always_Neighbor3: P_F=0 (0/4800), mean evals=162.741250
+original_grid / BeamDerived / G0_OriginalTop1: P_F=0.00354166667 (17/4800), mean evals=44.312708
+original_grid / BeamDerived / Always_Neighbor3: P_F=0 (0/4800), mean evals=163.397917
+dense_risk / Paper1s / G0_OriginalTop1: P_F=0.325311943 (365/1122), mean evals=43.114973
+dense_risk / Paper1s / Always_Neighbor3: P_F=0 (0/1122), mean evals=150.909982
+dense_risk / BeamDerived / G0_OriginalTop1: P_F=0.426470588 (174/408), mean evals=42.531863
+dense_risk / BeamDerived / Always_Neighbor3: P_F=0 (0/408), mean evals=146.534314
+
+============================================================
+4. STAGED PARETO FRONT POINTS
+============================================================
+
+[original_grid / Paper1s]
+  Baseline G0_OriginalTop1    cost=  44.0206  P_F= 0.0079167
+  B1       G2_FiveBin         cost=  44.0206  P_F= 0.0079167  budget=0.000
+  B1       G3_Entropy         cost=  44.0206  P_F= 0.0079167  budget=0.000
+  B1       G4_Cost0_MaxRank   cost=  44.0206  P_F= 0.0079167  budget=0.000
+  B1       G3_Entropy         cost=  44.4585  P_F= 0.0077083  budget=0.005
+  B1       G4_Cost0_MaxRank   cost=  44.4712  P_F= 0.0072917  budget=0.005
+  B1       G2_FiveBin         cost=  44.4808  P_F= 0.0068750  budget=0.005
+  B1       G4_Cost0_MaxRank   cost=  44.9346  P_F= 0.0066667  budget=0.010
+  B1       G2_FiveBin         cost=  44.9444  P_F= 0.0062500  budget=0.010
+  B1       G4_Cost0_MaxRank   cost=  45.8542  P_F= 0.0056250  budget=0.020
+  B3       FiveBin            cost=  47.1548  P_F= 0.0031250  b1=0.010 b2=0.000 total_fb=0.0100
+  B3       Entropy            cost=  47.1548  P_F= 0.0031250  b1=0.010 b2=0.000 total_fb=0.0100
+  B3       Cost0_MaxRank      cost=  47.1548  P_F= 0.0031250  b1=0.010 b2=0.000 total_fb=0.0100
+  B1       G5_RefinedLR       cost=  47.1548  P_F= 0.0031250  budget=0.010
+  B3       Entropy            cost=  48.0262  P_F= 0.0029167  b1=0.010 b2=0.010 total_fb=0.0200
+  B3       Cost0_MaxRank      cost=  48.0450  P_F= 0.0025000  b1=0.010 b2=0.010 total_fb=0.0200
+  B3       FiveBin            cost=  48.0669  P_F= 0.0022917  b1=0.010 b2=0.010 total_fb=0.0200
+  B1       G5_RefinedLR       cost=  48.3275  P_F= 0.0018750  budget=0.020
+  B3       FiveBin            cost=  48.3275  P_F= 0.0018750  b1=0.020 b2=0.000 total_fb=0.0200
+  B3       Entropy            cost=  48.3275  P_F= 0.0018750  b1=0.020 b2=0.000 total_fb=0.0200
+  B3       Cost0_MaxRank      cost=  48.3275  P_F= 0.0018750  b1=0.020 b2=0.000 total_fb=0.0200
+  B3       Entropy            cost=  49.1960  P_F= 0.0016667  b1=0.020 b2=0.010 total_fb=0.0300
+  B3       FiveBin            cost=  49.2283  P_F= 0.0014583  b1=0.020 b2=0.010 total_fb=0.0300
+  B3       FiveBin            cost=  50.1217  P_F= 0.0012500  b1=0.020 b2=0.020 total_fb=0.0398
+  B3       Entropy            cost=  52.6815  P_F= 0.0010417  b1=0.050 b2=0.010 total_fb=0.0596
+  B3       Cost0_MaxRank      cost=  52.6967  P_F= 0.0008333  b1=0.050 b2=0.010 total_fb=0.0596
+  B3       FiveBin            cost=  53.5819  P_F= 0.0006250  b1=0.050 b2=0.020 total_fb=0.0692
+  B3       Cost0_MaxRank      cost=  56.3665  P_F= 0.0004167  b1=0.050 b2=0.050 total_fb=0.0975
+  B3       Cost0_MaxRank      cost=  58.5671  P_F= 0.0002083  b1=0.100 b2=0.010 total_fb=0.1092
+  B3       FiveBin            cost=  59.4052  P_F= 0.0000000  b1=0.100 b2=0.020 total_fb=0.1181
+
+[original_grid / BeamDerived]
+  Baseline G0_OriginalTop1    cost=  44.3127  P_F= 0.0035417
+  B1       G2_FiveBin         cost=  44.3127  P_F= 0.0035417  budget=0.000
+  B1       G3_Entropy         cost=  44.3127  P_F= 0.0035417  budget=0.000
+  B1       G4_Cost0_MaxRank   cost=  44.3127  P_F= 0.0035417  budget=0.000
+  B1       G3_Entropy         cost=  44.7546  P_F= 0.0033333  budget=0.005
+  B1       G4_Cost0_MaxRank   cost=  44.7625  P_F= 0.0031250  budget=0.005
+  B1       G2_FiveBin         cost=  44.7694  P_F= 0.0027083  budget=0.005
+  B1       G2_FiveBin         cost=  45.2144  P_F= 0.0025000  budget=0.010
+  B1       G4_Cost0_MaxRank   cost=  45.2144  P_F= 0.0025000  budget=0.010
+  B1       G2_FiveBin         cost=  46.1621  P_F= 0.0022917  budget=0.020
+  B1       G5_RefinedLR       cost=  46.8944  P_F= 0.0018750  budget=0.005
+  B3       FiveBin            cost=  46.8944  P_F= 0.0018750  b1=0.005 b2=0.000 total_fb=0.0050
+  B3       Entropy            cost=  46.8944  P_F= 0.0018750  b1=0.005 b2=0.000 total_fb=0.0050
+  B3       Cost0_MaxRank      cost=  46.8944  P_F= 0.0018750  b1=0.005 b2=0.000 total_fb=0.0050
+  B1       G6_All3_MaxRank    cost=  47.3475  P_F= 0.0014583  budget=0.010
+  B3       FiveBin            cost=  47.4685  P_F= 0.0008333  b1=0.010 b2=0.000 total_fb=0.0100
+  B3       Entropy            cost=  47.4685  P_F= 0.0008333  b1=0.010 b2=0.000 total_fb=0.0100
+  B3       Cost0_MaxRank      cost=  47.4685  P_F= 0.0008333  b1=0.010 b2=0.000 total_fb=0.0100
+  B1       G5_RefinedLR       cost=  47.4685  P_F= 0.0008333  budget=0.010
+  B3       FiveBin            cost=  48.3550  P_F= 0.0006250  b1=0.010 b2=0.010 total_fb=0.0200
+  B1       G5_RefinedLR       cost=  52.2127  P_F= 0.0002083  budget=0.050
+  B3       FiveBin            cost=  52.2127  P_F= 0.0002083  b1=0.050 b2=0.000 total_fb=0.0500
+  B3       Entropy            cost=  52.2127  P_F= 0.0002083  b1=0.050 b2=0.000 total_fb=0.0500
+  B3       Cost0_MaxRank      cost=  52.2127  P_F= 0.0002083  b1=0.050 b2=0.000 total_fb=0.0500
+  B3       Entropy            cost=  53.0560  P_F= 0.0000000  b1=0.050 b2=0.010 total_fb=0.0596
+
+[dense_risk / Paper1s]
+  Baseline G0_OriginalTop1    cost=  43.1150  P_F= 0.3253119
+  B1       G2_FiveBin         cost=  43.1150  P_F= 0.3253119  budget=0.000
+  B1       G3_Entropy         cost=  43.1150  P_F= 0.3253119  budget=0.000
+  B1       G4_Cost0_MaxRank   cost=  43.1150  P_F= 0.3253119  budget=0.000
+  B1       G2_FiveBin         cost=  43.5749  P_F= 0.3244207  budget=0.005
+  B1       G2_FiveBin         cost=  44.0472  P_F= 0.3235294  budget=0.010
+  B1       G3_Entropy         cost=  44.1061  P_F= 0.3208556  budget=0.010
+  B1       G2_FiveBin         cost=  45.0018  P_F= 0.3163993  budget=0.020
+  B1       G4_Cost0_MaxRank   cost=  45.0276  P_F= 0.3155080  budget=0.020
+  B1       G3_Entropy         cost=  45.0660  P_F= 0.3137255  budget=0.020
+  B3       Entropy            cost=  47.2210  P_F= 0.3101604  b1=0.010 b2=0.010 total_fb=0.0214
+  B1       G5_RefinedLR       cost=  47.2513  P_F= 0.3048128  budget=0.020
+  B3       FiveBin            cost=  47.2513  P_F= 0.3048128  b1=0.020 b2=0.000 total_fb=0.0205
+  B3       Entropy            cost=  47.2513  P_F= 0.3048128  b1=0.020 b2=0.000 total_fb=0.0205
+  B3       Cost0_MaxRank      cost=  47.2513  P_F= 0.3048128  b1=0.020 b2=0.000 total_fb=0.0205
+  B1       G2_FiveBin         cost=  47.9367  P_F= 0.2994652  budget=0.050
+  B1       G3_Entropy         cost=  47.9884  P_F= 0.2950089  budget=0.050
+  B1       G4_Cost0_MaxRank   cost=  48.1364  P_F= 0.2905526  budget=0.050
+  B1       G6_All3_MaxRank    cost=  50.2103  P_F= 0.2869875  budget=0.050
+  B1       G5_RefinedLR       cost=  50.4376  P_F= 0.2745098  budget=0.050
+  B3       FiveBin            cost=  50.4376  P_F= 0.2745098  b1=0.050 b2=0.000 total_fb=0.0508
+  B3       Entropy            cost=  50.4376  P_F= 0.2745098  b1=0.050 b2=0.000 total_fb=0.0508
+  B3       Cost0_MaxRank      cost=  50.4376  P_F= 0.2745098  b1=0.050 b2=0.000 total_fb=0.0508
+  B3       FiveBin            cost=  51.2772  P_F= 0.2736185  b1=0.050 b2=0.010 total_fb=0.0606
+  B3       Cost0_MaxRank      cost=  51.2941  P_F= 0.2727273  b1=0.050 b2=0.010 total_fb=0.0606
+  B3       Entropy            cost=  51.3529  P_F= 0.2700535  b1=0.050 b2=0.010 total_fb=0.0606
+  B3       FiveBin            cost=  52.2121  P_F= 0.2673797  b1=0.050 b2=0.020 total_fb=0.0704
+  B3       Entropy            cost=  52.2959  P_F= 0.2638146  b1=0.050 b2=0.020 total_fb=0.0704
+  B3       FiveBin            cost=  54.9991  P_F= 0.2504456  b1=0.050 b2=0.050 total_fb=0.0989
+  B3       Entropy            cost=  55.0526  P_F= 0.2450980  b1=0.050 b2=0.050 total_fb=0.0989
+  B3       Cost0_MaxRank      cost=  55.0882  P_F= 0.2433155  b1=0.050 b2=0.050 total_fb=0.0989
+  B3       FiveBin            cost=  55.6426  P_F= 0.2245989  b1=0.100 b2=0.000 total_fb=0.1007
+  B3       Entropy            cost=  55.6426  P_F= 0.2245989  b1=0.100 b2=0.000 total_fb=0.1007
+  B3       Cost0_MaxRank      cost=  55.6426  P_F= 0.2245989  b1=0.100 b2=0.000 total_fb=0.1007
+  B1       G5_RefinedLR       cost=  55.6426  P_F= 0.2245989  budget=0.100
+  B3       FiveBin            cost=  56.4822  P_F= 0.2237077  b1=0.100 b2=0.010 total_fb=0.1105
+  B3       Cost0_MaxRank      cost=  56.4991  P_F= 0.2228164  b1=0.100 b2=0.010 total_fb=0.1105
+  B3       Entropy            cost=  56.5579  P_F= 0.2201426  b1=0.100 b2=0.010 total_fb=0.1105
+  B3       FiveBin            cost=  57.3235  P_F= 0.2192513  b1=0.100 b2=0.020 total_fb=0.1194
+  B3       Cost0_MaxRank      cost=  57.3699  P_F= 0.2165775  b1=0.100 b2=0.020 total_fb=0.1194
+  B3       Entropy            cost=  57.4082  P_F= 0.2147950  b1=0.100 b2=0.020 total_fb=0.1194
+  B3       FiveBin            cost=  59.9011  P_F= 0.2049911  b1=0.100 b2=0.050 total_fb=0.1462
+  B3       Cost0_MaxRank      cost=  60.0062  P_F= 0.1969697  b1=0.100 b2=0.050 total_fb=0.1462
+  B3       Entropy            cost=  60.0187  P_F= 0.1960784  b1=0.100 b2=0.050 total_fb=0.1462
+  B3       Entropy            cost=  64.2745  P_F= 0.1755793  b1=0.100 b2=0.100 total_fb=0.1907
+  B3       Cost0_MaxRank      cost=  64.3806  P_F= 0.1746881  b1=0.100 b2=0.100 total_fb=0.1907
+  B1       G6_All3_MaxRank    cost=  65.3859  P_F= 0.1720143  budget=0.200
+  B1       G5_RefinedLR       cost=  66.0971  P_F= 0.1247772  budget=0.200
+  B3       FiveBin            cost=  66.0971  P_F= 0.1247772  b1=0.200 b2=0.000 total_fb=0.2005
+  B3       Entropy            cost=  66.0971  P_F= 0.1247772  b1=0.200 b2=0.000 total_fb=0.2005
+  B3       Cost0_MaxRank      cost=  66.0971  P_F= 0.1247772  b1=0.200 b2=0.000 total_fb=0.2005
+  B3       FiveBin            cost=  66.7754  P_F= 0.1238859  b1=0.200 b2=0.010 total_fb=0.2086
+  B3       Cost0_MaxRank      cost=  67.4795  P_F= 0.1229947  b1=0.200 b2=0.020 total_fb=0.2166
+  B3       Entropy            cost=  69.6881  P_F= 0.1167558  b1=0.200 b2=0.050 total_fb=0.2406
+  B3       Cost0_MaxRank      cost=  69.7201  P_F= 0.1158645  b1=0.200 b2=0.050 total_fb=0.2406
+  B3       FiveBin            cost=  69.7478  P_F= 0.1140820  b1=0.200 b2=0.050 total_fb=0.2406
+  B3       Entropy            cost=  73.4242  P_F= 0.1096257  b1=0.200 b2=0.100 total_fb=0.2807
+  B3       Cost0_MaxRank      cost=  73.5998  P_F= 0.1033868  b1=0.200 b2=0.100 total_fb=0.2807
+  B3       FiveBin            cost=  73.6426  P_F= 0.0998217  b1=0.200 b2=0.100 total_fb=0.2807
+  B1       G5_RefinedLR       cost=  77.1711  P_F= 0.0784314  budget=0.300
+  B3       FiveBin            cost=  77.1711  P_F= 0.0784314  b1=0.300 b2=0.000 total_fb=0.3004
+  B3       Entropy            cost=  77.1711  P_F= 0.0784314  b1=0.300 b2=0.000 total_fb=0.3004
+  B3       Cost0_MaxRank      cost=  77.1711  P_F= 0.0784314  b1=0.300 b2=0.000 total_fb=0.3004
+  B3       FiveBin            cost=  77.7763  P_F= 0.0775401  b1=0.300 b2=0.010 total_fb=0.3075
+  B3       Cost0_MaxRank      cost=  80.2986  P_F= 0.0730838  b1=0.300 b2=0.050 total_fb=0.3360
+  B3       Entropy            cost=  80.3529  P_F= 0.0713012  b1=0.300 b2=0.050 total_fb=0.3360
+  B3       Entropy            cost=  81.4474  P_F= 0.0668449  b1=0.200 b2=0.200 total_fb=0.3610
+  B3       Entropy            cost=  83.5481  P_F= 0.0650624  b1=0.300 b2=0.100 total_fb=0.3708
+  B3       FiveBin            cost=  83.6444  P_F= 0.0606061  b1=0.300 b2=0.100 total_fb=0.3708
+  B3       FiveBin            cost=  89.2620  P_F= 0.0508021  b1=0.200 b2=0.300 total_fb=0.4412
+  B3       Entropy            cost=  89.2799  P_F= 0.0472371  b1=0.200 b2=0.300 total_fb=0.4412
+  B3       FiveBin            cost=  90.2701  P_F= 0.0427807  b1=0.300 b2=0.200 total_fb=0.4403
+  B3       Cost0_MaxRank      cost=  90.3832  P_F= 0.0383244  b1=0.300 b2=0.200 total_fb=0.4403
+  B3       Entropy            cost=  90.3841  P_F= 0.0374332  b1=0.300 b2=0.200 total_fb=0.4403
+  B1       G6_All3_MaxRank    cost=  96.1702  P_F= 0.0204991  budget=0.500
+  B3       FiveBin            cost= 100.3494  P_F= 0.0178253  b1=0.100 b2=0.500 total_fb=0.5508
+  B3       FiveBin            cost= 105.4831  P_F= 0.0000000  b1=0.200 b2=0.500 total_fb=0.6007
+
+[dense_risk / BeamDerived]
+  Baseline G0_OriginalTop1    cost=  42.5319  P_F= 0.4264706
+  B1       G2_FiveBin         cost=  42.5319  P_F= 0.4264706  budget=0.000
+  B1       G3_Entropy         cost=  42.5319  P_F= 0.4264706  budget=0.000
+  B1       G4_Cost0_MaxRank   cost=  42.5319  P_F= 0.4264706  budget=0.000
+  B1       G2_FiveBin         cost=  43.2426  P_F= 0.4215686  budget=0.005
+  B1       G2_FiveBin         cost=  43.7525  P_F= 0.4166667  budget=0.010
+  B1       G5_RefinedLR       cost=  45.8113  P_F= 0.4142157  budget=0.010
+  B3       FiveBin            cost=  45.8113  P_F= 0.4142157  b1=0.010 b2=0.000 total_fb=0.0123
+  B3       Entropy            cost=  45.8113  P_F= 0.4142157  b1=0.010 b2=0.000 total_fb=0.0123
+  B3       Cost0_MaxRank      cost=  45.8113  P_F= 0.4142157  b1=0.010 b2=0.000 total_fb=0.0123
+  B3       FiveBin            cost=  46.5221  P_F= 0.4093137  b1=0.005 b2=0.010 total_fb=0.0196
+  B1       G5_RefinedLR       cost=  46.8676  P_F= 0.4044118  budget=0.020
+  B3       FiveBin            cost=  46.8676  P_F= 0.4044118  b1=0.020 b2=0.000 total_fb=0.0221
+  B3       Entropy            cost=  46.8676  P_F= 0.4044118  b1=0.020 b2=0.000 total_fb=0.0221
+  B3       Cost0_MaxRank      cost=  46.8676  P_F= 0.4044118  b1=0.020 b2=0.000 total_fb=0.0221
+  B1       G2_FiveBin         cost=  47.3015  P_F= 0.4019608  budget=0.050
+  B1       G4_Cost0_MaxRank   cost=  47.4191  P_F= 0.3970588  budget=0.050
+  B1       G3_Entropy         cost=  47.4657  P_F= 0.3946078  budget=0.050
+  B1       G6_All3_MaxRank    cost=  49.5613  P_F= 0.3921569  budget=0.050
+  B1       G5_RefinedLR       cost=  49.9363  P_F= 0.3750000  budget=0.050
+  B3       FiveBin            cost=  49.9363  P_F= 0.3750000  b1=0.050 b2=0.000 total_fb=0.0515
+  B3       Entropy            cost=  49.9363  P_F= 0.3750000  b1=0.050 b2=0.000 total_fb=0.0515
+  B3       Cost0_MaxRank      cost=  49.9363  P_F= 0.3750000  b1=0.050 b2=0.000 total_fb=0.0515
+  B3       Entropy            cost=  50.8015  P_F= 0.3725490  b1=0.050 b2=0.010 total_fb=0.0613
+  B3       Cost0_MaxRank      cost=  50.8554  P_F= 0.3700980  b1=0.050 b2=0.010 total_fb=0.0613
+  B3       FiveBin            cost=  50.9020  P_F= 0.3676471  b1=0.050 b2=0.010 total_fb=0.0613
+  B3       FiveBin            cost=  51.7672  P_F= 0.3651961  b1=0.050 b2=0.020 total_fb=0.0711
+  B3       Entropy            cost=  51.7672  P_F= 0.3651961  b1=0.050 b2=0.020 total_fb=0.0711
+  B3       Cost0_MaxRank      cost=  51.7672  P_F= 0.3651961  b1=0.050 b2=0.020 total_fb=0.0711
+  B3       FiveBin            cost=  54.3971  P_F= 0.3553922  b1=0.050 b2=0.050 total_fb=0.1005
+  B1       G6_All3_MaxRank    cost=  54.4510  P_F= 0.3529412  budget=0.100
+  B3       Entropy            cost=  54.6152  P_F= 0.3455882  b1=0.050 b2=0.050 total_fb=0.1005
+  B1       G5_RefinedLR       cost=  55.1299  P_F= 0.3259804  budget=0.100
+  B3       FiveBin            cost=  55.1299  P_F= 0.3259804  b1=0.100 b2=0.000 total_fb=0.1005
+  B3       Entropy            cost=  55.1299  P_F= 0.3259804  b1=0.100 b2=0.000 total_fb=0.1005
+  B3       Cost0_MaxRank      cost=  55.1299  P_F= 0.3259804  b1=0.100 b2=0.000 total_fb=0.1005
+  B3       Entropy            cost=  55.9951  P_F= 0.3235294  b1=0.100 b2=0.010 total_fb=0.1103
+  B3       Cost0_MaxRank      cost=  56.0490  P_F= 0.3210784  b1=0.100 b2=0.010 total_fb=0.1103
+  B3       FiveBin            cost=  56.0956  P_F= 0.3186275  b1=0.100 b2=0.010 total_fb=0.1103
+  B3       FiveBin            cost=  56.9608  P_F= 0.3161765  b1=0.100 b2=0.020 total_fb=0.1201
+  B3       Entropy            cost=  56.9608  P_F= 0.3161765  b1=0.100 b2=0.020 total_fb=0.1201
+  B3       Cost0_MaxRank      cost=  56.9608  P_F= 0.3161765  b1=0.100 b2=0.020 total_fb=0.1201
+  B3       FiveBin            cost=  59.3358  P_F= 0.3088235  b1=0.100 b2=0.050 total_fb=0.1471
+  B3       Cost0_MaxRank      cost=  59.4510  P_F= 0.3039216  b1=0.100 b2=0.050 total_fb=0.1471
+  B3       Entropy            cost=  59.5539  P_F= 0.2990196  b1=0.100 b2=0.050 total_fb=0.1471
+  B3       Entropy            cost=  63.7402  P_F= 0.2843137  b1=0.100 b2=0.100 total_fb=0.1912
+  B3       Cost0_MaxRank      cost=  63.9926  P_F= 0.2769608  b1=0.100 b2=0.100 total_fb=0.1936
+  B1       G5_RefinedLR       cost=  65.6789  P_F= 0.2254902  budget=0.200
+  B3       FiveBin            cost=  65.6789  P_F= 0.2254902  b1=0.200 b2=0.000 total_fb=0.2010
+  B3       Entropy            cost=  65.6789  P_F= 0.2254902  b1=0.200 b2=0.000 total_fb=0.2010
+  B3       Cost0_MaxRank      cost=  65.6789  P_F= 0.2254902  b1=0.200 b2=0.000 total_fb=0.2010
+  B3       Entropy            cost=  66.5441  P_F= 0.2230392  b1=0.200 b2=0.010 total_fb=0.2108
+  B3       Cost0_MaxRank      cost=  66.5980  P_F= 0.2205882  b1=0.200 b2=0.010 total_fb=0.2108
+  B3       FiveBin            cost=  66.6446  P_F= 0.2181373  b1=0.200 b2=0.010 total_fb=0.2108
+  B3       FiveBin            cost=  67.3088  P_F= 0.2156863  b1=0.200 b2=0.020 total_fb=0.2181
+  B3       Cost0_MaxRank      cost=  67.3088  P_F= 0.2156863  b1=0.200 b2=0.020 total_fb=0.2181
+  B3       Entropy            cost=  69.3799  P_F= 0.2132353  b1=0.200 b2=0.050 total_fb=0.2426
+  B3       FiveBin            cost=  69.4265  P_F= 0.2107843  b1=0.200 b2=0.050 total_fb=0.2426
+  B3       Entropy            cost=  73.1103  P_F= 0.2083333  b1=0.200 b2=0.100 total_fb=0.2819
+  B3       Cost0_MaxRank      cost=  73.2279  P_F= 0.1960784  b1=0.200 b2=0.100 total_fb=0.2819
+  B3       FiveBin            cost=  73.3211  P_F= 0.1936275  b1=0.200 b2=0.100 total_fb=0.2819
+  B3       Entropy            cost=  81.1716  P_F= 0.1666667  b1=0.200 b2=0.200 total_fb=0.3627
+  B3       FiveBin            cost=  81.4730  P_F= 0.1642157  b1=0.200 b2=0.200 total_fb=0.3627
+  B3       Entropy            cost=  89.3211  P_F= 0.1225490  b1=0.200 b2=0.300 total_fb=0.4412
+  B3       Entropy            cost=  96.4142  P_F= 0.1176471  b1=0.020 b2=0.500 total_fb=0.5123
+  B3       Entropy            cost=  97.8505  P_F= 0.1078431  b1=0.050 b2=0.500 total_fb=0.5270
+  B3       FiveBin            cost=  99.3137  P_F= 0.1053922  b1=0.500 b2=0.010 total_fb=0.5074
+  B3       FiveBin            cost=  99.8235  P_F= 0.1004902  b1=0.500 b2=0.020 total_fb=0.5123
+  B3       Cost0_MaxRank      cost= 100.4608  P_F= 0.0980392  b1=0.100 b2=0.500 total_fb=0.5515
+  B3       Entropy            cost= 100.5098  P_F= 0.0931373  b1=0.100 b2=0.500 total_fb=0.5515
+  B3       FiveBin            cost= 105.7157  P_F= 0.0686275  b1=0.200 b2=0.500 total_fb=0.6005
+  B1       G3_Entropy         cost= 119.0000  P_F= 0.0147059  budget=0.750
+  B1       G4_Cost0_MaxRank   cost= 119.0956  P_F= 0.0000000  budget=0.750
+
+============================================================
+5. BEST STAGED RESULT UNDER PRE-REGISTERED COST CAPS
+============================================================
+
+[original_grid / Paper1s]
+  cost cap 0.10: signal=FiveBin, b1=0.050, b2=0.020, actual_fb=0.0692, evals=53.5819, P_F=0.000625, gain_vs_best_B1=0.000625
+  cost cap 0.25: signal=FiveBin, b1=0.100, b2=0.020, actual_fb=0.1181, evals=59.4052, P_F=0, gain_vs_best_B1=0.000416666667
+  cost cap 0.50: signal=FiveBin, b1=0.100, b2=0.020, actual_fb=0.1181, evals=59.4052, P_F=0, gain_vs_best_B1=0.000416666667
+  cost cap 0.75: signal=FiveBin, b1=0.100, b2=0.020, actual_fb=0.1181, evals=59.4052, P_F=0, gain_vs_best_B1=0.000416666667
+  cost cap 1.00: signal=FiveBin, b1=0.100, b2=0.020, actual_fb=0.1181, evals=59.4052, P_F=0, gain_vs_best_B1=0.000416666667
+
+[original_grid / BeamDerived]
+  cost cap 0.10: signal=Entropy, b1=0.050, b2=0.010, actual_fb=0.0596, evals=53.0560, P_F=0, gain_vs_best_B1=0.000208333333
+  cost cap 0.25: signal=Entropy, b1=0.050, b2=0.010, actual_fb=0.0596, evals=53.0560, P_F=0, gain_vs_best_B1=0.000208333333
+  cost cap 0.50: signal=Entropy, b1=0.050, b2=0.010, actual_fb=0.0596, evals=53.0560, P_F=0, gain_vs_best_B1=0.000208333333
+  cost cap 0.75: signal=Entropy, b1=0.050, b2=0.010, actual_fb=0.0596, evals=53.0560, P_F=0, gain_vs_best_B1=0.000208333333
+  cost cap 1.00: signal=Entropy, b1=0.050, b2=0.010, actual_fb=0.0596, evals=53.0560, P_F=0, gain_vs_best_B1=0.000208333333
+
+[dense_risk / Paper1s]
+  cost cap 0.10: signal=Entropy, b1=0.050, b2=0.020, actual_fb=0.0704, evals=52.2959, P_F=0.263814617, gain_vs_best_B1=0.0106951872
+  cost cap 0.25: signal=FiveBin, b1=0.200, b2=0.050, actual_fb=0.2406, evals=69.7478, P_F=0.114081996, gain_vs_best_B1=0.0106951872
+  cost cap 0.50: signal=FiveBin, b1=0.020, b2=0.500, actual_fb=0.5107, evals=96.2273, P_F=0.0365418895, gain_vs_best_B1=-0.0160427807
+  cost cap 0.75: signal=FiveBin, b1=0.200, b2=0.500, actual_fb=0.6007, evals=105.4831, P_F=0, gain_vs_best_B1=0.0204991087
+  cost cap 1.00: signal=FiveBin, b1=0.200, b2=0.500, actual_fb=0.6007, evals=105.4831, P_F=0, gain_vs_best_B1=0.0204991087
+
+[dense_risk / BeamDerived]
+  cost cap 0.10: signal=FiveBin, b1=0.050, b2=0.020, actual_fb=0.0711, evals=51.7672, P_F=0.365196078, gain_vs_best_B1=0.00980392157
+  cost cap 0.25: signal=FiveBin, b1=0.200, b2=0.020, actual_fb=0.2181, evals=67.3088, P_F=0.215686275, gain_vs_best_B1=0.00980392157
+  cost cap 0.50: signal=Entropy, b1=0.200, b2=0.300, actual_fb=0.4412, evals=89.3211, P_F=0.12254902, gain_vs_best_B1=0.0906862745
+  cost cap 0.75: signal=FiveBin, b1=0.200, b2=0.500, actual_fb=0.6005, evals=105.7157, P_F=0.068627451, gain_vs_best_B1=0.0416666667
+  cost cap 1.00: signal=Entropy, b1=0.500, b2=0.500, actual_fb=0.7500, evals=122.3824, P_F=0.0343137255, gain_vs_best_B1=-0.0343137255
+
+============================================================
+6. NEW-PARETO EVIDENCE VS COMPLETE B1 ENVELOPE
+============================================================
+original_grid / Paper1s: strictly improved staged points=35/216; equal-to-envelope=134; max gain=0.000833333333
+original_grid / BeamDerived: strictly improved staged points=21/216; equal-to-envelope=155; max gain=0.000208333333
+dense_risk / Paper1s: strictly improved staged points=69/216; equal-to-envelope=43; max gain=0.0409982175
+dense_risk / BeamDerived: strictly improved staged points=92/216; equal-to-envelope=57; max gain=0.0906862745
+
+============================================================
+7. STAGE-2 SIGNAL COMPARISON
+============================================================
+
+[original_grid / Paper1s]
+  FiveBin: min P_F=0; max gain vs best B1=0.000833333333; Pareto-front occurrences=7
+  Entropy: min P_F=0; max gain vs best B1=0.000833333333; Pareto-front occurrences=5
+  Cost0_MaxRank: min P_F=0; max gain vs best B1=0.000833333333; Pareto-front occurrences=6
+
+[original_grid / BeamDerived]
+  FiveBin: min P_F=0; max gain vs best B1=0.000208333333; Pareto-front occurrences=4
+  Entropy: min P_F=0; max gain vs best B1=0.000208333333; Pareto-front occurrences=4
+  Cost0_MaxRank: min P_F=0; max gain vs best B1=0.000208333333; Pareto-front occurrences=3
+
+[dense_risk / Paper1s]
+  FiveBin: min P_F=0; max gain vs best B1=0.0356506239; Pareto-front occurrences=20
+  Entropy: min P_F=0; max gain vs best B1=0.0409982175; Pareto-front occurrences=20
+  Cost0_MaxRank: min P_F=0; max gain vs best B1=0.0401069519; Pareto-front occurrences=16
+
+[dense_risk / BeamDerived]
+  FiveBin: min P_F=0; max gain vs best B1=0.0784313725; Pareto-front occurrences=20
+  Entropy: min P_F=0; max gain vs best B1=0.0906862745; Pareto-front occurrences=20
+  Cost0_MaxRank: min P_F=0; max gain vs best B1=0.0833333333; Pareto-front occurrences=15
+
+============================================================
+8. IMPORTANT COUNTS / SAFETY
+============================================================
+Total induced failures across staged sweep: 0
+Total persistent-after-fallback counts across staged rows: 0
+No truth physical variable is used by PA5J-B3.
+No threshold / operating point is locked by this export.
+Positive gain_vs_best_B1 means lower final failure probability than
+every B1 selective policy available at no greater mean objective cost.

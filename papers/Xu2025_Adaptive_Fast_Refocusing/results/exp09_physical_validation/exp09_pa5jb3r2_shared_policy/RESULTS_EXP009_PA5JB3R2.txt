@@ -1,0 +1,78 @@
+EXP009 / PA5J-B3-R2 — Shared-Policy Cross-Aperture Robustness Audit
+FORMAL RESULT EXPORT FOR RESEARCH-LAYER REVIEW
+No shared operating point is automatically selected.
+
+============================================================
+1. INPUT / SOFTWARE AUDIT
+============================================================
+B3-R1 input: E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5jb3r1_dense_b1_audit\pa5jb3r1_b3_vs_dense_b1.csv
+B3 input   : E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5jb3_staged_gate\pa5jb3_staged_sweep.csv
+R1 rows=864; B3 join-audit rows=864; all join checks pass=1
+Shared configuration count=216
+Smoke tests=8; all pass=1
+
+============================================================
+2. FROZEN ROBUSTNESS DEFINITION
+============================================================
+Primary source: dense_risk
+Apertures: Paper1s, BeamDerived
+Stage-2 signals: FiveBin, Entropy, Cost0_MaxRank
+Stage-1 budgets: [0.005,0.01,0.02,0.05,0.1,0.2,0.3,0.5]
+Stage-2 budgets: [0,0.01,0.02,0.05,0.1,0.2,0.3,0.5,1]
+robust_min_gain = min(dense Paper1s gain, dense BeamDerived gain)
+Dense strict-both requires gain > 0 against each aperture's own exhaustive dense-B1 frontier.
+Original grid is consistency-only and never enters robust_min_gain.
+
+============================================================
+3. CROSS-APERTURE CORE VERDICT
+============================================================
+Dense strict-both configurations: 8 / 216
+Dense noninferior-both configurations: 43 / 216
+Robust-front configurations: 4
+Strongest worst-aperture gain: signal=FiveBin, b1=0.2, b2=0.1, robust gain=0.0124777184, Paper gain=0.0124777184, Beam gain=0.0196078431, worst norm cost=0.296043174, saved failures=(14,8)
+Dense-strict configs also Original-noninferior in both apertures: 8 / 8
+Dense-strict configs also Original-strict in both apertures: 0 / 8
+
+============================================================
+4. STAGE-2 SIGNAL SUMMARY
+============================================================
+FiveBin: shared=72, dense strict-both=3, dense noninferior-both=15, max robust gain=0.0124777184, max robust saved failures=8, robust-front=2, strict+Original-noninferior=3, strict+Original-strict=0
+Entropy: shared=72, dense strict-both=2, dense noninferior-both=14, max robust gain=0.0106951872, max robust saved failures=8, robust-front=1, strict+Original-noninferior=2, strict+Original-strict=0
+Cost0_MaxRank: shared=72, dense strict-both=3, dense noninferior-both=14, max robust gain=0.00891265597, max robust saved failures=7, robust-front=1, strict+Original-noninferior=3, strict+Original-strict=0
+
+============================================================
+5. CROSS-APERTURE GAIN CONCORDANCE
+============================================================
+ALL: N=216, Spearman rho=0.679533278
+FiveBin: N=72, Spearman rho=0.682221349
+Entropy: N=72, Spearman rho=0.645368134
+Cost0_MaxRank: N=72, Spearman rho=0.722419126
+
+============================================================
+6. TOP SHARED CONFIGURATIONS BY WORST-APERTURE GAIN
+============================================================
+#01 FiveBin b1=0.200 b2=0.100 | robust=0.0124777184 Paper=0.0124777184 Beam=0.0196078431 | saved=(14,8) | worst norm cost=0.296043 | Original gain=(0,0) Original class=equal_both | robust_front=1
+#02 Entropy b1=0.200 b2=0.300 | robust=0.0106951872 Paper=0.0106951872 Beam=0.0196078431 | saved=(12,8) | worst norm cost=0.449886 | Original gain=(0,0) Original class=equal_both | robust_front=0
+#03 Cost0_MaxRank b1=0.200 b2=0.100 | robust=0.00891265597 Paper=0.00891265597 Beam=0.0171568627 | saved=(10,7) | worst norm cost=0.295148 | Original gain=(0,0) Original class=equal_both | robust_front=1
+#04 Cost0_MaxRank b1=0.200 b2=0.300 | robust=0.00891265597 Paper=0.00891265597 Beam=0.012254902 | saved=(10,5) | worst norm cost=0.450381 | Original gain=(0,0) Original class=equal_both | robust_front=0
+#05 FiveBin b1=0.200 b2=0.300 | robust=0.00713012478 Paper=0.00713012478 Beam=0.00735294118 | saved=(8,3) | worst norm cost=0.450121 | Original gain=(0,0) Original class=equal_both | robust_front=0
+#06 Entropy b1=0.200 b2=0.100 | robust=0.00445632799 Paper=0.00445632799 Beam=0.00490196078 | saved=(5,2) | worst norm cost=0.294016 | Original gain=(0,0) Original class=equal_both | robust_front=1
+#07 FiveBin b1=0.200 b2=0.050 | robust=0.00245098039 Paper=0.00980392157 Beam=0.00245098039 | saved=(11,1) | worst norm cost=0.258596 | Original gain=(0,0) Original class=equal_both | robust_front=1
+#08 Cost0_MaxRank b1=0.200 b2=0.050 | robust=0.00245098039 Paper=0.00802139037 Beam=0.00245098039 | saved=(9,1) | worst norm cost=0.258643 | Original gain=(0,0) Original class=equal_both | robust_front=0
+
+============================================================
+7. ROBUST CANDIDATE FRONT
+============================================================
+FiveBin b1=0.200 b2=0.050 | worst norm cost=0.258596 | robust gain=0.00245098039 | Paper gain=0.00980392157 Beam gain=0.00245098039 | Original=(0,0) class=equal_both
+Entropy b1=0.200 b2=0.100 | worst norm cost=0.294016 | robust gain=0.00445632799 | Paper gain=0.00445632799 Beam gain=0.00490196078 | Original=(0,0) class=equal_both
+Cost0_MaxRank b1=0.200 b2=0.100 | worst norm cost=0.295148 | robust gain=0.00891265597 | Paper gain=0.00891265597 Beam gain=0.0171568627 | Original=(0,0) class=equal_both
+FiveBin b1=0.200 b2=0.100 | worst norm cost=0.296043 | robust gain=0.0124777184 | Paper gain=0.0124777184 Beam gain=0.0196078431 | Original=(0,0) class=equal_both
+
+============================================================
+8. INTERPRETATION BOUNDARIES
+============================================================
+No configuration was selected using Original-grid performance.
+No new B3 budget, score, or threshold was introduced.
+No physical truth variable was used.
+A positive robust_min_gain means the SAME staged configuration strictly beats each aperture's own exhaustive deterministic single-stage B1 frontier at no greater cost.
+This remains an in-grid cross-aperture robustness audit, not an independent held-out generalization test.

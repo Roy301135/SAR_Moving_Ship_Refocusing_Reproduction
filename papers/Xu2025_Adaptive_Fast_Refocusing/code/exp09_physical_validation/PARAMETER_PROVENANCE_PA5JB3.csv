@@ -1,0 +1,11 @@
+﻿parameter,value,source,role
+experiment_id,EXP009_PA5JB3,Frozen PA5J-B3 design,identity
+stage1_signal,refined_lr_asymmetry,PA5J-B1/B2,protect observable failure core
+stage1_budgets,0.005;0.01;0.02;0.05;0.10;0.20;0.30;0.50,Frozen before run,threshold-free Stage-1 sweep
+stage2_signals,FiveBin;Entropy;Cost0_MaxRank,PA5J-B2,residual Cost-0 alternatives
+stage2_conditional_budgets,0;0.01;0.02;0.05;0.10;0.20;0.30;0.50;1.00,Frozen before run,threshold-free residual sweep
+refined_lr_extra_evals,2,PA5J-A/B1,diagnostic cost
+stage2_extra_objective_evals,0,PA5J-A/B2,Cost-0 diagnostics
+selection_rule,tie-inclusive at both stages,PA5J-B0/B1/B2,no arbitrary tie break
+b1_comparator,all G2-G6 B1 policies at no greater mean cost,Frozen PA5J-B3 design,conservative cost-matched comparison
+truth_physics,not used,PA5J-B3 design,forbidden in gate

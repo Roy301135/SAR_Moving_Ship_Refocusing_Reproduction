@@ -1,0 +1,139 @@
+EXP009 / PA5J-B3-R1 — Dense Single-Stage Comparator Audit
+FORMAL FAIRNESS / CONTRIBUTION AUDIT
+No method claim or operating point is automatically selected.
+
+============================================================
+1. INPUT / SOFTWARE AUDIT
+============================================================
+Canonical trials : E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5jb1_selective_n3_pareto\pa5jb1_canonical_trials.csv
+B1 sampled sweep : E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5jb1_selective_n3_pareto\pa5jb1_policy_sweep.csv
+B1 baselines     : E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5jb1_selective_n3_pareto\pa5jb1_baselines.csv
+B3 staged sweep  : E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5jb3_staged_gate\pa5jb3_staged_sweep.csv
+Canonical N=11130; unique source+trial_id=11130
+Dense B1 endpoints=49173
+Sampled B1 reconstruction rows=220; all pass=1
+Smoke tests=8; all pass=1
+
+============================================================
+2. DENSE COMPARATOR DEFINITION
+============================================================
+Policies: G2_FiveBin, G3_Entropy, G4_Cost0_MaxRank, G5_RefinedLR, G6_All3_MaxRank
+For each policy and primary group, every distinct score value is used as a tie-inclusive cutoff.
+Therefore every attainable deterministic threshold set is enumerated, plus the no-trigger endpoint.
+No interpolation is used.
+
+============================================================
+3. DENSE B1 FRONTIER SIZE
+============================================================
+original_grid / Paper1s: dense endpoints=21184; Pareto points=41
+original_grid / BeamDerived: dense endpoints=21219; Pareto points=20
+dense_risk / Paper1s: dense endpoints=4964; Pareto points=361
+dense_risk / BeamDerived: dense endpoints=1806; Pareto points=173
+
+============================================================
+4. B3 VS DENSE B1 — CORE VERDICT TABLE
+============================================================
+
+[original_grid / Paper1s]
+  B3 staged points=216
+  strictly better than dense B1=7
+  equal to dense B1=138
+  worse than dense B1=71
+  max old sampled-B1 gain=0.000833333333
+  max dense-B1 gain=0.000416666667
+  mean gain removed by dense audit=0.000127314815
+  strongest staged gain: signal=FiveBin, b1=0.1, b2=0.02, cost=59.405208, P_F=0, dense comparator=G6_All3_MaxRank, dense P_F=0.000416666667, gain=0.000416666667
+
+[original_grid / BeamDerived]
+  B3 staged points=216
+  strictly better than dense B1=9
+  equal to dense B1=164
+  worse than dense B1=43
+  max old sampled-B1 gain=0.000208333333
+  max dense-B1 gain=0.000208333333
+  mean gain removed by dense audit=2.60416667e-05
+  strongest staged gain: signal=FiveBin, b1=0.01, b2=0.01, cost=48.355000, P_F=0.000625, dense comparator=G5_RefinedLR, dense P_F=0.000833333333, gain=0.000208333333
+
+[dense_risk / Paper1s]
+  B3 staged points=216
+  strictly better than dense B1=14
+  equal to dense B1=43
+  worse than dense B1=159
+  max old sampled-B1 gain=0.0409982175
+  max dense-B1 gain=0.0169340463
+  mean gain removed by dense audit=0.0123663102
+  strongest staged gain: signal=Entropy, b1=0.3, b2=0.2, cost=90.384135, P_F=0.0374331551, dense comparator=G2_FiveBin, dense P_F=0.0543672014, gain=0.0169340463
+
+[dense_risk / BeamDerived]
+  B3 staged points=216
+  strictly better than dense B1=11
+  equal to dense B1=37
+  worse than dense B1=168
+  max old sampled-B1 gain=0.0906862745
+  max dense-B1 gain=0.0196078431
+  mean gain removed by dense audit=0.0192674292
+  strongest staged gain: signal=FiveBin, b1=0.2, b2=0.1, cost=73.321078, P_F=0.193627451, dense comparator=G5_RefinedLR, dense P_F=0.213235294, gain=0.0196078431
+
+============================================================
+5. OLD GAIN VS DENSE-AUDITED GAIN
+============================================================
+original_grid / Paper1s: old-positive=35; dense-positive=7; old gains removed=28
+original_grid / BeamDerived: old-positive=21; dense-positive=9; old gains removed=12
+dense_risk / Paper1s: old-positive=69; dense-positive=14; old gains removed=55
+dense_risk / BeamDerived: old-positive=92; dense-positive=11; old gains removed=81
+
+============================================================
+6. COMBINED DENSE-B1 + B3 PARETO MEMBERSHIP
+============================================================
+original_grid / Paper1s: DenseB1=37, B3=7, Baseline=1
+  B3 frontier membership by Stage-2 signal: FiveBin=3; Entropy=1; Cost0_MaxRank=3;
+original_grid / BeamDerived: DenseB1=18, B3=5, Baseline=1
+  B3 frontier membership by Stage-2 signal: FiveBin=2; Entropy=2; Cost0_MaxRank=1;
+dense_risk / Paper1s: DenseB1=312, B3=24, Baseline=1
+  B3 frontier membership by Stage-2 signal: FiveBin=8; Entropy=8; Cost0_MaxRank=8;
+dense_risk / BeamDerived: DenseB1=154, B3=16, Baseline=1
+  B3 frontier membership by Stage-2 signal: FiveBin=6; Entropy=6; Cost0_MaxRank=4;
+
+============================================================
+7. BEST B3 UNDER PRE-REGISTERED NORMALIZED COST CAPS
+   WITH DENSE-B1 COMPARATOR AT NO GREATER COST
+============================================================
+
+[original_grid / Paper1s]
+  cap 0.10: FiveBin b1=0.050 b2=0.020 cost=53.5819 P_F=0.000625 | denseB1=G6_All3_MaxRank cost=51.6931 P_F=0.000625 | dense gain=0
+  cap 0.25: FiveBin b1=0.100 b2=0.020 cost=59.4052 P_F=0 | denseB1=G6_All3_MaxRank cost=54.8706 P_F=0.000416666667 | dense gain=0.000416666667
+  cap 0.50: FiveBin b1=0.100 b2=0.020 cost=59.4052 P_F=0 | denseB1=G6_All3_MaxRank cost=54.8706 P_F=0.000416666667 | dense gain=0.000416666667
+  cap 0.75: FiveBin b1=0.100 b2=0.020 cost=59.4052 P_F=0 | denseB1=G6_All3_MaxRank cost=54.8706 P_F=0.000416666667 | dense gain=0.000416666667
+  cap 1.00: FiveBin b1=0.100 b2=0.020 cost=59.4052 P_F=0 | denseB1=G6_All3_MaxRank cost=54.8706 P_F=0.000416666667 | dense gain=0.000416666667
+
+[original_grid / BeamDerived]
+  cap 0.10: Entropy b1=0.050 b2=0.010 cost=53.0560 P_F=0 | denseB1=G5_RefinedLR cost=51.5962 P_F=0.000208333333 | dense gain=0.000208333333
+  cap 0.25: Entropy b1=0.050 b2=0.010 cost=53.0560 P_F=0 | denseB1=G5_RefinedLR cost=51.5962 P_F=0.000208333333 | dense gain=0.000208333333
+  cap 0.50: Entropy b1=0.050 b2=0.010 cost=53.0560 P_F=0 | denseB1=G5_RefinedLR cost=51.5962 P_F=0.000208333333 | dense gain=0.000208333333
+  cap 0.75: Entropy b1=0.050 b2=0.010 cost=53.0560 P_F=0 | denseB1=G5_RefinedLR cost=51.5962 P_F=0.000208333333 | dense gain=0.000208333333
+  cap 1.00: Entropy b1=0.050 b2=0.010 cost=53.0560 P_F=0 | denseB1=G5_RefinedLR cost=51.5962 P_F=0.000208333333 | dense gain=0.000208333333
+
+[dense_risk / Paper1s]
+  cap 0.10: Entropy b1=0.050 b2=0.020 cost=52.2959 P_F=0.263814617 | denseB1=G5_RefinedLR cost=52.2665 P_F=0.256684492 | dense gain=-0.00713012478
+  cap 0.25: FiveBin b1=0.200 b2=0.050 cost=69.7478 P_F=0.114081996 | denseB1=G5_RefinedLR cost=66.1898 P_F=0.123885918 | dense gain=0.00980392157
+  cap 0.50: FiveBin b1=0.020 b2=0.500 cost=96.2273 P_F=0.0365418895 | denseB1=G6_All3_MaxRank cost=96.1702 P_F=0.0204991087 | dense gain=-0.0160427807
+  cap 0.75: FiveBin b1=0.200 b2=0.500 cost=105.4831 P_F=0 | denseB1=G2_FiveBin cost=103.1943 P_F=0 | dense gain=0
+  cap 1.00: FiveBin b1=0.200 b2=0.500 cost=105.4831 P_F=0 | denseB1=G2_FiveBin cost=103.1943 P_F=0 | dense gain=0
+
+[dense_risk / BeamDerived]
+  cap 0.10: FiveBin b1=0.050 b2=0.020 cost=51.7672 P_F=0.365196078 | denseB1=G5_RefinedLR cost=51.7255 P_F=0.357843137 | dense gain=-0.00735294118
+  cap 0.25: FiveBin b1=0.200 b2=0.020 cost=67.3088 P_F=0.215686275 | denseB1=G5_RefinedLR cost=66.9730 P_F=0.213235294 | dense gain=-0.00245098039
+  cap 0.50: Entropy b1=0.200 b2=0.300 cost=89.3211 P_F=0.12254902 | denseB1=G6_All3_MaxRank cost=88.4485 P_F=0.142156863 | dense gain=0.0196078431
+  cap 0.75: FiveBin b1=0.200 b2=0.500 cost=105.7157 P_F=0.068627451 | denseB1=G4_Cost0_MaxRank cost=105.5686 P_F=0.0661764706 | dense gain=-0.00245098039
+  cap 1.00: Entropy b1=0.500 b2=0.500 cost=122.3824 P_F=0.0343137255 | denseB1=G2_FiveBin cost=115.4069 P_F=0 | dense gain=-0.0343137255
+
+============================================================
+8. SAFETY / INTERPRETATION BOUNDARIES
+============================================================
+Total B3 induced-failure counts across sweep: 0
+Total B3 persistent-after-fallback counts across sweep: 0
+Dense B1 comparison uses only attainable deterministic tie-inclusive endpoints.
+No randomization / interpolation was introduced.
+No threshold or operating point was selected.
+No truth physical variable was used.
+A positive new_dense_b1_gain means the staged point has lower failure probability than every attainable deterministic B1 point with no greater mean objective cost.

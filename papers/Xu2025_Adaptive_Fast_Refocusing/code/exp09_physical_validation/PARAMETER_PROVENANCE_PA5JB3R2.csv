@@ -1,0 +1,12 @@
+﻿parameter,value,source,role
+experiment_id,EXP009_PA5JB3R2,Frozen B3-R2 design,identity
+research_role,shared-policy cross-aperture robustness audit,B3-R1 interpretation,robustness validation
+primary_source,dense_risk,Frozen B3-R2 design,primary evidence
+consistency_source,original_grid,Frozen B3-R2 design,post-selection consistency only
+shared_policy_tuple,Stage2 signal; Stage1 budget; Stage2 conditional budget,PA5J-B3,must be identical across apertures
+robust_gain,"min(Paper1s dense gain, BeamDerived dense gain)",Frozen B3-R2 design,primary metric
+stage2_signals,FiveBin;Entropy;Cost0_MaxRank,PA5J-B3,frozen
+stage1_budgets,0.005;0.01;0.02;0.05;0.10;0.20;0.30;0.50,PA5J-B3,frozen
+stage2_budgets,0;0.01;0.02;0.05;0.10;0.20;0.30;0.50;1.00,PA5J-B3,frozen
+original_role,consistency check only; excluded from selection,Research-layer anti-overfitting rule,rare-event caution
+truth_physics,not used,B3-R2 design,forbidden

@@ -1,0 +1,9 @@
+﻿parameter,value,source,role
+experiment_id,EXP009_PA5JB3R1,Frozen B3-R1 design,identity
+research_role,dense single-stage fairness/contribution audit,B3 interpretation,method validation
+b1_policies,G2_FiveBin;G3_Entropy;G4_Cost0_MaxRank;G5_RefinedLR;G6_All3_MaxRank,PA5J-B1,frozen comparator family
+threshold_enumeration,every distinct score cutoff plus no-trigger,B3-R1 design,all attainable deterministic tie-inclusive endpoints
+tie_rule,tie-inclusive,PA5J-B0/B1,no arbitrary tie break
+interpolation,none,fairness constraint,deterministic comparator only
+refined_lr_extra_evals,2,PA5J-A/B1,diagnostic cost
+truth_physics,not used,B3-R1 design,forbidden

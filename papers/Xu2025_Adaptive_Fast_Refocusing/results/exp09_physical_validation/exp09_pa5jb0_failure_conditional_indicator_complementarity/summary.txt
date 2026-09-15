@@ -1,0 +1,3 @@
+PA5J-B0 formal metric export; no automatic research-branch interpretation.
+Raw trials: 11130; complete cases: 11130
+Single rows: 132; pairwise rows: 264; three-way rows: 44

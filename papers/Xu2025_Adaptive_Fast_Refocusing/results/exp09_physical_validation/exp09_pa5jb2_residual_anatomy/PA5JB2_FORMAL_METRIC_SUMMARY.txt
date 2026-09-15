@@ -1,0 +1,42 @@
+EXP009 / PA5J-B2 formal metric export
+No automatic research-branch interpretation.
+
+Input dense trials: E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5ja_indicator_discovery\pa5ja_indicator_trials_dense_risk.csv
+Input B1 sweep: E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5jb1_selective_n3_pareto\pa5jb1_policy_sweep.csv
+Dense trials: 1530; unique trial_id: 1530
+All smoke tests pass: 1
+B1 reconstruction audit rows: 16; all pass: 1
+
+G5 residual summary:
+  Paper1s / b=0.10: actual=0.100713, failures=365, captured=113, residual=252, residual fraction=0.690411
+  Paper1s / b=0.20: actual=0.200535, failures=365, captured=225, residual=140, residual fraction=0.383562
+  Paper1s / b=0.30: actual=0.300357, failures=365, captured=277, residual=88, residual fraction=0.241096
+  Paper1s / b=0.50: actual=0.500000, failures=365, captured=299, residual=66, residual fraction=0.180822
+  BeamDerived / b=0.10: actual=0.100490, failures=174, captured=41, residual=133, residual fraction=0.764368
+  BeamDerived / b=0.20: actual=0.200980, failures=174, captured=82, residual=92, residual fraction=0.528736
+  BeamDerived / b=0.30: actual=0.301471, failures=174, captured=87, residual=87, residual fraction=0.500000
+  BeamDerived / b=0.50: actual=0.500000, failures=174, captured=129, residual=45, residual fraction=0.258621
+
+Residual-pool Cost-0 AUC (one value per G5 anchor):
+  Paper1s / b=0.10: FiveBin=0.817293; Entropy=0.804832; Cost0_MaxRank=0.812648;
+  Paper1s / b=0.20: FiveBin=0.796990; Entropy=0.768494; Cost0_MaxRank=0.785139;
+  Paper1s / b=0.30: FiveBin=0.798536; Entropy=0.787058; Cost0_MaxRank=0.792072;
+  Paper1s / b=0.50: FiveBin=0.764187; Entropy=0.746771; Cost0_MaxRank=0.753811;
+  BeamDerived / b=0.10: FiveBin=0.707538; Entropy=0.716085; Cost0_MaxRank=0.712197;
+  BeamDerived / b=0.20: FiveBin=0.700297; Entropy=0.687430; Cost0_MaxRank=0.693585;
+  BeamDerived / b=0.30: FiveBin=0.672820; Entropy=0.654186; Cost0_MaxRank=0.664199;
+  BeamDerived / b=0.50: FiveBin=0.627114; Entropy=0.637596; Cost0_MaxRank=0.628861;
+
+G6-vs-G5 failure displacement:
+  Paper1s / b=0.10: G5cap=113, G6cap=89, lost=61, gained=37, net=-24
+  Paper1s / b=0.20: G5cap=225, G6cap=172, lost=73, gained=20, net=-53
+  Paper1s / b=0.30: G5cap=277, G6cap=240, lost=64, gained=27, net=-37
+  Paper1s / b=0.50: G5cap=299, G6cap=342, lost=1, gained=44, net=43
+  BeamDerived / b=0.10: G5cap=41, G6cap=30, lost=23, gained=12, net=-11
+  BeamDerived / b=0.20: G5cap=82, G6cap=58, lost=37, gained=13, net=-24
+  BeamDerived / b=0.30: G5cap=87, G6cap=87, lost=14, gained=14, net=0
+  BeamDerived / b=0.50: G5cap=129, G6cap=121, lost=25, gained=17, net=-8
+
+Truth physics were exported only for post-hoc anatomy.
+No truth physics entered a gate score or cutoff.
+No operating point was selected.

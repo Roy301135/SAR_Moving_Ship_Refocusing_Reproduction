@@ -1,0 +1,36 @@
+EXP010-B-R1 / NEIGHBOR-3 OWNERSHIP AUDIT
+=========================================
+Noise/clutter: OFF
+Method redesign: NONE
+Frozen Neighbor-3: radius=1, local halfwidth=0.75 bin
+Audit control: replace practical beta-hat with true beta ONLY in evaluation-control branch
+
+[VERDICT]
+overall_verdict	reconstruction_pass	n_current_n3_failures	n_resolved_by_true_beta	n_persistent_under_true_beta	n_truebeta_candidate_coverage_miss	n_truebeta_persistent_within_coverage	n_control_truebeta_induced_failures	max_reconstruction_nu_mismatch_bins	max_reconstruction_branch_error_mismatch_bins
+FAIL_RECONSTRUCTION_AUDIT	0	86	86	0	0	0	0	4.13371803453799e-08	4.13373961172248e-08
+
+[OWNERSHIP SUMMARY]
+validation_set	aperture_mode	n_current_n3_failures	n_success_controls	n_failures_resolved_by_true_beta	n_failures_persistent_under_true_beta	n_practical_candidate_coverage_miss	n_truebeta_candidate_coverage_miss	n_truebeta_persistent_within_coverage	median_beta_error_over_W_among_failures	max_reconstruction_nu_mismatch_bins	max_reconstruction_branch_error_mismatch_bins	n_control_truebeta_induced_failures
+OriginalGrid	Paper1s	27	40	27	0	17	0	0	0.653795535300882	4.13371803453799e-08	4.13373961172248e-08	0
+OriginalGrid	BeamDerived	6	40	6	0	2	0	0	0.39383171446657	8.01454946852687e-09	8.01455052323874e-09	0
+DenseRisk	Paper1s	27	40	27	0	0	0	0	0.418103406779647	5.59603474670212e-09	5.59603482996884e-09	0
+DenseRisk	BeamDerived	26	40	26	0	0	0	0	0.410487329274069	1.05870867628255e-12	1.06081810002934e-12	0
+
+[BETA-ERROR / N3-FAILURE ASSOCIATION]
+validation_set	aperture_mode	n_trials	n_n3_failures	n3_failure_rate	median_beta_error_over_W_failures	median_beta_error_over_W_successes	beta_error_directional_AUC_for_n3_failure
+OriginalGrid	Paper1s	4800	27	0.005625	0.653795535300896	0.0434388225214904	0.9976488116023
+OriginalGrid	BeamDerived	4800	6	0.00125	0.393831714466525	0.0353191823164117	0.994889445139758
+DenseRisk	Paper1s	1122	27	0.0240641711229947	0.418103406779631	0.114842134441318	0.942465753424658
+DenseRisk	BeamDerived	408	26	0.0637254901960784	0.410487329274039	0.152325299757731	0.833769633507853
+
+[OWNERSHIP CLASS COUNTS]
+RESOLVED_BY_TRUE_BETA	86
+CONTROL_STABLE	160
+
+[INTERPRETATION RULES]
+1) This audit does not modify the frozen Proposed policy.
+2) True beta is an oracle mechanism control only; it is forbidden in Proposed.
+3) If practical N3 failures disappear under true beta, report an upstream-beta-conditioned validity boundary; do not expand to Neighbor-5.
+4) If failures persist under true beta because the global basin lies outside all N3 local intervals, report an adjacency-coverage limitation.
+5) If failures persist under true beta despite candidate coverage, STOP before noise and audit local-refinement / implementation transfer.
+6) Only after ownership is resolved may the project proceed to SNR/noise-definition audit.

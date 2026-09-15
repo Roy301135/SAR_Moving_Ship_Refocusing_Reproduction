@@ -1,0 +1,87 @@
+EXP010-B / NOISELESS PRACTICAL NON-ORACLE FORMAL CLOSURE
+=======================================================
+Noise/clutter: OFF
+SNR: PENDING-DEFINITION
+Policy: Refined-LR 0.20 -> FiveBin 0.10 conditional -> Neighbor-3
+Removal: recenter -> PlateauAwareTol 0.70 -> 3-bin notch -> inverse -> undo recenter
+Validation sets: OriginalGrid, DenseRisk
+DenseRisk source: E:\SAR_Moving_Ship_Refocusing_Reproduction\papers\Xu2025_Adaptive_Fast_Refocusing\results\exp09_physical_validation\exp09_pa5i_r1_gamma_denseeta_tail_audit\pa5i_r1_dense_eta_risk_states.csv
+ORACLE_FIREWALL = 1
+FORMAL_VERDICT = LIMITATION_NEIGHBOR3_NOT_BRANCH_SAFE
+
+
+[FORMAL VERDICT]
+overall_verdict	oracle_firewall_pass	risk_direction_reversal	total_proposed_induced_branch_catastrophes	total_persistent_branch_failures_after_N3	strict_positive_branch_gain_on_both_DenseRisk_apertures	frozen_b1	frozen_b2	frozen_removal_window_bins
+LIMITATION_NEIGHBOR3_NOT_BRANCH_SAFE	1	0	0	86	1	0.2	0.1	3
+
+[METHOD SUMMARY]
+validation_set	aperture_mode	method	n_trials	n_weak_waveform_feasible	weak_waveform_feasible_rate	median_weak_waveform_error_ratio	p90_weak_waveform_error_ratio	p99_weak_waveform_error_ratio	median_weak_beta_error_over_W	p90_weak_beta_error_over_W	median_strong_beta_error_over_W	p90_strong_beta_error_over_W	p99_strong_beta_error_over_W	median_eta_error_bins	p90_eta_error_bins	p99_eta_error_bins	n_catastrophic_branch_failures	catastrophic_branch_failure_rate	mean_branch_objective_evals	fallback_fraction	normalized_branch_cost	removal_window_bins
+OriginalGrid	Paper1s	G0_OriginalTop1	4800	4212	0.8775	0.670840746375	1.00227863488	1.03265004667	0.150345736018	0.316957269663	0.0438743262408	0.154917278977	0.317613512837	0.131167775422	0.394664910438	0.481879529681	51	0.010625	43.500625	0	0	3
+OriginalGrid	Paper1s	Proposed_Frozen_Staged	4800	4223	0.879791666667	0.67064682667	1.00217941847	1.03174533558	0.150345736018	0.316166558188	0.0438743262408	0.154917278977	0.317613512837	0.13176119415	0.400988300129	0.481879529681	27	0.005625	77.0283333333	0.28	0.282978027543	3
+OriginalGrid	Paper1s	Always_Neighbor3	4800	4223	0.879791666667	0.67064682667	1.00217941844	1.03174533558	0.150345736018	0.316166558188	0.0438743262408	0.154917278977	0.317613512837	0.131761192287	0.400988300129	0.481879529681	27	0.005625	161.982291667	1	1	3
+OriginalGrid	Paper1s	ORACLE_ExactSubtraction	4800	4800	1	1.79865195703e-16	4.72206114286e-16	5.32687586323e-16	0.000395355737157	0.000395355737157	0	0	0	0	0	0	NaN	NaN	NaN	NaN	NaN	3
+OriginalGrid	Paper1s	ORACLE_TrueBetaEta_Notch3	4800	4800	1	0.619659270108	0.948635840714	0.949795736999	0.150345736018	0.258643232887	0	0	0	0	0	0	NaN	NaN	NaN	NaN	NaN	3
+OriginalGrid	BeamDerived	G0_OriginalTop1	4800	4468	0.930833333333	0.401474494205	0.979695435387	1.02666520157	0.0932945059283	0.306440249452	0.0353191823164	0.126609907313	0.252258988603	0.128107727464	0.389201142655	0.484678793966	17	0.00354166666667	43.8897916667	0	0	3
+OriginalGrid	BeamDerived	Proposed_Frozen_Staged	4800	4474	0.932083333333	0.401474494205	0.979657922233	1.02594696865	0.0932945059283	0.306440249452	0.0353191823164	0.126609907313	0.252258988603	0.128107727464	0.389201140123	0.484678796782	6	0.00125	77.77	0.28	0.285274986668	3
+OriginalGrid	BeamDerived	Always_Neighbor3	4800	4474	0.932083333333	0.401474496137	0.979657922233	1.02594696865	0.0932945059283	0.306440249452	0.0353191823164	0.126609907313	0.252258988603	0.128107727464	0.389201140123	0.484678796782	6	0.00125	162.653125	1	1	3
+OriginalGrid	BeamDerived	ORACLE_ExactSubtraction	4800	4800	1	1.79862513433e-16	4.72352490827e-16	5.10637093403e-16	0.00168862448702	0.00168862448702	0	0	0	0	0	0	NaN	NaN	NaN	NaN	NaN	3
+OriginalGrid	BeamDerived	ORACLE_TrueBetaEta_Notch3	4800	4800	1	0.369267042008	0.949053299683	0.949688024347	0.06662245923	0.264801212433	0	0	0	0	0	0	NaN	NaN	NaN	NaN	NaN	3
+DenseRisk	Paper1s	G0_OriginalTop1	1122	662	0.590017825312	0.906425077375	1.05748856773	1.27778086233	0.142015159335	0.266973809569	0.115209304541	0.259822449817	0.428345757537	0.347201871388	0.429134705524	0.466126086111	153	0.136363636364	42.7299465241	0	0	3
+DenseRisk	Paper1s	Proposed_Frozen_Staged	1122	765	0.681818181818	0.737136369608	1.02970271995	1.06042496716	0.142015159335	0.241982079522	0.115209304541	0.259822449817	0.428345757537	0.360029947358	0.429134707845	0.466126087157	35	0.0311942959002	74.1443850267	0.280748663102	0.277138274284	3
+DenseRisk	Paper1s	Always_Neighbor3	1122	765	0.681818181818	0.737136371095	1.02970271993	1.06042496443	0.133684582653	0.241982079522	0.115209304541	0.259822449817	0.428345757537	0.353615913121	0.429134703089	0.466126086549	27	0.024064171123	156.082887701	1	1	3
+DenseRisk	Paper1s	ORACLE_ExactSubtraction	1122	1122	1	7.98157448478e-17	9.38720759297e-17	1.10384267137e-16	0.000395355737134	0.000395355737134	0	0	0	0	0	0	NaN	NaN	NaN	NaN	NaN	3
+DenseRisk	Paper1s	ORACLE_TrueBetaEta_Notch3	1122	1122	1	0.742970248189	0.949795736999	0.949795736999	0.166216177908	0.250312656205	0	0	0	0	0	0	NaN	NaN	NaN	NaN	NaN	3
+DenseRisk	BeamDerived	G0_OriginalTop1	408	180	0.441176470588	1.01343290987	1.03152418943	1.08690841564	0.098245064358	0.231489982818	0.162392244373	0.420111933402	0.420111933402	0.355213512268	0.459452374762	0.459452388527	70	0.171568627451	42.1789215686	0	0	3
+DenseRisk	BeamDerived	Proposed_Frozen_Staged	408	204	0.5	1.00562316559	1.03152418927	1.08690841508	0.098245064358	0.231489982818	0.162392244373	0.420111933402	0.420111933402	0.377204990328	0.459452376073	0.459452388527	34	0.0833333333333	74.2965686275	0.281862745098	0.283048211509	3
+DenseRisk	BeamDerived	Always_Neighbor3	408	204	0.5	1.0056231659	1.03152418923	1.03152418943	0.0940811606561	0.231489982818	0.162392244373	0.420111933402	0.420111933402	0.366209246904	0.459452376884	0.45945238692	26	0.0637254901961	155.649509804	1	1	3
+DenseRisk	BeamDerived	ORACLE_ExactSubtraction	408	408	1	7.76721173349e-17	1.02184381359e-16	1.11870002583e-16	0.00168862448707	0.00168862448707	0	0	0	0	0	0	NaN	NaN	NaN	NaN	NaN	3
+DenseRisk	BeamDerived	ORACLE_TrueBetaEta_Notch3	408	408	1	0.949688024347	0.949688024347	0.949688024347	0.239817790222	0.239817790222	0	0	0	0	0	0	NaN	NaN	NaN	NaN	NaN	3
+
+[PAIRED OUTCOMES]
+validation_set	aperture_mode	n_trials	G0_fail_to_Proposed_success	G0_success_to_Proposed_fail	Proposed_fail_to_N3_success	persistent_weak_failure_after_N3	G0_branch_catastrophe_rescued_by_Proposed	Proposed_induced_branch_catastrophe	Proposed_branch_failure_rescued_by_N3	persistent_branch_failure_after_N3	weak_paired_exact_p	branch_paired_exact_p
+OriginalGrid	Paper1s	4800	15	4	0	577	24	0	0	27	0.0192108154297	1.19209289551e-07
+OriginalGrid	BeamDerived	4800	6	0	0	326	11	0	0	6	0.03125	0.0009765625
+DenseRisk	Paper1s	1122	109	6	0	357	118	0	8	27	1.43210823891e-25	6.01853107621e-36
+DenseRisk	BeamDerived	408	24	0	0	204	36	0	8	26	1.19209289551e-07	2.91038304567e-11
+
+[STAGE ALLOCATION / RESCUE]
+validation_set	aperture_mode	n_trials	stage1_trigger_count	stage1_actual_fraction	stage2_trigger_count	stage2_actual_fraction_total	total_trigger_count	total_fallback_fraction	G0_branch_catastrophe_count	stage1_branch_rescue_count	stage2_incremental_branch_rescue_count	missed_G0_branch_catastrophe_count	induced_branch_catastrophe_count	AlwaysN3_branch_catastrophe_count	stage1_weak_rescue_count	stage2_incremental_weak_rescue_count	induced_weak_failure_count
+OriginalGrid	Paper1s	4800	960	0.2	384	0.08	1344	0.28	51	24	0	6	0	27	15	0	4
+OriginalGrid	BeamDerived	4800	960	0.2	384	0.08	1344	0.28	17	11	0	0	0	6	6	0	0
+DenseRisk	Paper1s	1122	225	0.200534759358	90	0.0802139037433	315	0.280748663102	153	118	0	35	0	27	109	0	6
+DenseRisk	BeamDerived	408	82	0.200980392157	33	0.0808823529412	115	0.281862745098	70	35	1	34	0	26	24	0	0
+
+[RISK-DIRECTION AUDIT]
+validation_set	aperture_mode	n_trials	G0_failure_count	G0_success_count	stage1_refinedLR_directional_AUC	stage1_failure_capture_fraction	stage2_residual_pool_n	stage2_residual_failure_count	stage2_residual_success_count	stage2_FiveBin_directional_AUC	stage2_residual_failure_capture_fraction	total_failure_capture_fraction	stage1_direction_reversal_flag	stage2_direction_reversal_flag
+OriginalGrid	Paper1s	4800	51	4749	0.910858426335	0.843137254902	3840	8	3832	0.870400574113	0.25	0.882352941176	0	0
+OriginalGrid	BeamDerived	4800	17	4783	0.966093148528	1	3840	0	3840	NaN	NaN	1	0	0
+DenseRisk	Paper1s	1122	153	969	0.840574138152	0.771241830065	897	35	862	0.721544580709	0	0.771241830065	0	0
+DenseRisk	BeamDerived	408	70	338	0.612299239222	0.5	326	35	291	0.73735886107	0.0285714285714	0.514285714286	0	0
+
+[OPERATOR / ESTIMATION GAP]
+validation_set	aperture_mode	n_trials	oracle_exact_feasible_rate	oracle_exact_median_E	oracle_notch_feasible_rate	oracle_notch_median_E	proposed_feasible_rate	proposed_median_E	finite_window_operator_floor_increment_medianE	practical_estimation_gap_increment_medianE
+OriginalGrid	Paper1s	4800	1	1.79865195703e-16	1	0.619659270108	0.879791666667	0.67064682667	0.619659270108	0.0509875565617
+OriginalGrid	BeamDerived	4800	1	1.79862513433e-16	1	0.369267042008	0.932083333333	0.401474494205	0.369267042008	0.0322074521972
+DenseRisk	Paper1s	1122	1	7.98157448478e-17	1	0.742970248189	0.681818181818	0.737136369608	0.742970248189	-0.00583387858017
+DenseRisk	BeamDerived	408	1	7.76721173349e-17	1	0.949688024347	0.5	1.00562316559	0.949688024347	0.0559351412466
+
+[UPSTREAM ESTIMATION ERRORS]
+validation_set	aperture_mode	n_trials	median_strong_beta_error_over_W	p90_strong_beta_error_over_W	p99_strong_beta_error_over_W	max_strong_beta_error_over_W	median_eta_error_bins	p90_eta_error_bins	p99_eta_error_bins	max_eta_error_bins
+OriginalGrid	Paper1s	4800	0.0438743262408	0.154917278977	0.317613512837	0.770423608852	0.13176119415	0.400988300129	0.481879529681	0.498565206796
+OriginalGrid	BeamDerived	4800	0.0353191823164	0.126609907313	0.252258988603	0.420111933402	0.128107727464	0.389201140123	0.484678796782	0.498986135513
+DenseRisk	Paper1s	1122	0.115209304541	0.259822449817	0.428345757537	0.428345757537	0.360029947358	0.429134707845	0.466126087157	0.466126096487
+DenseRisk	BeamDerived	408	0.162392244373	0.420111933402	0.420111933402	0.420111933402	0.377204990328	0.459452376073	0.459452388527	0.459452392243
+
+[ORACLE FIREWALL]
+overall_pass	online_schema_has_no_forbidden_truth_fields	evaluation_schema_has_truth_fields	frozen_policy_matches	forbidden_online_matches
+1	1	1	1	
+
+CLAIM-CLOSURE INTERPRETATION RULES
+1) Truth may evaluate, but truth may not decide.
+2) DenseRisk is a frozen evaluation stress set; its truth metadata never enters Proposed.
+3) AUC < 0.5 with sufficient positive/negative cases flags risk-direction reversal; do not retune.
+4) Any induced or persistent Neighbor-3 branch failure is reported as a limitation; do not upgrade to Neighbor-5.
+5) Proposed branch gain must be interpreted together with paired rescue/harm and normalized cost.
+6) If this formal noiseless closure passes, STOP deterministic expansion and proceed to SNR/noise-definition audit.
+
+TOTAL EVALUATION ROWS = 55650
