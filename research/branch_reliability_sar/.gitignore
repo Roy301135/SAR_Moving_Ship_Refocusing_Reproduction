@@ -1,0 +1,24 @@
+# ============================================================
+# branch_reliability_sar — local generated artifacts
+# ============================================================
+
+# Keep source code / configs / docs in Git.
+# Keep bulk generated experiment outputs local.
+
+results/**/*.mat
+results/**/*.csv
+results/**/*.png
+results/**/*.txt
+results/**/*.fig
+results/**/*.h5
+results/**/*.hdf5
+
+# Deprecated early R2-A helper.
+# This file used an invalid mapping from R1 dechirped-tone nu
+# to the finite direct-FrFT u-grid and must not be reused.
+functions/fair_csar/refocus_mc_lfm_clean_branch_locked.m
+
+# MATLAB editor / temporary files
+*.asv
+*.autosave
+*.m~
