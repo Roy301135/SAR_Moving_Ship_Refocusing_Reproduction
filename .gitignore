@@ -41,3 +41,20 @@ desktop.ini
 .cache/
 temp/
 tmp/
+
+# ============================================================
+# Project experiment outputs
+# ============================================================
+
+# Generated project results are reproducible and ignored by default.
+# Core evidence files can be force-added explicitly when needed.
+/projects/*/results/**
+
+# ============================================================
+# Frozen provenance exceptions
+# ============================================================
+
+# Historical "tmp" directory below is part of the frozen A0 provenance.
+# Its contents are covered by SHA256SUMS and must remain trackable.
+!projects/paperA_sar_branch_vulnerability/code/A0_audit_fft4_baseline/provenance/original_workspace/tmp/
+!projects/paperA_sar_branch_vulnerability/code/A0_audit_fft4_baseline/provenance/original_workspace/tmp/**
